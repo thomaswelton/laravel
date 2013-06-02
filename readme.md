@@ -3,11 +3,17 @@
 Setup Heroku
 
 ```
-heroku apps:create -b git://github.com/ddollar/heroku-buildpack-multi.git --region eu
+heroku apps:create -b https://github.com/heroku/heroku-buildpack-php.git --region eu
+git push heroku master
+
+heroku config:add BUILDPACK_URL=git://github.com/ddollar/heroku-buildpack-multi.git
 heroku addons:add cleardb:ignite
 heroku addons:add sendgrid:starter
 
 heroku apps:rename project-name
+
+heroku ps:scale web=1
+heroku open
 ```
 
 Deploy the app from the master branch.
