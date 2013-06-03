@@ -1,2 +1,3 @@
 https://github.com/beaucollins/heroku-composer-buildpack.git
+git://github.com/stephanmelzer/heroku-buildpack-nodejs-grunt-compass.git
 https://github.com/heroku/heroku-buildpack-php.git
