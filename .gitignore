@@ -16,7 +16,17 @@ Thumbs.db
 *.sublime-project
 *.sublime-workspace
 
+# Compiled #
+############
 
+/public-build/
 /bootstrap/compiled.php
-/vendor
-.DS_Store
+/node_modules/
+/components/
+/vendor/
+
+.sass-cache/
+public/assets/scripts/components/
+public/assets/scripts/compiled/
+public/assets/stylesheets/compiled/
+public/assets/images/generated/

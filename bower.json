@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+      "html5shiv": "*"
+    , "requirejs": "2.1.*"
+    , "requirejs-plugins": "1.0.*"
+    , "requirejs-domready": "2.0.*"
+  },
+  "exportsOverride": {
+     "requirejs": {
+      "": "require.js"
+    }
+    , "html5shiv": {
+      "": "app/html5shiv.js"
+    }
+    , "requirejs-domready": {
+      "": "domReady.js"
+    }
+  }
+}

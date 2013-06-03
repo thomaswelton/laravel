@@ -1,0 +1,7 @@
+@mixin imageBox($imageURL) {
+	background: none;
+	background-image: image-url($imageURL);
+	background-repeat: no-repeat;
+	width: image-width($imageURL);
+	height: image-height($imageURL);
+}
