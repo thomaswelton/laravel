@@ -1,4 +1,5 @@
 ## Laravel Bootstrap
+[![Build Status](https://travis-ci.org/thomaswelton/laravel.png)](https://travis-ci.org/thomaswelton/laravel)
 [![Dependency Status](https://david-dm.org/thomaswelton/laravel.png)](https://david-dm.org/thomaswelton/laravel)
 
 <img src="icon.png" align="right">
