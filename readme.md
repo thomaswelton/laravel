@@ -1,3 +1,31 @@
+## Laravel Bootstrap
+[![Dependency Status](https://david-dm.org/thomaswelton/laravel.png)](https://david-dm.org/thomaswelton/laravel)
+
+<img src="icon.png" align="right">
+
+In order to compile this project you'll need to following tools installed on your system
+
+* [Node](http://nodejs.org)
+* [Ruby](http://www.ruby-lang.org/en/downloads/)
+* [Grunt CLI](http://gruntjs.com/getting-started#installing-the-cli)
+* [Bundler](http://gembundler.com/) - Ruby Gem Installer
+* [Composer](http://getcomposer.org/doc/00-intro.md#globally) - Composer
+* [Heroku Toolbelt](https://toolbelt.herokuapp.com/)
+
+Once these requirements are met the project can be built using the following commands
+
+### Setup & Deployment
+
+Initial setup - Create a new project using the bootstrap composer
+
+```
+composer create-project thomaswelton/laravel project-name
+cd project-name
+git init
+git add .
+git commit -m "Installed laravel bootstrap"
+```
+
 ### Deployment
 
 Setup Heroku
