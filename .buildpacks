@@ -1,3 +1,4 @@
-https://github.com/beaucollins/heroku-composer-buildpack.git
-git://github.com/stephanmelzer/heroku-buildpack-nodejs-grunt-compass.git
+https://github.com/heroku/heroku-buildpack-ruby.git
+https://github.com/thomaswelton/heroku-buildpack-grunt.git
+https://github.com/thomaswelton/heroku-composer-buildpack.git
 https://github.com/heroku/heroku-buildpack-php.git

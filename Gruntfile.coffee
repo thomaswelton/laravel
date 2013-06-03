@@ -15,6 +15,16 @@ module.exports = (grunt) =>
 				options:
 					stdout: true
 
+			bower_cache:
+				command: 'bower cache-clean'
+				options:
+					stdout: true
+
+			bower_install:
+				command: 'bower install'
+				options:
+					stdout: true
+
 			npm_install:
 				command: 'npm install'
 				options:
@@ -66,15 +76,16 @@ module.exports = (grunt) =>
 				enabled: true
 
 		## Bower, for front end dependencies
-		bower_install:
+		bower_copy:
 			install:
 				options:
-					targetDir: './public/assets/scripts/components'
+					install: false
+					targetDir: './app/htdocs/assets/scripts/components'
 
 
 		modernizr:
 			devFile: "remote"
-			outputFile: "public/assets/scripts/modernizr.js"
+			outputFile: "app/htdocs/assets/scripts/modernizr.js"
 			extra:
 				shiv: false
 				printshiv: false
@@ -101,7 +112,7 @@ module.exports = (grunt) =>
 			files: []
 			matchCommunityTests: false
 			customTests: [
-				'public/assets/scripts/compiled/modernizr/*.js'
+				'app/htdocs/assets/scripts/compiled/modernizr/*.js'
 			]
 			excludeFiles: []
 
@@ -113,7 +124,7 @@ module.exports = (grunt) =>
 				
 			sass:
 				## Compile SCSS when scss or sass file are modified, or items in the sprites directory are modified
-				files: ['src/sass/**/*.{scss,sass}','public/assets/images/sprites/**/*.png','public/assets/fonts/**/*']
+				files: ['src/sass/**/*.{scss,sass}','app/htdocs/assets/images/sprites/**/*.png','app/htdocs/assets/fonts/**/*']
 				tasks: ['compass:app', 'notify:compass']
 
 			coffee:
@@ -130,11 +141,11 @@ module.exports = (grunt) =>
 				tasks: ['bower', 'bowerrjs']
 
 			composer:
-				files: 'composer.json'
+				files: 'src/composer.json'
 				tasks: ['shell:composer']
 
 			modernizr:
-				files: ['public/assets/scripts/compiled/modernizr/*']
+				files: ['app/htdocs/assets/scripts/compiled/modernizr/*']
 				tasks: ['modernizr']
 
 		## Compile SCSS
@@ -150,19 +161,6 @@ module.exports = (grunt) =>
 					noLineComments: false
 					outputStyle: 'expanded'
 
-		csslint:
-			app:
-				options:
-					import: false
-					'unique-headings': false
-					ids: false
-					important: false
-					'universal-selector': false
-					'star-property-hack': false
-					'adjoining-classes': false
-
-				src: ['public/assets/**/*.css']
-
 		## Compile coffeescript
 		coffee:
 			## Config copied by a watch task and used to compile only changed files
@@ -173,7 +171,7 @@ module.exports = (grunt) =>
 					expand: true
 					cwd: 'src/coffee/'
 					src: ''
-					dest: 'public/assets/scripts/compiled'
+					dest: 'app/htdocs/assets/scripts/compiled'
 					ext: '.js'
 				]
 
@@ -184,7 +182,7 @@ module.exports = (grunt) =>
 					expand: true
 					cwd: 'src/coffee'
 					src: ['config.coffee']
-					dest: 'public/assets/scripts/compiled'
+					dest: 'app/htdocs/assets/scripts/compiled'
 					ext: '.js'
 				]
 
@@ -194,8 +192,8 @@ module.exports = (grunt) =>
 				files: [
 					expand: true
 					cwd: 'src/coffee'
-					src: ['*.coffee', '**/*.coffee', '!config.coffee']
-					dest: 'public/assets/scripts/compiled'
+					src: ['**/*.{png,jpg}', '!config.coffee']
+					dest: 'app/htdocs/assets/scripts/compiled'
 					ext: '.js'
 				]
 
@@ -204,16 +202,16 @@ module.exports = (grunt) =>
 					expand: true
 					cwd: 'src/coffee'
 					src: ['*.coffee', '**/*.coffee', '!config.coffee']
-					dest: 'public/assets/scripts/compiled'
+					dest: 'app/htdocs/assets/scripts/compiled'
 					ext: '.js'
 				]
 
 		removelogging:
 			files:
 				expand: true
-				cwd: 'public-build/assets/scripts'
+				cwd: 'app'
 				src: ['**/*.js']
-				dest: 'public-build/assets/scripts'
+				dest: 'app'
 				ext: '.js'
 
 		## Optimize the requirejs project
@@ -221,21 +219,13 @@ module.exports = (grunt) =>
 		requirejs:
 			compile:
 				options:
+					optimise: "uglify2"
 					logLevel: 1
-					appDir: "public"
-					dir: "public-build"
-					mainConfigFile: "public/assets/scripts/compiled/config.js"
+					appDir: "app/htdocs"
+					dir: "app/htdocs-build"
+					mainConfigFile: "app/htdocs/assets/scripts/compiled/config.js"
 					baseUrl: "assets/scripts"
-					modules: [
-						{
-							name: 'main'
-						},
-						{
-							name: 'tinyMCE'
-							exclude: ['tinyMCE_source']
-						}
-					]
-
+					
 		## Optimize images
 		imagemin:
 			dynamic_mappings:
@@ -244,9 +234,9 @@ module.exports = (grunt) =>
 
 				files:[
 					expand: true
-					cwd: 'public/assets/images'
+					cwd: 'app/htdocs/assets/images'
 					src: ['**/*.{png,jpg}']
-					dest: 'public/assets/images'
+					dest: 'app/htdocs/assets/images'
 				]
 
 		parallel:
@@ -267,9 +257,26 @@ module.exports = (grunt) =>
 					{
 						grunt: true
 						args: ['modernizr']
+					},
+					{
+						grunt: true
+						args: 'bower'
 					}
 				]
-			assetsProd:
+
+			build_js:
+				tasks: [
+					{
+						grunt: true
+						args: ['coffee:prod']
+					},
+					{
+						grunt: true
+						args: 'bower'
+					}
+				]
+
+			build:
 				tasks: [
 					{
 						grunt: true
@@ -277,11 +284,7 @@ module.exports = (grunt) =>
 					},
 					{
 						grunt: true
-						args: ['coffee:prod']
-					},
-					{
-						grunt: true
-						args: ['bower']
+						args: ['parallel:build_js', 'removelogging']
 					}
 				]
 
@@ -317,14 +320,29 @@ module.exports = (grunt) =>
 					}
 				]
 
-		clean:
+		compress:
 			build:
-				src: 'public-build'	
+				options:
+					archive: '<%= pkg.name.toLowerCase() %>.zip'
+				files: [
+					{
+						expand: true
+						cwd: 'app-build/'
+						src: ['**/*']
+						dest: '../'
+					},
+					{
+						expand: true
+						dot: true
+						cwd: 'app-build/'
+						src: 'htdocs/.htaccess'
+						dest: '../'
+					}
+				]
 
 		bowerrjs:
 			target:
-				rjsConfig: 'public/assets/scripts/compiled/config.js'
-
+				rjsConfig: 'app/htdocs/assets/scripts/compiled/config.js'
 
 
 	## Compile individual files
@@ -334,7 +352,6 @@ module.exports = (grunt) =>
 
 		tasks =
 			".coffee" 	: 'coffee'
-			".md"		: 'markdown'	
 
 		if action is 'changed' && tasks[fileextension]?
 			taskname = tasks[fileextension]
@@ -357,12 +374,12 @@ module.exports = (grunt) =>
 	grunt.renameTask 'bower', 'bowerrjs'
 
 	grunt.loadNpmTasks 'grunt-bower-task'
-	grunt.renameTask 'bower', 'bower_install'
+	grunt.renameTask 'bower', 'bower_copy'
 
 	grunt.registerTask 'bower', 'Install and wire up bower', () ->
 		## always use force when watching
 		grunt.option 'force', true
-		grunt.task.run ['coffee:config', 'bower_install', 'bowerrjs']
+		grunt.task.run ['shell:bower_install', 'bower_copy', 'coffee:config', 'bowerrjs']
 
 
 	grunt.loadNpmTasks 'grunt-contrib-compass'
@@ -374,22 +391,19 @@ module.exports = (grunt) =>
 	grunt.loadNpmTasks 'grunt-remove-logging'
 	grunt.loadNpmTasks 'grunt-contrib-imagemin'
 	grunt.loadNpmTasks 'grunt-modernizr'
-	grunt.loadNpmTasks 'grunt-contrib-csslint'
-	grunt.loadNpmTasks 'grunt-contrib-clean'
 	grunt.loadNpmTasks 'grunt-shell'
 
 	grunt.registerTask 'default', ['parallel:default']
 
-	grunt.registerTask 'build', ['composer', 'parallel:assetsProd', 'requirejs', 'removelogging']
+	grunt.registerTask 'build', ['parallel:build', 'requirejs']
+	grunt.registerTask 'heroku', 'build'
+
 	grunt.registerTask 'cdn', ['build', 'cloudfiles:prod']
 	
 	grunt.registerTask 'compile', ['parallel:assetsDev']
-	grunt.registerTask 'package', ['build', 'markdown:docs_package', 'clean:config', 'compress:build', 'clean:build']
 
 	grunt.registerTask 'bundle', 'Install ruby gem dependencies', ['shell:bundle']
 	grunt.registerTask 'composer', 'Install composer dependencies', ['shell:composer']
-
-	grunt.registerTask 'heroku', ['parallel:assetsProd', 'requirejs', 'removelogging']
 
 	grunt.registerTask 'open', 'Open the project in the finder, browser and Sublime', () ->
 		grunt.task.run 'parallel:open'

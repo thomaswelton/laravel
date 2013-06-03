@@ -3,7 +3,7 @@
 <!--[if IE 8]>    <html class="ie8 oldie" > <![endif]-->
 <html lang="en">
 <head>
-    <title>Welcome</title>
+    <title><? $title ?></title>
     <meta charset="UTF-8" />
     <meta name="google" content="notranslate">
     <meta http-equiv="Content-Language" content="en" />
@@ -26,7 +26,7 @@
                 <a href="http://bootstrap.dev/">Bootstrap</a>
             </header>
 
-            <div id="main" role="main"><h1>Homepage</h1></div>
+            <div id="main" role="main"><?= $content ?></div>
         </div>
 
         <footer>
