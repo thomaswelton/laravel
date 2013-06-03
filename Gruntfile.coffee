@@ -80,12 +80,12 @@ module.exports = (grunt) =>
 			install:
 				options:
 					install: false
-					targetDir: './app/htdocs/assets/scripts/components'
+					targetDir: './public/assets/scripts/components'
 
 
 		modernizr:
 			devFile: "remote"
-			outputFile: "app/htdocs/assets/scripts/modernizr.js"
+			outputFile: "public/assets/scripts/modernizr.js"
 			extra:
 				shiv: false
 				printshiv: false
@@ -112,7 +112,7 @@ module.exports = (grunt) =>
 			files: []
 			matchCommunityTests: false
 			customTests: [
-				'app/htdocs/assets/scripts/compiled/modernizr/*.js'
+				'public/assets/scripts/compiled/modernizr/*.js'
 			]
 			excludeFiles: []
 
@@ -124,7 +124,7 @@ module.exports = (grunt) =>
 				
 			sass:
 				## Compile SCSS when scss or sass file are modified, or items in the sprites directory are modified
-				files: ['src/sass/**/*.{scss,sass}','app/htdocs/assets/images/sprites/**/*.png','app/htdocs/assets/fonts/**/*']
+				files: ['src/sass/**/*.{scss,sass}','public/assets/images/sprites/**/*.png','public/assets/fonts/**/*']
 				tasks: ['compass:app', 'notify:compass']
 
 			coffee:
@@ -145,7 +145,7 @@ module.exports = (grunt) =>
 				tasks: ['shell:composer']
 
 			modernizr:
-				files: ['app/htdocs/assets/scripts/compiled/modernizr/*']
+				files: ['public/assets/scripts/compiled/modernizr/*']
 				tasks: ['modernizr']
 
 		## Compile SCSS
@@ -171,7 +171,7 @@ module.exports = (grunt) =>
 					expand: true
 					cwd: 'src/coffee/'
 					src: ''
-					dest: 'app/htdocs/assets/scripts/compiled'
+					dest: 'public/assets/scripts/compiled'
 					ext: '.js'
 				]
 
@@ -182,7 +182,7 @@ module.exports = (grunt) =>
 					expand: true
 					cwd: 'src/coffee'
 					src: ['config.coffee']
-					dest: 'app/htdocs/assets/scripts/compiled'
+					dest: 'public/assets/scripts/compiled'
 					ext: '.js'
 				]
 
@@ -193,7 +193,7 @@ module.exports = (grunt) =>
 					expand: true
 					cwd: 'src/coffee'
 					src: ['**/*.{png,jpg}', '!config.coffee']
-					dest: 'app/htdocs/assets/scripts/compiled'
+					dest: 'public/assets/scripts/compiled'
 					ext: '.js'
 				]
 
@@ -202,7 +202,7 @@ module.exports = (grunt) =>
 					expand: true
 					cwd: 'src/coffee'
 					src: ['*.coffee', '**/*.coffee', '!config.coffee']
-					dest: 'app/htdocs/assets/scripts/compiled'
+					dest: 'public/assets/scripts/compiled'
 					ext: '.js'
 				]
 
@@ -221,9 +221,9 @@ module.exports = (grunt) =>
 				options:
 					optimise: "uglify2"
 					logLevel: 1
-					appDir: "app/htdocs"
-					dir: "app/htdocs-build"
-					mainConfigFile: "app/htdocs/assets/scripts/compiled/config.js"
+					appDir: "public"
+					dir: "public-build"
+					mainConfigFile: "public/assets/scripts/compiled/config.js"
 					baseUrl: "assets/scripts"
 					
 		## Optimize images
@@ -234,9 +234,9 @@ module.exports = (grunt) =>
 
 				files:[
 					expand: true
-					cwd: 'app/htdocs/assets/images'
+					cwd: 'public/assets/images'
 					src: ['**/*.{png,jpg}']
-					dest: 'app/htdocs/assets/images'
+					dest: 'public/assets/images'
 				]
 
 		parallel:
@@ -342,7 +342,7 @@ module.exports = (grunt) =>
 
 		bowerrjs:
 			target:
-				rjsConfig: 'app/htdocs/assets/scripts/compiled/config.js'
+				rjsConfig: 'public/assets/scripts/compiled/config.js'
 
 
 	## Compile individual files
