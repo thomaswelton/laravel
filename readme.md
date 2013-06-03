@@ -22,6 +22,8 @@ Initial setup - Create a new project using the bootstrap composer
 ```
 composer create-project thomaswelton/laravel project-name
 cd project-name
+npm install
+grunt
 git init
 git add .
 git commit -m "Installed laravel bootstrap"

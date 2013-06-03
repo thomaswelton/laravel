@@ -1,6 +1,6 @@
 {
 	"name": "thomaswelton/laravel",
-	
+
 	"require": {
 		"laravel/framework": "4.0.*"
 	},
@@ -23,11 +23,6 @@
 		],
 		"post-update-cmd": [
 			"php artisan optimize"
-		],
-		"post-package-install": [
-			"npm install -g grunt-cli",
-			"npm install",
-			"grunt"
 		]
 	},
 	"config": {
