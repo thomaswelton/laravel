@@ -23,7 +23,7 @@
     <div id="container">
         <div id="content">
             <header>
-                <a href="http://bootstrap.dev/">Bootstrap</a>
+                <a href="/">Bootstrap</a>
             </header>
 
             <div id="main" role="main"><?= $content ?></div>
@@ -53,6 +53,12 @@
             config:{
 
             }
+        });
+
+        define('global', {
+            "stylesheets": [],
+            "scripts": [],
+            "requireScripts": []
         });
 
         require(['main']);
