@@ -10,6 +10,13 @@ module.exports = (grunt) =>
 					log:true
 		
 		shell:
+			server:
+				command: 'php -S localhost:8000'
+				options:
+					stderr: true
+					execOptions:
+						cwd: 'public'
+
 			bundle:
 				command: 'bundle install'
 				options:
@@ -51,7 +58,7 @@ module.exports = (grunt) =>
 					stdout: true
 
 			open_site:
-				command: "open http://<%= pkg.name.toLowerCase() %>.dev/ &"
+				command: "open http://localhost:8000"
 				options:
 					stdout: true
 
@@ -404,6 +411,8 @@ module.exports = (grunt) =>
 
 	grunt.registerTask 'bundle', 'Install ruby gem dependencies', ['shell:bundle']
 	grunt.registerTask 'composer', 'Install composer dependencies', ['shell:composer']
+
+	grunt.registerTask 'server', 'Start a server', ['shell:server']
 
 	grunt.registerTask 'open', 'Open the project in the finder, browser and Sublime', () ->
 		grunt.task.run 'parallel:open'
