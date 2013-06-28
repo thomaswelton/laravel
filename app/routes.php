@@ -11,4 +11,8 @@
 |
 */
 
+Route::get('login', 'AdminController@getLogin');
+
+Route::controller('/admin','AdminController');
+
 Route::controller('/','HomeController');
