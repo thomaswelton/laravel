@@ -1,13 +1,6 @@
 module.exports = (grunt) =>
 	grunt.initConfig
 		pkg: grunt.file.readJSON 'package.json'
-
-		asciify:
-			name:
-				text: '<%= pkg.name %>'
-				options:
-					font:'colossal'
-					log:true
 		
 		php:
 			dist:
