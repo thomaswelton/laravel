@@ -28,5 +28,6 @@
   }
   , "devDependencies": {
       "grunt-php": "~0.1.1"
+    , "grunt-phplint": "0.0.5"
   }
 }

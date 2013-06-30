@@ -10,6 +10,9 @@ module.exports = (grunt) =>
 					port: 8000
 					base: 'public'
 
+		phplint:
+			files: ['app/**/*.php', 'bootstrap/**/*.php', 'public/**/*.php']
+
 		shell:
 			server:
 				command: 'php -S localhost:8000'
@@ -401,6 +404,7 @@ module.exports = (grunt) =>
 	grunt.loadNpmTasks 'grunt-modernizr'
 	grunt.loadNpmTasks 'grunt-shell'
 	grunt.loadNpmTasks 'grunt-php'
+	grunt.loadNpmTasks 'grunt-phplint'
 
 	grunt.registerTask 'default', ['parallel:default']
 
