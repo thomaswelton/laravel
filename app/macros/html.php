@@ -14,3 +14,20 @@ HTML::macro('flash', function($syntax = null) {
     }
     return $output;
 });
+
+HTML::macro('render_menu', function($menulinks){
+    $html = '<ul class="nav">';
+
+    foreach($menulinks as $link){
+        $attributes = $link;
+        unset($attributes['title']);
+        unset($attributes['href']);
+
+        $active = Request::is($link['href']) ? 'class="active"' : '';
+
+        $html .= '<li '.$active.'>' . HTML::link($link['href'], $link['title'], $attributes, $secure = null);
+    }
+    $html .= '</ul>';
+
+    return $html;
+});
