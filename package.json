@@ -24,10 +24,11 @@
     , "grunt-modernizr": ">= 0.2.2"
     , "grunt-shell": "~0.2.2"
     , "grunt-bower-requirejs": "~0.4.3"
+    , "grunt-php": "~0.1.1"
+    , "grunt-phplint": "0.0.5"
     , "grunt-bower-task": "git://github.com/thomaswelton/grunt-bower-task.git"
   }
   , "devDependencies": {
-      "grunt-php": "~0.1.1"
-    , "grunt-phplint": "0.0.5"
+  
   }
 }
