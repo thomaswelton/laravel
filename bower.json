@@ -4,6 +4,7 @@
     , "requirejs": "2.1.*"
     , "requirejs-plugins": "1.0.*"
     , "requirejs-domready": "2.0.*"
+    , "bootstrap": "2.3.*"
   },
   "exportsOverride": {
      "requirejs": {
