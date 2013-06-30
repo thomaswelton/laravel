@@ -30,6 +30,27 @@
     <div class="container" role="main">
         <?= $content ?>
     </div>
+    
+    <script src="/assets/scripts/components/requirejs/require.js"></script>
+    
+    <?php if ('production' != App::environment()): ?>
+        <script>
+            require.config({
+                urlArgs: "bust=" + (new Date()).getTime()
+            });
+        </script>
+    <?php endif ?>
 
+    <script type="text/javascript">
+        <?= file_get_contents('assets/scripts/compiled/config.js'); ?>
+        requirejs.config({
+            baseUrl: '/assets/scripts',
+            config:{
+
+            }
+        });
+        
+        require(["/assets/scripts/compiled/admin.js"]);
+    </script>
 </body>
 </html>
