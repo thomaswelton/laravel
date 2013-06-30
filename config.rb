@@ -33,5 +33,5 @@ extentions_dir = 'vendor'
 add_import_path sass_dir + "/imports"
 
 # Require any additional compass plugins here.
-add_import_path extentions_dir + '/vwall/compass-twitter-bootstrap/stylesheets'
+require 'compass_twitter_bootstrap'
 

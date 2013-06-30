@@ -1,0 +1,61 @@
+@import "partials/_base";
+@import "twitter_bootstrap";
+@import "compass/typography/text/ellipsis";
+
+/*
+|--------------------
+| Layout styles
+|--------------------
+*/
+
+.login-form{
+	margin-top:50px;
+}
+
+
+/*
+|--------------------
+| Template styles
+|--------------------
+*/
+
+.icon-colored-sign{
+	&.icon-facebook-sign, &.icon-facebook{
+		color:#3b5998;
+	}
+}
+
+.ellipsis{
+	@include ellipsis;	
+}
+
+.unstyled-link, .unstyled-link:hover{
+	@include unstyled-link();
+	text-decoration:none;
+}
+
+/*
+|--------------------
+| Bootstrap overrides
+|--------------------
+*/
+
+table {
+    max-width: none;
+
+    .icon-ok{
+		color:green;
+	}
+
+	.icon-remove{
+		color:red;
+	}
+}
+
+.table-valign-middle td{
+	vertical-align:middle;
+}
+
+th.text-center, td.text-center{
+	text-align:center;
+}
