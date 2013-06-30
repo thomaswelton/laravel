@@ -41,4 +41,11 @@ class AdminController extends BaseController {
 			return Redirect::to('admin/login');
 		}
 	}
+
+	public function getLogout(){
+		Auth::logout();
+		Session::flash('success', 'Logout successful');
+		
+		return Redirect::to('admin/login');
+	}
 }
