@@ -133,8 +133,7 @@ module.exports = (grunt) =>
 
 			coffee:
 				files: ['src/coffee/**/*.coffee','!src/coffee/config.coffee']
-				options:
-					nospawn: true
+				tasks: ['coffee:app']
 
 			coffee_config:
 				files: ['src/coffee/config.coffee']
@@ -167,18 +166,6 @@ module.exports = (grunt) =>
 
 		## Compile coffeescript
 		coffee:
-			## Config copied by a watch task and used to compile only changed files
-			watch:
-				options:
-					sourceMap: true
-				files: [
-					expand: true
-					cwd: 'src/coffee/'
-					src: ''
-					dest: 'public/assets/scripts/compiled'
-					ext: '.js'
-				]
-
 			config:
 				options:
 					bare: true
@@ -196,7 +183,7 @@ module.exports = (grunt) =>
 				files: [
 					expand: true
 					cwd: 'src/coffee'
-					src: ['**/*.{png,jpg}', '!config.coffee']
+					src: ['*.coffee', '**/*.coffee', '!config.coffee']
 					dest: 'public/assets/scripts/compiled'
 					ext: '.js'
 				]
@@ -347,32 +334,6 @@ module.exports = (grunt) =>
 		bowerrjs:
 			target:
 				rjsConfig: 'public/assets/scripts/compiled/config.js'
-
-
-	## Compile individual files
-	path = require('path')
-	grunt.event.on 'watch', (action, filepath) ->
-		fileextension = path.extname filepath
-
-		tasks =
-			".coffee" 	: 'coffee'
-
-		if action is 'changed' && tasks[fileextension]?
-			taskname = tasks[fileextension]
-			config = grunt.config taskname
-
-			##Create new task config to compile this file
-			if !config[filepath]
-				## Copy the dummy watch task defined in taskname:watch
-				config[filepath] = JSON.parse JSON.stringify config.watch
-				## Set the file path
-				config[filepath].files[0].src = filepath.substr(config[filepath].files[0].cwd.length)
-				## Update the config
-				grunt.config.set taskname, config
-
-			## Run the new or preexisting task for this file path
-			grunt.task.run [ "#{taskname}:#{filepath}" ]
-
 
 	grunt.loadNpmTasks 'grunt-bower-requirejs'
 	grunt.renameTask 'bower', 'bowerrjs'
