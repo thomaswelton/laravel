@@ -8,9 +8,4 @@ class HomeController extends BaseController {
 		$this->page = 'pages.index';
 		return $this->_render();
 	}
-
-	public function getContent(){
-		$this->page = 'pages.content';
-		return $this->_render();
-	}
 }

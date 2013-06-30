@@ -1,68 +1,49 @@
-<!DOCTYPE html>
-<!--[if IE 7]>    <html class="ie7 oldie" > <![endif]-->
-<!--[if IE 8]>    <html class="ie8 oldie" > <![endif]-->
+<!doctype html>
 <html lang="en">
 <head>
-    <title><? $title ?></title>
-    <meta charset="UTF-8" />
-    <meta name="google" content="notranslate">
-    <meta http-equiv="Content-Language" content="en" />
-    <meta name="description" content="Thomas Welton - Portfolio website">
-
-    <!--[if lt IE 9]>
-        <script src="/assets/scripts/components/html5shiv/html5shiv.js"></script>
-    <![endif]-->
-
-    
-    <link rel="stylesheet" type="text/css" href="/assets/stylesheets/compiled/template.css">
-    <link href="/assets/stylesheets/compiled/pages/homepage.css" rel="stylesheet" type="text/css" />
-    <script src="/assets/scripts/modernizr.js"></script>
-    
+    <meta charset="UTF-8">
+    <title>Laravel PHP Framework</title>
+    <style>
+        @import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+ 
+        body {
+            margin:0;
+            font-family:'Lato', sans-serif;
+            text-align:center;
+            color: #999;
+        }
+ 
+        .welcome {
+           width: 300px;
+           height: 300px;
+           position: absolute;
+           left: 50%;
+           top: 50%; 
+           margin-left: -150px;
+           margin-top: -150px;
+        }
+ 
+        a, a:visited {
+            color:#FF5949;
+            text-decoration:none;
+        }
+ 
+        a:hover {
+            text-decoration:underline;
+        }
+ 
+        ul li {
+            display:inline;
+            margin:0 1.2em;
+        }
+ 
+        p {
+            margin:2em 0;
+            color:#555;
+        }
+    </style>
 </head>
 <body>
-    <div id="container">
-        <div id="content">
-            <header>
-                <a href="/">Bootstrap</a>
-            </header>
-
-            <div id="main" role="main"><?= $content ?></div>
-        </div>
-
-        <footer>
-            <ul>
-                <li class="icon-blue-arrow"></li>
-                <li class="icon-green-arrow"></li>
-                <li class="icon-red-arrow"></li>
-            </ul>
-        </footer>
-    </div>
-    
-    <script src="/assets/scripts/components/requirejs/require.js"></script>
-    <script>
-        require.config({
-            urlArgs: "bust=" + (new Date()).getTime()
-        });
-    </script>
-        
-    <script type="text/javascript">
-        <?= file_get_contents('assets/scripts/compiled/config.js'); ?>
-
-        requirejs.config({
-            baseUrl: "/assets/scripts",
-            config:{
-
-            }
-        });
-
-        define('global', {
-            "stylesheets": [],
-            "scripts": [],
-            "requireScripts": []
-        });
-
-        require(['main']);
-    </script>
-    </body>
+    <?= $content ?>
+</body>
 </html>
-
