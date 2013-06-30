@@ -19,16 +19,6 @@ module.exports = (grunt) =>
 				options:
 					stdout: true
 
-			bower_cache:
-				command: 'bower cache-clean'
-				options:
-					stdout: true
-
-			bower_install:
-				command: 'bower install'
-				options:
-					stdout: true
-
 			npm_install:
 				command: 'npm install'
 				options:
@@ -80,11 +70,10 @@ module.exports = (grunt) =>
 				enabled: true
 
 		## Bower, for front end dependencies
-		bower_copy:
+		bower_install:
 			install:
 				options:
-					install: false
-					targetDir: './public/assets/scripts/components'
+					targetDir: 'public/assets/scripts/components'
 
 
 		modernizr:
@@ -141,7 +130,7 @@ module.exports = (grunt) =>
 
 			bower:
 				files: 'bower.json'
-				tasks: ['bower', 'bowerrjs']
+				tasks: ['bower']
 
 			composer:
 				files: 'src/composer.json'
@@ -347,12 +336,12 @@ module.exports = (grunt) =>
 	grunt.renameTask 'bower', 'bowerrjs'
 
 	grunt.loadNpmTasks 'grunt-bower-task'
-	grunt.renameTask 'bower', 'bower_copy'
+	grunt.renameTask 'bower', 'bower_install'
 
 	grunt.registerTask 'bower', 'Install and wire up bower', () ->
 		## always use force when watching
 		grunt.option 'force', true
-		grunt.task.run ['shell:bower_install', 'bower_copy', 'coffee:config', 'bowerrjs']
+		grunt.task.run ['bower_install', 'coffee:config', 'bowerrjs']
 
 
 	grunt.loadNpmTasks 'grunt-contrib-compass'
@@ -372,12 +361,7 @@ module.exports = (grunt) =>
 
 	grunt.registerTask 'default', ['parallel:default']
 
-	grunt.registerTask 'bower_install', 'Install and wire up bower', () ->
-		## always use force when watching
-		grunt.option 'force', true
-		grunt.task.run ['shell:bower_install', 'bower']
-
-	grunt.registerTask 'build', ['coffee:prod', 'modernizr_build', 'bower_install', 'removelogging', 'compass:prod', 'imagemin', 'requirejs']
+	grunt.registerTask 'build', ['coffee:prod', 'modernizr_build', 'bower', 'removelogging', 'compass:prod', 'imagemin', 'requirejs']
 	
 	grunt.registerTask 'modernizr_build', 'Compile modernizr tests and build modernizr', ['coffee:modernizr', 'modernizr']
 
