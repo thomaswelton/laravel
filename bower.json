@@ -11,7 +11,7 @@
       "": "require.js"
     }
     , "html5shiv": {
-      "": "app/html5shiv.js"
+      "": "dist/html5shiv.js"
     }
     , "requirejs-domready": {
       "": "domReady.js"

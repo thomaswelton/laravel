@@ -7,7 +7,7 @@
     <meta charset="UTF-8" />
 
     <!--[if lt IE 9]>
-        <script src="/assets/scripts/components/html5shiv/html5shiv.js"></script>
+        <script src="/assets/scripts/components/html5shiv/dist/html5shiv.js"></script>
     <![endif]-->
     
     <link rel="stylesheet" type="text/css" href="/assets/stylesheets/compiled/admin.css">
