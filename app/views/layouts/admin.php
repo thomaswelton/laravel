@@ -19,6 +19,12 @@
             <a class="brand" href="/admin">Bootstrap Admin</a>
             
             <?php if(!Auth::guest()): ?>
+            
+                <?= HTML::render_menu(array(
+                    array('href' => 'admin', 'title' => 'Home'), 
+                    array('href' => 'admin/auth', 'title' => 'Users')
+                )) ?>
+
                 <div class="pull-right">
                     <a href="/" class="btn btn-info" target="_blank">View Site <i class="icon-eye-open"></i></a>
                     <a class="btn btn-inverse" href="/admin/logout">Logout <i class="icon-signout"></i></a>
