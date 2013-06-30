@@ -1,4 +1,3 @@
 https://github.com/heroku/heroku-buildpack-ruby.git
 https://github.com/thomaswelton/heroku-buildpack-grunt.git
-https://github.com/thomaswelton/heroku-composer-buildpack.git
-https://github.com/heroku/heroku-buildpack-php.git
+https://github.com/winglian/heroku-buildpack-php.git#appstrap
