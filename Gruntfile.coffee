@@ -9,6 +9,14 @@ module.exports = (grunt) =>
 					font:'colossal'
 					log:true
 		
+		php:
+			dist:
+				options:
+					keepalive: true
+					open: true
+					port: 8000
+					base: 'public'
+
 		shell:
 			server:
 				command: 'php -S localhost:8000'
@@ -399,6 +407,7 @@ module.exports = (grunt) =>
 	grunt.loadNpmTasks 'grunt-contrib-imagemin'
 	grunt.loadNpmTasks 'grunt-modernizr'
 	grunt.loadNpmTasks 'grunt-shell'
+	grunt.loadNpmTasks 'grunt-php'
 
 	grunt.registerTask 'default', ['parallel:default']
 

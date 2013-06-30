@@ -26,4 +26,7 @@
     , "grunt-bower-requirejs": "~0.4.3"
     , "grunt-bower-task": "git://github.com/thomaswelton/grunt-bower-task.git"
   }
+  , "devDependencies": {
+      "grunt-php": "~0.1.1"
+  }
 }
