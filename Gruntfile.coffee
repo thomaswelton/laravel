@@ -239,10 +239,6 @@ module.exports = (grunt) =>
 				tasks: [
 					{
 						grunt: true
-						args: ['composer']
-					},
-					{
-						grunt: true
 						args: ['bundle' ,'compass:app']
 					},
 					{
@@ -359,7 +355,7 @@ module.exports = (grunt) =>
 	grunt.loadNpmTasks 'grunt-phplint'
 
 
-	grunt.registerTask 'default', ['parallel:default']
+	grunt.registerTask 'default', [ 'composer', 'parallel:default']
 
 	grunt.registerTask 'build', ['coffee:prod', 'modernizr_build', 'bower', 'removelogging', 'compass:prod', 'imagemin', 'requirejs']
 	
