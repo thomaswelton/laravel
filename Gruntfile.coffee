@@ -14,13 +14,6 @@ module.exports = (grunt) =>
 			files: ['app/**/*.php', 'bootstrap/**/*.php', 'public/**/*.php']
 
 		shell:
-			server:
-				command: 'php -S localhost:8000'
-				options:
-					stderr: true
-					execOptions:
-						cwd: 'public'
-
 			bundle:
 				command: 'bundle install'
 				options:
@@ -421,7 +414,7 @@ module.exports = (grunt) =>
 	grunt.registerTask 'bundle', 'Install ruby gem dependencies', ['shell:bundle']
 	grunt.registerTask 'composer', 'Install composer dependencies', ['shell:composer']
 
-	grunt.registerTask 'server', 'Start a server', ['shell:server']
+	grunt.registerTask 'server', 'Start a server', ['php']
 
 	grunt.registerTask 'open', 'Open the project in the finder, browser and Sublime', () ->
 		grunt.task.run 'parallel:open'
