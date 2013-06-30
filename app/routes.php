@@ -11,6 +11,7 @@
 |
 */
 
+Route::controller('/admin/auth','AuthController');
 Route::controller('/admin','AdminController');
 
 Route::controller('/','HomeController');
