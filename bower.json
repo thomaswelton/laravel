@@ -4,7 +4,6 @@
     , "requirejs": "2.1.*"
     , "requirejs-plugins": "1.0.*"
     , "requirejs-domready": "2.0.*"
-    , "AjaxNav": "git@github.com:thomaswelton/bower-ajax-nav.git#0.0.3"
   },
   "exportsOverride": {
      "requirejs": {
