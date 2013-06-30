@@ -48,7 +48,7 @@
     <?php endif ?>
 
     <script type="text/javascript">
-        <?= file_get_contents('assets/scripts/compiled/config.js'); ?>
+        <?= File::get(public_path().'/assets/scripts/compiled/config.js'); ?>
         requirejs.config({
             baseUrl: '/assets/scripts',
             config:{
