@@ -26,11 +26,16 @@ $app->redirectIfTrailingSlash();
 |
 */
 
-$env = $app->detectEnvironment(array(
+$env = $app->detectEnvironment(function()
+{
+    $serverNameParts = explode('.',$_SERVER['SERVER_NAME']);
 
-	'local' => array('your-machine-name'),
+    if($_SERVER['SERVER_NAME'] === 'localhost' || $serverNameParts[count($serverNameParts) - 1] === 'dev'){
+    	return 'local';
+    }
 
-));
+    return 'production';
+});
 
 /*
 |--------------------------------------------------------------------------
