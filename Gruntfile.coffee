@@ -366,7 +366,7 @@ module.exports = (grunt) =>
 	
 	grunt.registerTask 'test', ['phplint']
 
-	grunt.registerTask 'heroku', ['test', 'build']
+	grunt.registerTask 'heroku', ['build']
 
 	grunt.registerTask 'cdn', ['build', 'cloudfiles:prod']
 	
