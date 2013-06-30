@@ -147,9 +147,13 @@ module.exports = (grunt) =>
 				files: 'src/composer.json'
 				tasks: ['shell:composer']
 
+			bundle:
+				files: 'Gemfile'
+				tasks: ['shell:bundle']
+
 			modernizr:
-				files: ['public/assets/scripts/compiled/modernizr/*']
-				tasks: ['modernizr']
+				files: ['coffee/modernizr/*']
+				tasks: ['modernizr_build']
 
 		## Compile SCSS
 		compass:
@@ -188,6 +192,15 @@ module.exports = (grunt) =>
 					ext: '.js'
 				]
 
+			modernizr:
+				files: [
+					expand: true
+					cwd: 'coffee/modernizr'
+					src: ['*.coffee']
+					dest: 'public/assets/scripts/compiled/modernizr'
+					ext: '.js'
+				]
+
 			prod:
 				files: [
 					expand: true
@@ -200,9 +213,9 @@ module.exports = (grunt) =>
 		removelogging:
 			files:
 				expand: true
-				cwd: 'app'
+				cwd: 'public'
 				src: ['**/*.js']
-				dest: 'app'
+				dest: 'public'
 				ext: '.js'
 
 		## Optimize the requirejs project
@@ -219,15 +232,17 @@ module.exports = (grunt) =>
 					
 		## Optimize images
 		imagemin:
-			dynamic_mappings:
+			app:
 				options:
 					optimizationLevel: 10
 
 				files:[
-					expand: true
-					cwd: 'public/assets/images'
-					src: ['**/*.{png,jpg}']
-					dest: 'public/assets/images'
+					{
+						expand: true
+						cwd: 'public/assets/images'
+						src: ['**/*.{png,jpg}']
+						dest: 'public/assets/images'
+					}
 				]
 
 		parallel:
@@ -264,18 +279,6 @@ module.exports = (grunt) =>
 					{
 						grunt: true
 						args: 'bower'
-					}
-				]
-
-			build:
-				tasks: [
-					{
-						grunt: true
-						args: ['compass:prod']
-					},
-					{
-						grunt: true
-						args: ['parallel:build_js', 'removelogging']
 					}
 				]
 
@@ -335,6 +338,11 @@ module.exports = (grunt) =>
 			target:
 				rjsConfig: 'public/assets/scripts/compiled/config.js'
 
+		clean:
+			## Deletes all files that od not need to be in the Heroku slug
+			slug:
+				src: ['node_modules', 'components', 'src', 'public']
+
 	grunt.loadNpmTasks 'grunt-bower-requirejs'
 	grunt.renameTask 'bower', 'bowerrjs'
 
@@ -351,6 +359,7 @@ module.exports = (grunt) =>
 	grunt.loadNpmTasks 'grunt-contrib-coffee'
 	grunt.loadNpmTasks 'grunt-contrib-requirejs'
 	grunt.loadNpmTasks 'grunt-contrib-watch'
+	grunt.loadNpmTasks 'grunt-contrib-clean'
 	grunt.loadNpmTasks 'grunt-notify'
 	grunt.loadNpmTasks 'grunt-parallel'
 	grunt.loadNpmTasks 'grunt-remove-logging'
@@ -360,10 +369,19 @@ module.exports = (grunt) =>
 	grunt.loadNpmTasks 'grunt-php'
 	grunt.loadNpmTasks 'grunt-phplint'
 
+
 	grunt.registerTask 'default', ['parallel:default']
 
-	grunt.registerTask 'build', ['parallel:build', 'requirejs']
+	grunt.registerTask 'bower_install', 'Install and wire up bower', () ->
+		## always use force when watching
+		grunt.option 'force', true
+		grunt.task.run ['shell:bower_install', 'bower']
+
+	grunt.registerTask 'build', ['coffee:prod', 'modernizr_build', 'bower_install', 'removelogging', 'compass:prod', 'imagemin', 'requirejs']
 	
+	grunt.registerTask 'modernizr_build', 'Compile modernizr tests and build modernizr', ['coffee:modernizr', 'modernizr']
+
+
 	grunt.registerTask 'test', ['phplint']
 
 	grunt.registerTask 'heroku', ['build']
@@ -379,7 +397,4 @@ module.exports = (grunt) =>
 
 	grunt.registerTask 'open', 'Open the project in the finder, browser and Sublime', () ->
 		grunt.task.run 'parallel:open'
-
-
-	grunt.task.run 'notify_hooks'
 
