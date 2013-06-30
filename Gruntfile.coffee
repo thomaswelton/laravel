@@ -78,7 +78,7 @@ module.exports = (grunt) =>
 
 		modernizr:
 			devFile: "remote"
-			outputFile: "public/assets/scripts/modernizr.js"
+			outputFile: "public/assets/scripts/compiled/modernizr.js"
 			extra:
 				shiv: false
 				printshiv: false
