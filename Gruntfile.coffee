@@ -409,7 +409,10 @@ module.exports = (grunt) =>
 	grunt.registerTask 'default', ['parallel:default']
 
 	grunt.registerTask 'build', ['parallel:build', 'requirejs']
-	grunt.registerTask 'heroku', 'build'
+	
+	grunt.registerTask 'test', ['phplint']
+
+	grunt.registerTask 'heroku', ['test', 'build']
 
 	grunt.registerTask 'cdn', ['build', 'cloudfiles:prod']
 	
