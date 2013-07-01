@@ -2,56 +2,54 @@
 [![Build Status](https://travis-ci.org/thomaswelton/laravel.png)](https://travis-ci.org/thomaswelton/laravel)
 [![Dependency Status](https://david-dm.org/thomaswelton/laravel.png)](https://david-dm.org/thomaswelton/laravel)
 
-<img src="icon.png" align="right">
+<img src="icon.png" align="right" height=150>
 
-In order to compile this project you'll need to following tools installed on your system
+In order to deploy this project to your own server you'll need
 
-* [Node](http://nodejs.org)
-* [Ruby](http://www.ruby-lang.org/en/downloads/)
-* [Grunt CLI](http://gruntjs.com/getting-started#installing-the-cli)
-* [Bundler](http://gembundler.com/) - Ruby Gem Installer
-* [Composer](http://getcomposer.org/doc/00-intro.md#globally) - Composer
+* [Composer](http://getcomposer.org/doc/00-intro.md#globally)
 * [Heroku Toolbelt](https://toolbelt.herokuapp.com/)
 
-Once these requirements are met the project can be built using the following commands
+Once these requirements are met the project can be deployed using the following commands
 
-### Setup & Deployment
-
-Initial setup - Create a new project using the bootstrap composer
+### Setup
 
 ```
-composer create-project thomaswelton/laravel project-name
+composer create-project thomaswelton/laravel project-name master-dev
 cd project-name
-npm install
-grunt
 git init
 git add .
-git commit -m "Installed laravel bootstrap"
+git commit -m "Installed Laravel bootstrap"
 ```
 
 ### Deployment
 
-Setup Heroku
-
 ```
 heroku apps:create -b https://github.com/heroku/heroku-buildpack-php.git --region eu
-git push heroku master
-
 heroku config:add BUILDPACK_URL=git://github.com/ddollar/heroku-buildpack-multi.git
 heroku addons:add cleardb:ignite
 heroku addons:add sendgrid:starter
 
 heroku apps:rename project-name
 
+git push heroku master
 heroku ps:scale web=1
 heroku open
 ```
 
-Deploy the app from the master branch.
+### Contributing
+
+To work with this project locally you will need to install
+
+* [Node](http://nodejs.org)
+* [Ruby](http://www.ruby-lang.org/en/downloads/)
+* [Grunt CLI](http://gruntjs.com/getting-started#installing-the-cli)
+* [Bundler](http://gembundler.com/)
+
+You can then install the dependencies and compile the project.
 
 ```
-git checkout master
-git push heroku master
+npm install
+grunt
 ```
 
 ### Laravel PHP Framework
