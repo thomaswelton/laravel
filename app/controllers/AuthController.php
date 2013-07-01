@@ -11,6 +11,10 @@ class AuthController extends BaseController {
 
 	public function getIndex(){
 		$this->page = 'admin.auth.index';
+		$this->data = array(
+			'users' => User::all()
+		);
+
 		return $this->_render();
 	}
 }
