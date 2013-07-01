@@ -7,7 +7,7 @@
   				<i class="icon-download-alt"></i>  Download CSV
   			</a>
 
-  			<a class="btn btn-success" href="admin/entries/add">New Entry</a>
+  			<a class="btn btn-success" href="/admin/auth/add">New Entry</a>
   		</span>
   	</h1>
 </div>

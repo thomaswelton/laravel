@@ -17,4 +17,10 @@ class AuthController extends BaseController {
 
 		return $this->_render();
 	}
+
+	public function getAdd(){
+		$this->page = 'admin.auth.form';
+
+		return $this->_render();
+	}
 }
