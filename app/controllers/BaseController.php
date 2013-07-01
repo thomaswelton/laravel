@@ -2,6 +2,8 @@
 
 class BaseController extends Controller {
 
+	public $data = array();
+
 	/**
 	 * Setup the layout used by the controller.
 	 *
@@ -20,6 +22,10 @@ class BaseController extends Controller {
 	 */
 	public function _render(){
 		$content = View::make($this->page);
+
+		foreach ($this->data as $key => $value) {
+			$content->with($key, $value);
+		}
 
 		if (Request::ajax()){
 			$data = array(
