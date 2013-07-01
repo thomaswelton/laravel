@@ -2,7 +2,7 @@ relative_assets = true
 
 # Set this to the root of your project when deployed:
 http_path = "/"
-sass_dir = "src/sass"
+sass_dir = "public/sass"
 
 path_prefix = "public"
 

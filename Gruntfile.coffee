@@ -121,11 +121,11 @@ module.exports = (grunt) =>
 				tasks: ['compass:app', 'notify:compass']
 
 			coffee:
-				files: ['src/coffee/**/*.coffee','!src/coffee/config.coffee']
+				files: ['public/coffee/**/*.coffee','!public/coffee/config.coffee']
 				tasks: ['coffee:app']
 
 			coffee_config:
-				files: ['src/coffee/config.coffee']
+				files: ['public/coffee/config.coffee']
 				tasks: ['coffee:config', 'bowerrjs']
 
 			bower:
@@ -141,7 +141,7 @@ module.exports = (grunt) =>
 				tasks: ['shell:bundle']
 
 			modernizr:
-				files: ['coffee/modernizr/*']
+				files: ['public/coffee/modernizr/*']
 				tasks: ['modernizr_build']
 
 		## Compile SCSS
@@ -164,7 +164,7 @@ module.exports = (grunt) =>
 					bare: true
 				files: [
 					expand: true
-					cwd: 'src/coffee'
+					cwd: 'public/coffee'
 					src: ['config.coffee']
 					dest: 'public/assets/scripts/compiled'
 					ext: '.js'
@@ -175,7 +175,7 @@ module.exports = (grunt) =>
 					sourceMap: true
 				files: [
 					expand: true
-					cwd: 'src/coffee'
+					cwd: 'public/coffee'
 					src: ['*.coffee', '**/*.coffee', '!config.coffee']
 					dest: 'public/assets/scripts/compiled'
 					ext: '.js'
@@ -184,7 +184,7 @@ module.exports = (grunt) =>
 			modernizr:
 				files: [
 					expand: true
-					cwd: 'coffee/modernizr'
+					cwd: 'public/coffee/modernizr'
 					src: ['*.coffee']
 					dest: 'public/assets/scripts/compiled/modernizr'
 					ext: '.js'
@@ -193,7 +193,7 @@ module.exports = (grunt) =>
 			prod:
 				files: [
 					expand: true
-					cwd: 'src/coffee'
+					cwd: 'public/coffee'
 					src: ['*.coffee', '**/*.coffee', '!config.coffee']
 					dest: 'public/assets/scripts/compiled'
 					ext: '.js'
