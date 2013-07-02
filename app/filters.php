@@ -45,8 +45,9 @@ Route::filter('auth.basic', function()
 });
 
 Route::filter('auth.admin', function()
-{
-	if (Auth::guest()) return Redirect::guest('admin/login');
+{	
+	$user = Auth::user();
+	if (! $user->isAdmin()) return Redirect::guest('admin/login');
 });
 
 /*
