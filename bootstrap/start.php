@@ -26,16 +26,12 @@ $app->redirectIfTrailingSlash();
 |
 */
 
-$env = $app->detectEnvironment(function()
-{
-    $serverNameParts = explode('.',$_SERVER['SERVER_NAME']);
+$env = $app->detectEnvironment(array(
 
-    if($_SERVER['SERVER_NAME'] === 'localhost' || $serverNameParts[count($serverNameParts) - 1] === 'dev'){
-    	return 'local';
-    }
+    'local' => array('Thomas-Weltons-MacBook-Pro-2.local'),
+    'production' => array()
 
-    return 'production';
-});
+));
 
 /*
 |--------------------------------------------------------------------------
