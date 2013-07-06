@@ -46,8 +46,16 @@ Route::filter('auth.basic', function()
 
 Route::filter('auth.admin', function()
 {	
-	$user = Auth::user();
-	if (! $user->isAdmin()) return Redirect::guest('admin/login');
+	if(Auth::guest()){
+		Session::flash('error', 'Login to view this page');
+		return Redirect::guest('admin/login');
+	}else{
+		$user = Auth::user();
+		if (!$user->isAdmin()){
+			Session::flash('error', 'Insufficient Permission');
+			return Redirect::guest('admin/login');
+		}
+	}
 });
 
 /*
