@@ -83,3 +83,4 @@ App::down(function()
 require app_path().'/filters.php';
 
 require app_path().'/macros/html.php';
+require app_path().'/macros/form.php';

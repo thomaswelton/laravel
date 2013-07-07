@@ -31,3 +31,13 @@ HTML::macro('render_menu', function($menulinks){
 
     return $html;
 });
+
+HTML::macro('page_header', function($header){
+    return <<<EOD
+    <div class="page-header">
+        <h1>
+            <span>{$header}</span>
+        </h1>
+    </div>
+EOD;
+});

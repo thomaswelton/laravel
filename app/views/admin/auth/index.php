@@ -26,7 +26,7 @@
 			<td><?= $user->id ?></td>
 			<td><?= $user->username ?></td>
 			<td class="text-center">
-				<a class="btn btn-primary btn-small btn-block" href="<?= 'admin/entries/edit/' . $user->id ?>"><i class="icon-pencil icon-white"></i>  Edit</a>
+				<a class="btn btn-primary btn-small btn-block" href="<?= '/admin/auth/edit/' . $user->id ?>"><i class="icon-pencil icon-white"></i>  Edit</a>
 			</td>
 		</tr>
 	<?php endforeach; ?>
