@@ -5,9 +5,9 @@
 <?php
 
 if(isset($user)): ?>
-	<?= Form::model($user, array('url' => array('admin/auth/update', $user->id), 'class' => 'form-horizontal')) ?>
+	<?= Form::model($user, array('url' => array('admin/users/'.$user->id), 'method' => 'PUT', 'class' => 'form-horizontal')) ?>
 <?php else: ?>
-	<?= Form::open(array('url' => array('admin/auth/add'), 'class' => 'form-horizontal')) ?>
+	<?= Form::open(array('url' => array('admin/users'), 'method' => 'POST', 'class' => 'form-horizontal')) ?>
 <?php endif; ?>
 
 	<?= Form::control('text', 'username', 'Username') ?>
@@ -17,7 +17,7 @@ if(isset($user)): ?>
 	<div class="form-actions">
 		<div class="pull-left">
 			<button type="submit" name="action" value="save" class="btn btn-primary">Save changes</button>
-			<a href="<?= action('AuthController@getIndex') ?>" class="btn">Cancel</a>
+			<a href="<?= action('UserController@index') ?>" class="btn">Cancel</a>
 		</div>
 	</div>
 

@@ -11,7 +11,13 @@
 |
 */
 
-Route::controller('/admin/auth','AuthController');
-Route::controller('/admin','AdminController');
+Route::group(array('prefix' => 'admin'), function() {
+    
+    Route::resource('users', 'UserController');
+	Route::controller('/','AdminHomeController');
+	
+});
+
+
 
 Route::controller('/','HomeController');
