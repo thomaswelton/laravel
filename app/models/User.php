@@ -67,6 +67,16 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
         return Validator::make($input, $rules);
 	}
 
+	public static function destroy($id){
+
+		$currentUser = Auth::user();
+		if($id == $currentUser->id){
+			throw new Exception("You can not delete yourself", 1);
+		}
+
+	   	return parent::destroy($id);
+	}
+
 	public function roles(){
         return $this->belongsToMany('Role');
     }

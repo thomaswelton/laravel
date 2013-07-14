@@ -139,7 +139,16 @@ class UserController extends AdminBaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		// TODO: cant delete the last superadmin only super admins can delete
+		try{
+			User::destroy($id);
+		}catch(Exception $e){
+			Session::flash('error', $e->getMessage());
+	        return Redirect::to('admin/users');
+		}
+
+		Session::flash('success', 'User deleted');
+	   	return Redirect::to('admin/users');
 	}
 
 }

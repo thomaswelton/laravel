@@ -18,7 +18,7 @@
 	<tr>
 		<th width=65>ID</th>
 		<th>Username</th>
-		<th width=65></th>
+		<th width=80></th>
 	</tr>
 	
 	<?php foreach ($users as $user): ?>
@@ -26,7 +26,10 @@
 			<td><?= $user->id ?></td>
 			<td><?= $user->username ?></td>
 			<td class="text-center">
-				<a class="btn btn-primary btn-small btn-block" href="<?= '/admin/users/'.$user->id .'/edit'?>"><i class="icon-pencil icon-white"></i>  Edit</a>
+				<?= Form::open(array('url' => '/admin/users/'.$user->id, 'method' => 'delete')) ?>
+					<a class="btn btn-link" href="<?= '/admin/users/'.$user->id .'/edit'?>"><i class="icon-pencil icon-white"></i></a>
+					<button class="btn btn-link" type="submit"><i class="icon-trash"></i></button>
+				<?= Form::close() ?>
 			</td>
 		</tr>
 	<?php endforeach; ?>
