@@ -24,10 +24,10 @@
     , "grunt-remove-logging": ">= 0.1.0"
     , "grunt-modernizr": ">= 0.2.2"
     , "grunt-shell": "~0.3.0"
-    , "grunt-bower-requirejs": "~0.4.4"
+    , "grunt-bower-requirejs": "git://github.com/yeoman/grunt-bower-requirejs.git#a5e21c349cb7f12a197b261f22ca8a043b5c580a"
+    , "grunt-bower-task": "git://github.com/thomaswelton/grunt-bower-task.git"
     , "grunt-php": "~0.1.1"
     , "grunt-phplint": "0.0.5"
-    , "grunt-bower-task": "~0.2.3"
   }
   , "devDependencies": {
   

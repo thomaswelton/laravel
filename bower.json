@@ -5,6 +5,7 @@
     , "requirejs-plugins": "1.0.*"
     , "requirejs-domready": "2.0.*"
     , "bootstrap": "2.3.*"
+    , "requirejs-facebook": "0.0.4"
   },
   "exportsOverride": {
      "requirejs": {
