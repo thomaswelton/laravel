@@ -42,15 +42,24 @@ class UserController extends AdminBaseController {
 	 */
 	public function store()
 	{
-		$user = new User;
-    	$user->username = Input::get('username');
-    	$user->password = Input::get('password');
-    	$user->email    = Input::get('email');
 
-    	$user->save();
+		$data = array(
+			'username' => Input::get('username'),
+			'password' => Input::get('password'),
+			'email'	=> Input::get('email')
+		);
 
-        Session::flash('success', 'User added');
-        return Redirect::to('admin/users');
+		$validation = User::validate($data);
+
+		if($validation->passes()){
+			User::create($data);
+
+			Session::flash('success', 'User added');
+        	return Redirect::to('admin/users');
+		}else{
+			Input::flash();
+			return Redirect::to('admin/users/create')->withErrors($validation->messages());
+		}
 	}
 
 	/**
@@ -103,15 +112,23 @@ class UserController extends AdminBaseController {
 	 */
 	public function update($id)
 	{
-		$user = User::find($id);
-    	$user->username = Input::get('username');
-    	$user->password = Input::get('password');
-    	$user->email    = Input::get('email');
+		$validation = User::validate(Input::all(), $id);
 
-    	$user->save();
+		if($validation->passes()){
 
-        Session::flash('success', 'User updated');
-        return Redirect::to('admin/users');
+			$user = User::find($id);
+	    	$user->username = Input::get('username');
+	    	$user->password = Input::get('password');
+	    	$user->email    = Input::get('email');
+
+	    	$user->save();
+
+	        Session::flash('success', 'User updated');
+	        return Redirect::to('admin/users');
+	    }else{
+	    	Input::flash();
+			return Redirect::to('admin/users/'.$id.'/edit')->withErrors($validation->messages());
+		}
 	}
 
 	/**

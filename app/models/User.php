@@ -12,6 +12,8 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 	protected $table = 'users';
 
+	protected $fillable = array('username', 'password', 'email');
+
 	/**
 	 * The attributes excluded from the model's JSON form.
 	 *
@@ -47,6 +49,22 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	public function getReminderEmail()
 	{
 		return $this->email;
+	}
+
+	/**
+	 * Get a validation object for a user
+	 */
+	public static function validate($input, $ignoreId = null){
+        
+        $ignoreIdStr = (!is_null($ignoreId)) ? ',' . $ignoreId : '';
+
+		$rules = array(
+            'username' => 'Required|Min:3|Max:80|alpha_dash|Unique:users,username'.$ignoreIdStr,
+            'email'     => 'Required|Between:3,64|Email|Unique:users,email'.$ignoreIdStr,
+            'password'  =>'Required|AlphaNum|Between:4,8'
+        );
+
+        return Validator::make($input, $rules);
 	}
 
 	public function roles(){
