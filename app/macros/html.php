@@ -33,11 +33,7 @@ HTML::macro('render_menu', function($menulinks){
 });
 
 HTML::macro('page_header', function($header){
-    return <<<EOD
-    <div class="page-header">
-        <h1>
-            <span>{$header}</span>
-        </h1>
-    </div>
-EOD;
+    return View::make('macros/html_page_header', array(
+        'header' => $header
+    ));
 });
