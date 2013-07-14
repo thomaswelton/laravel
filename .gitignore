@@ -30,3 +30,4 @@ public/assets/scripts/components/
 public/assets/scripts/compiled/
 public/assets/stylesheets/compiled/
 public/assets/images/generated/
+/app/config/packages/*
