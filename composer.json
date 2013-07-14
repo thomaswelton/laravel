@@ -2,7 +2,8 @@
 	"name": "thomaswelton/laravel",
 
 	"require": {
-		"laravel/framework": "4.0.*"
+		"laravel/framework": "4.0.*",
+		"thomaswelton/laravel-facebook": "dev-master"
 	},
 	"autoload": {
 		"classmap": [
