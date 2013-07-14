@@ -28,6 +28,10 @@ class UserController extends AdminBaseController {
 	{
 		$this->page = 'admin.user.form';
 
+		$this->data = array(
+			'header' => 'Create User'
+		);
+
 		return $this->_render();
 	}
 
@@ -83,6 +87,7 @@ class UserController extends AdminBaseController {
 		}
 
 		$this->data = array(
+			'header' => 'Edit User',
 			'user' => $user
 		);
 

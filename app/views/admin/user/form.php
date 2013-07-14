@@ -1,4 +1,4 @@
-<?= HTML::page_header('Edit User') ?>
+<?= HTML::page_header($header) ?>
 
 <?= HTML::flash() ?>
 
