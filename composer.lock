@@ -1385,12 +1385,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Filesystem.git",
-                "reference": "7975f9df488adbc9cef2089bac2887f14085481f"
+                "reference": "18460cf04fc28664e37c37a72d4635273fd97b8f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Filesystem/zipball/7975f9df488adbc9cef2089bac2887f14085481f",
-                "reference": "7975f9df488adbc9cef2089bac2887f14085481f",
+                "url": "https://api.github.com/repos/symfony/Filesystem/zipball/18460cf04fc28664e37c37a72d4635273fd97b8f",
+                "reference": "18460cf04fc28664e37c37a72d4635273fd97b8f",
                 "shasum": ""
             },
             "require": {
@@ -1423,7 +1423,7 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "http://symfony.com",
-            "time": "2013-06-11 07:15:38"
+            "time": "2013-06-21 17:11:07"
         },
         {
             "name": "symfony/finder",
@@ -1801,12 +1801,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/thomaswelton/laravel-facebook.git",
-                "reference": "f44168033b438ca0d5a258b8f1777460a2abb4f2"
+                "reference": "caf9bd5ca247040b877163608984d856e6876afd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thomaswelton/laravel-facebook/zipball/f44168033b438ca0d5a258b8f1777460a2abb4f2",
-                "reference": "f44168033b438ca0d5a258b8f1777460a2abb4f2",
+                "url": "https://api.github.com/repos/thomaswelton/laravel-facebook/zipball/caf9bd5ca247040b877163608984d856e6876afd",
+                "reference": "caf9bd5ca247040b877163608984d856e6876afd",
                 "shasum": ""
             },
             "require": {
@@ -1820,18 +1820,18 @@
                     "src/migrations"
                 ],
                 "psr-0": {
-                    "ThomasWelton\\Facebook": "src/",
+                    "Thomaswelton\\LaravelFacebook": "src/",
                     "Facebook\\php": "vendor/facebook/php-sdk/src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
             "authors": [
                 {
-                    "name": "Thomas Welton",
-                    "email": "ThomasWelton@me.com"
+                    "name": "ThomasWelton",
+                    "email": "thomaswelton@me.com"
                 }
             ],
-            "time": "2013-07-14 21:47:48"
+            "time": "2013-07-15 19:33:06"
         }
     ],
     "packages-dev": [
