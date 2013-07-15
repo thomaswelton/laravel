@@ -19,5 +19,4 @@ Route::group(array('prefix' => 'admin'), function() {
 });
 
 
-
 Route::controller('/','HomeController');
