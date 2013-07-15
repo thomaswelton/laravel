@@ -2,7 +2,7 @@
 
 class AdminBaseController extends BaseController {
 
-	public $template = 'layouts.admin';
+	public $layout = 'layouts.admin';
 
 	public function __construct(){
 		// Require authorization for all pages expect login

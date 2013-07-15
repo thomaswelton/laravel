@@ -17,12 +17,4 @@ class BaseController extends Controller {
 		}
 	}
 
-	/**
-	 * Render the output to the browser
-	 */
-	public function _render(){
-		$content = View::make($this->page, $this->data);
-		return View::make($this->template)->with('content', $content);
-	}
-
 }

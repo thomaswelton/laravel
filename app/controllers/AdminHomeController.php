@@ -3,13 +3,11 @@
 class AdminHomeController extends AdminBaseController {
 
 	public function getIndex(){
-		$this->page = 'admin.index';
-		return $this->_render();
+		$this->layout->content = View::make('admin.index');
 	}
 
 	public function getLogin(){
-		$this->page = 'admin.login';
-		return $this->_render();
+		$this->layout->content = View::make('admin.login');
 	}
 
 	public function postLogin(){

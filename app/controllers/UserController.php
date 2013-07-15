@@ -2,8 +2,6 @@
 
 class UserController extends AdminBaseController {
 
-	public $template = 'layouts.admin';
-
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -11,12 +9,9 @@ class UserController extends AdminBaseController {
 	 */
 	public function index()
 	{
-		$this->page = 'admin.user.index';
-		$this->data = array(
+		$this->layout->content = View::make('admin.user.index', array(
 			'users' => User::all()
-		);
-
-		return $this->_render();
+		));
 	}
 
 	/**
@@ -26,13 +21,9 @@ class UserController extends AdminBaseController {
 	 */
 	public function create()
 	{
-		$this->page = 'admin.user.form';
-
-		$this->data = array(
+		$this->layout->content = View::make('admin.user.form', array(
 			'header' => 'Create User'
-		);
-
-		return $this->_render();
+		));
 	}
 
 	/**
@@ -81,14 +72,11 @@ class UserController extends AdminBaseController {
 			Session::flash('error', 'No user found');
 			return Redirect::to('admin/users');
 		}
-
-		$this->data = array(
+		
+		$this->layout->content = View::make('admin.user.form', array(
 			'header' => 'Edit User',
 			'user' => $user
-		);
-
-		$this->page = 'admin.user.form';
-		return $this->_render();
+		));
 	}
 
 	/**

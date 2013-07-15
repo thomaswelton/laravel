@@ -2,10 +2,9 @@
 
 class HomeController extends BaseController {
 
-	public $template = 'layouts.default';
+	public $layout = 'layouts.default';
 
 	public function getIndex(){
-		$this->page = 'pages.index';
-		return $this->_render();
+		$this->layout->content = View::make('pages.index');
 	}
 }
