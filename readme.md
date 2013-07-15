@@ -24,15 +24,7 @@ git commit -m "Installed Laravel bootstrap"
 ### Deployment
 
 ```
-heroku apps:create -b https://github.com/heroku/heroku-buildpack-php.git --region eu
-heroku config:add BUILDPACK_URL=git://github.com/ddollar/heroku-buildpack-multi.git
-heroku addons:add cleardb:ignite
-heroku addons:add sendgrid:starter
-
-heroku apps:rename project-name
-
-git push heroku master
-heroku ps:scale web=1
+php artisan heroku:deploy
 heroku open
 ```
 
