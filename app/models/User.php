@@ -1,9 +1,22 @@
 <?php
 
+use LaravelBook\Ardent\Ardent;
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
 
-class User extends Eloquent implements UserInterface, RemindableInterface {
+class User extends Ardent implements UserInterface, RemindableInterface {
+
+	/**
+	* Ardent validation rules
+	*/
+	public static $rules = array(
+		'username' => 'required|min:3|max:80|alpha_dash|unique:users',
+		'email'     => 'required|between:3,64|email|unique:users',
+		'password'  =>'required|alphanum|between:4,8'
+	);
+
+	public $autoHydrateEntityFromInput = true;
+
 
 	/**
 	 * The database table used by the model.
@@ -11,8 +24,6 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 * @var string
 	 */
 	protected $table = 'users';
-
-	protected $fillable = array('username', 'password', 'email');
 
 	/**
 	 * The attributes excluded from the model's JSON form.
@@ -49,22 +60,6 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	public function getReminderEmail()
 	{
 		return $this->email;
-	}
-
-	/**
-	 * Get a validation object for a user
-	 */
-	public static function validate($input, $ignoreId = null){
-        
-        $ignoreIdStr = (!is_null($ignoreId)) ? ',' . $ignoreId : '';
-
-		$rules = array(
-            'username' => 'Required|Min:3|Max:80|alpha_dash|Unique:users,username'.$ignoreIdStr,
-            'email'     => 'Required|Between:3,64|Email|Unique:users,email'.$ignoreIdStr,
-            'password'  =>'Required|AlphaNum|Between:4,8'
-        );
-
-        return Validator::make($input, $rules);
 	}
 
 	public static function destroy($id){

@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "bb42ff6b765c7e3b61f4b03fae79ea7d",
+    "hash": "1e955500c160b24c03f0b615e776e34f",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -727,6 +727,57 @@
                 "laravel"
             ],
             "time": "2013-07-12 16:30:50"
+        },
+        {
+            "name": "laravelbook/ardent",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravelbook/ardent.git",
+                "reference": "2d1d70ea835b8c53cfe4fc60315a8ee5c672ba19"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravelbook/ardent/zipball/2d1d70ea835b8c53cfe4fc60315a8ee5c672ba19",
+                "reference": "2d1d70ea835b8c53cfe4fc60315a8ee5c672ba19",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "4.0.x",
+                "illuminate/support": "4.0.x",
+                "illuminate/validation": "4.0.x",
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "LaravelBook\\Ardent": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Max Ehsan",
+                    "email": "contact@laravelbook.com",
+                    "homepage": "http://laravelbook.com/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Self-validating smart models for Laravel 4's Eloquent O/RM",
+            "homepage": "http://laravelbook.com/",
+            "keywords": [
+                "database",
+                "eloquent",
+                "framework",
+                "laravel",
+                "orm",
+                "sql",
+                "validation"
+            ],
+            "time": "2013-07-13 15:58:38"
         },
         {
             "name": "monolog/monolog",
@@ -1801,12 +1852,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/thomaswelton/laravel-facebook.git",
-                "reference": "caf9bd5ca247040b877163608984d856e6876afd"
+                "reference": "d89384629a50dca04f81adea5156d128406c4e8c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thomaswelton/laravel-facebook/zipball/caf9bd5ca247040b877163608984d856e6876afd",
-                "reference": "caf9bd5ca247040b877163608984d856e6876afd",
+                "url": "https://api.github.com/repos/thomaswelton/laravel-facebook/zipball/d89384629a50dca04f81adea5156d128406c4e8c",
+                "reference": "d89384629a50dca04f81adea5156d128406c4e8c",
                 "shasum": ""
             },
             "require": {
@@ -1831,7 +1882,7 @@
                     "email": "thomaswelton@me.com"
                 }
             ],
-            "time": "2013-07-15 19:33:06"
+            "time": "2013-07-15 19:40:17"
         }
     ],
     "packages-dev": [
@@ -1842,7 +1893,8 @@
     ],
     "minimum-stability": "dev",
     "stability-flags": {
-        "thomaswelton/laravel-facebook": 20
+        "thomaswelton/laravel-facebook": 20,
+        "laravelbook/ardent": 20
     },
     "platform": [
 

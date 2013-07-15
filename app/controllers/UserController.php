@@ -43,22 +43,14 @@ class UserController extends AdminBaseController {
 	public function store()
 	{
 
-		$data = array(
-			'username' => Input::get('username'),
-			'password' => Input::get('password'),
-			'email'	=> Input::get('email')
-		);
+		$user = new User;
 
-		$validation = User::validate($data);
-
-		if($validation->passes()){
-			User::create($data);
-
+		if ( $user->save() ) {
 			Session::flash('success', 'User added');
         	return Redirect::to('admin/users');
 		}else{
 			Input::flash();
-			return Redirect::to('admin/users/create')->withErrors($validation->messages());
+			return Redirect::to('admin/users/create')->withErrors($user->errors());
 		}
 	}
 
@@ -82,11 +74,6 @@ class UserController extends AdminBaseController {
 	 */
 	public function edit($id)
 	{
-		if(is_null($id)){
-			Session::flash('error', 'No user ID specified');
-			return Redirect::to('admin/users');
-		}
-
 		// Load the user
 		$user = User::find($id);
 
@@ -112,22 +99,14 @@ class UserController extends AdminBaseController {
 	 */
 	public function update($id)
 	{
-		$validation = User::validate(Input::all(), $id);
+		$user = User::find($id);
 
-		if($validation->passes()){
-
-			$user = User::find($id);
-	    	$user->username = Input::get('username');
-	    	$user->password = Input::get('password');
-	    	$user->email    = Input::get('email');
-
-	    	$user->save();
-
+		if($user->update()){
 	        Session::flash('success', 'User updated');
 	        return Redirect::to('admin/users');
 	    }else{
 	    	Input::flash();
-			return Redirect::to('admin/users/'.$id.'/edit')->withErrors($validation->messages());
+			return Redirect::to('admin/users/'.$id.'/edit')->withErrors($user->errors());
 		}
 	}
 
