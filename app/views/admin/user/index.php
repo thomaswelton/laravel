@@ -17,14 +17,14 @@
 <table class="table table-striped table-bordered table-hover table-valign-middle" valign="middle">
 	<tr>
 		<th width=65>ID</th>
-		<th>Username</th>
+		<th>Email</th>
 		<th width=80></th>
 	</tr>
 	
 	<?php foreach ($users as $user): ?>
 		<tr>
 			<td><?= $user->id ?></td>
-			<td><?= $user->username ?></td>
+			<td><?= $user->email ?></td>
 			<td class="text-center">
 				<?= Form::open(array('url' => '/admin/users/'.$user->id, 'method' => 'delete')) ?>
 					<a class="btn btn-link" href="<?= '/admin/users/'.$user->id .'/edit'?>"><i class="icon-pencil icon-white"></i></a>

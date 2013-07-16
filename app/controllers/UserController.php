@@ -1,5 +1,9 @@
 <?php 
 
+use Cartalyst\Sentry\Facades\Laravel\Sentry;
+use Cartalyst\Sentry\Users\UserExistsException;
+use Cartalyst\Sentry\Users\UserNotFoundException;
+
 class UserController extends AdminBaseController {
 
 	/**
@@ -10,7 +14,7 @@ class UserController extends AdminBaseController {
 	public function index()
 	{
 		$this->layout->content = View::make('admin.user.index', array(
-			'users' => User::all()
+			'users' => Sentry::getUserProvider()->findAll()
 		));
 	}
 
@@ -33,16 +37,27 @@ class UserController extends AdminBaseController {
 	 */
 	public function store()
 	{
+		$ardent = new User;
 
-		$user = new User;
+		if ( $ardent->validate() )
+		{
+			$validData = $ardent->getAttributes();
 
-		if ( $user->save() ) {
-			Session::flash('success', 'User added');
-        	return Redirect::to('admin/users');
-		}else{
-			Input::flash();
-			return Redirect::to('admin/users/create')->withErrors($user->errors());
+			try
+			{
+				$user = Sentry::register($validData, true);
+
+				Session::flash('success', 'User added');
+	        	return Redirect::to('admin/users');
+	        }
+	        catch(Exception $e)
+	        {
+	        	Session::flash('error', $e->getMessage());
+	        }
 		}
+
+		Input::flash();
+		return Redirect::to('admin/users/create')->withErrors($ardent->errors());
 	}
 
 	/**
@@ -53,8 +68,17 @@ class UserController extends AdminBaseController {
 	 */
 	public function show($id)
 	{
-		//
-		die('Show '.$id);
+		try
+		{
+		    $user = Sentry::getUserProvider()->findById($id);
+		    print_r($user);
+		    die;
+		}
+		catch (UserNotFoundException $e)
+		{
+		    Session::flash('User not found', $e->getMessage());
+		    return Redirect::to('admin/users');
+		}
 	}
 
 	/**
@@ -65,18 +89,20 @@ class UserController extends AdminBaseController {
 	 */
 	public function edit($id)
 	{
-		// Load the user
-		$user = User::find($id);
-
-		if(!$user){
-			Session::flash('error', 'No user found');
+		try
+		{
+		    $user = Sentry::getUserProvider()->findById($id);
+		    
+		    $this->layout->content = View::make('admin.user.form', array(
+		    	'header' => 'Edit User',
+		    	'user' => $user
+		    ));
+		}
+		catch (UserNotFoundException $e)
+		{
+		    Session::flash('error', 'No user found');
 			return Redirect::to('admin/users');
 		}
-		
-		$this->layout->content = View::make('admin.user.form', array(
-			'header' => 'Edit User',
-			'user' => $user
-		));
 	}
 
 	/**
@@ -87,15 +113,31 @@ class UserController extends AdminBaseController {
 	 */
 	public function update($id)
 	{
-		$user = User::find($id);
+		try
+		{
+		    // Find the user using the user id
+		    $user = Sentry::getUserProvider()->findById($id);
 
-		if($user->update()){
-	        Session::flash('success', 'User updated');
-	        return Redirect::to('admin/users');
-	    }else{
-	    	Input::flash();
-			return Redirect::to('admin/users/'.$id.'/edit')->withErrors($user->errors());
+		    // Update the user details
+		    $user->email = Input::get('email');
+
+		    // Update the user
+		    if ($user->save())
+		    {
+		    	Session::flash('success', 'User updated');
+		        return Redirect::to('admin/users');
+		    }
+		    else
+		    {
+		       Session::flash('error', 'User could not be saved.');
+		    }
 		}
+		catch(Exception $e){
+			Session::flash('error', $e->getMessage());
+		}
+
+		Input::flash();
+		return Redirect::to('admin/users/'.$id.'/edit');
 	}
 
 	/**

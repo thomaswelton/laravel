@@ -10,7 +10,6 @@ if(isset($user)): ?>
 	<?= Form::open(array('url' => array('admin/users'), 'method' => 'POST', 'class' => 'form-horizontal')) ?>
 <?php endif; ?>
 
-	<?= Form::control('text', 'username', 'Username') ?>
 	<?= Form::control('email', 'email', 'Email') ?>
 	<?= Form::control('password', 'password') ?>
 
