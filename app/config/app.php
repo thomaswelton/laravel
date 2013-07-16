@@ -113,7 +113,8 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
-		'Thomaswelton\LaravelFacebook\LaravelFacebookServiceProvider'
+		'Thomaswelton\LaravelFacebook\LaravelFacebookServiceProvider',
+		'Cartalyst\Sentry\SentryServiceProvider'
 
 	),
 
