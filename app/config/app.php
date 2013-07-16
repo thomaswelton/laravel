@@ -180,8 +180,8 @@ return array(
 		'URL'             => 'Illuminate\Support\Facades\URL',
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
-		'Facebook'		  => 'Thomaswelton\LaravelFacebook\Facades\Facebook'
-
+		'Facebook'		  => 'Thomaswelton\LaravelFacebook\Facades\Facebook',
+		'Sentry' => 'Cartalyst\Sentry\Facades\Laravel\Sentry'
 	),
 
 );

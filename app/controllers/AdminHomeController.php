@@ -1,5 +1,11 @@
 <?php 
 
+use Cartalyst\Sentry\Users\LoginRequiredException;
+use Cartalyst\Sentry\Users\PasswordRequiredException;
+use Cartalyst\Sentry\Users\WrongPasswordException;
+use Cartalyst\Sentry\Users\UserNotFoundException;
+use Cartalyst\Sentry\Users\UserNotActivatedException;
+
 class AdminHomeController extends AdminBaseController {
 
 	public function getIndex(){
@@ -11,26 +17,44 @@ class AdminHomeController extends AdminBaseController {
 	}
 
 	public function postLogin(){
-		
-		$userdata = array(
-			'username' => Input::get('username'),
-			'password' => Input::get('password')
-		);
+		try
+		{
+		    // Set login credentials
+		    $credentials = array(
+		        'email'    => Input::get('email'),
+		        'password' => Input::get('password'),
+		    );
 
-		if ( Auth::attempt($userdata) ){
-			// we are now logged in, go to admin home
-			return Redirect::to('admin');
+		    // Try to authenticate the user
+		    $user = Sentry::authenticate($credentials, false);
+		    return Redirect::to('admin');
 		}
-		else{
-			// auth failure! lets go back to the login
-			Session::flash('error', 'Login failed. Check your username and password.');
+		catch (LoginRequiredException $e)
+		{
+		    Session::flash('error', 'Login field is required.');
+		}
+		catch (PasswordRequiredException $e)
+		{
+		    Session::flash('error', 'Password field is required.');
+		}
+		catch (WrongPasswordException $e)
+		{
+		    Session::flash('error', 'Wrong password, try again.');
+		}
+		catch (UserNotFoundException $e)
+		{
+		    Session::flash('error', 'User was not found.');
+		}
+		catch (UserNotActivatedException $e)
+		{
+		    Session::flash('error', 'User is not activated.');
+		}
 
-			return Redirect::to('admin/login');
-		}
+		return Redirect::to('admin/login');
 	}
 
 	public function getLogout(){
-		Auth::logout();
+		Sentry::logout();
 		Session::flash('success', 'Logout successful');
 		
 		return Redirect::to('admin/login');

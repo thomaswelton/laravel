@@ -35,7 +35,7 @@ App::after(function($request, $response)
 
 Route::filter('auth', function()
 {
-	if (Auth::guest()) return Redirect::guest('login');
+	if (!Sentry::check()) return Redirect::guest('login');
 });
 
 
@@ -46,15 +46,9 @@ Route::filter('auth.basic', function()
 
 Route::filter('auth.admin', function()
 {	
-	if(Auth::guest()){
+	if(!Sentry::check()){
 		Session::flash('error', 'Login to view this page');
 		return Redirect::guest('admin/login');
-	}else{
-		$user = Auth::user();
-		if (!$user->isAdmin()){
-			Session::flash('error', 'Insufficient Permission');
-			return Redirect::guest('admin/login');
-		}
 	}
 });
 

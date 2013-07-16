@@ -36,7 +36,7 @@ class User extends Ardent{
 
 	public static function destroy($id){
 
-		$currentUser = Sentry::user();
+		$currentUser = Sentry::getUser();
 		
 		if($id == $currentUser->id){
 			throw new Exception("You can not delete yourself");

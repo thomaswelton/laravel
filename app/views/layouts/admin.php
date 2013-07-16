@@ -18,7 +18,7 @@
         <div class="navbar-inner">
             <a class="brand" href="/admin">Bootstrap Admin</a>
             
-            <?php if(!Auth::guest()): ?>
+            <?php if(Sentry::check()): ?>
             
                 <?= HTML::render_menu(array(
                     array('href' => 'admin', 'title' => 'Home'), 

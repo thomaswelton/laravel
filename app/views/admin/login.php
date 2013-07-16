@@ -5,9 +5,9 @@
 		<?= HTML::flash() ?>
 
 		<div class="control-group">
-		  	<label class="control-label" for="username">Email/Username:</label>
+		  	<label class="control-label" for="email">Email:</label>
 		 	<div class="controls">
-				<input type="text" name="username" value="" id="username">
+				<input type="text" name="email" value="" id="email">
 		  	</div>
 		</div>
 
