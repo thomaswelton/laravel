@@ -10,26 +10,27 @@
       "type": "git",
       "url": "https://github.com/thomaswelton/laravel.git"
   }
+  , "peerDependencies": {
+    "bower": ">= 0.10.0"
+  }
+  , "devDependencies": {
+      "grunt-contrib-imagemin": ">= 0.1.4"
+    , "grunt-notify": ">= 0.2.3"
+    , "grunt-php": "~0.1.1"
+    , "grunt-phplint": "0.0.5"
+    , "grunt-contrib-watch": "~0.4.4"
+    , "grunt-shell": "~0.3.0"
+  }
   , "dependencies": {
-      "bower": ">= 0.10.x"
-    , "grunt": ">= 0.4.1"
+      "grunt": ">= 0.4.1"
     , "grunt-contrib-compass": ">= 0.2.0"
     , "grunt-contrib-coffee": ">= 0.6.6"
-    , "grunt-contrib-watch": "~0.4.4"
     , "grunt-contrib-requirejs": ">= 0.4.0"
-    , "grunt-contrib-imagemin": ">= 0.1.4"
     , "grunt-contrib-clean": "~0.4.1"
-    , "grunt-notify": ">= 0.2.3"
     , "grunt-parallel": ">= 0.1.0"
     , "grunt-remove-logging": ">= 0.1.0"
     , "grunt-modernizr": ">= 0.2.2"
-    , "grunt-shell": "~0.3.0"
     , "grunt-bower-requirejs": "~0.4.4"
     , "grunt-bower-task": "git://github.com/thomaswelton/grunt-bower-task.git"
-    , "grunt-php": "~0.1.1"
-    , "grunt-phplint": "0.0.5"
-  }
-  , "devDependencies": {
-  
   }
 }

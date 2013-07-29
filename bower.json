@@ -4,8 +4,8 @@
     , "requirejs": "2.1.*"
     , "requirejs-plugins": "1.0.*"
     , "requirejs-domready": "2.0.*"
-    , "bootstrap": "2.3.*"
-    , "requirejs-facebook": "0.0.4"
+    , "bootstrap": "git://github.com/twbs/bootstrap#2.3.2"
+    , "requirejs-facebook": "0.0.7"
   },
   "exportsOverride": {
      "requirejs": {

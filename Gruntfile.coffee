@@ -357,7 +357,7 @@ module.exports = (grunt) =>
 
 	grunt.registerTask 'default', [ 'composer', 'parallel:default']
 
-	grunt.registerTask 'build', ['coffee:prod', 'modernizr_build', 'bower', 'removelogging', 'compass:prod', 'imagemin', 'requirejs']
+	grunt.registerTask 'build', ['coffee:prod', 'modernizr_build', 'bower', 'removelogging', 'compass:prod', 'requirejs']
 	
 	grunt.registerTask 'modernizr_build', 'Compile modernizr tests and build modernizr', ['coffee:modernizr', 'modernizr']
 
