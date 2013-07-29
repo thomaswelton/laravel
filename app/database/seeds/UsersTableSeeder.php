@@ -4,28 +4,19 @@ class UsersTableSeeder extends Seeder {
 
     public function run(){
 
-		User::create(array(
-                'username' => 'user',
+		Sentry::register(array(
                 'email' => 'user@example.com',
-                'password' => Hash::make('password'),
-                'created_at' => new DateTime,
-                'updated_at' => new DateTime
-        ))->roles()->attach(1);
+                'password' => 'password'
+        ));
 
-        User::create(array(
-                'username' => 'admin',
+        Sentry::register(array(
                 'email' => 'admin@example.com',
-                'password' => Hash::make('password'),
-                'created_at' => new DateTime,
-                'updated_at' => new DateTime
-        ))->roles()->attach(2);
+                'password' => 'password'
+        ));
 
-		User::create(array(
-                'username' => 'superadmin',
+		Sentry::register(array(
                 'email' => 'superadmin@example.com',
-                'password' => Hash::make('password'),
-                'created_at' => new DateTime,
-                'updated_at' => new DateTime
-        ))->roles()->attach(3);
+                'password' => 'password'
+        ));
 	}
 }

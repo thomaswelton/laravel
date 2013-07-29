@@ -14,8 +14,8 @@ Once these requirements are met the project can be deployed using the following 
 ### Setup
 
 ```
-composer create-project thomaswelton/laravel project-name master-dev
 cd project-name
+php artisan migrate --package=cartalyst/sentry
 git init
 git add .
 git commit -m "Installed Laravel bootstrap"
