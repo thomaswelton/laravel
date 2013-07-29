@@ -11,7 +11,7 @@
       "url": "https://github.com/thomaswelton/laravel.git"
   }
   , "dependencies": {
-      "bower": ">= 0.9.x"
+      "bower": ">= 0.10.x"
     , "grunt": ">= 0.4.1"
     , "grunt-contrib-compass": ">= 0.2.0"
     , "grunt-contrib-coffee": ">= 0.6.6"
@@ -24,7 +24,7 @@
     , "grunt-remove-logging": ">= 0.1.0"
     , "grunt-modernizr": ">= 0.2.2"
     , "grunt-shell": "~0.3.0"
-    , "grunt-bower-requirejs": "git://github.com/yeoman/grunt-bower-requirejs.git#a5e21c349cb7f12a197b261f22ca8a043b5c580a"
+    , "grunt-bower-requirejs": "~0.4.4"
     , "grunt-bower-task": "git://github.com/thomaswelton/grunt-bower-task.git"
     , "grunt-php": "~0.1.1"
     , "grunt-phplint": "0.0.5"
