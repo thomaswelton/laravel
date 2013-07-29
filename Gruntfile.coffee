@@ -299,26 +299,6 @@ module.exports = (grunt) =>
 					}
 				]
 
-		compress:
-			build:
-				options:
-					archive: '<%= pkg.name.toLowerCase() %>.zip'
-				files: [
-					{
-						expand: true
-						cwd: 'app-build/'
-						src: ['**/*']
-						dest: '../'
-					},
-					{
-						expand: true
-						dot: true
-						cwd: 'app-build/'
-						src: 'htdocs/.htaccess'
-						dest: '../'
-					}
-				]
-
 		bowerrjs:
 			target:
 				rjsConfig: 'public/assets/scripts/compiled/config.js'
