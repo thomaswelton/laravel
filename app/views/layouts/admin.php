@@ -22,6 +22,7 @@
             
                 <?= HTML::render_menu(array(
                     array('href' => 'admin', 'title' => 'Home'), 
+                    array('href' => 'admin/config', 'title' => 'Config'), 
                     array('href' => 'admin/users', 'title' => 'Users')
                 )) ?>
 

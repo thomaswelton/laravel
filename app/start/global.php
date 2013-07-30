@@ -84,3 +84,26 @@ require app_path().'/filters.php';
 
 require app_path().'/macros/html.php';
 require app_path().'/macros/form.php';
+
+
+/*
+|--------------------------------------------------------------------------
+| Update the config files using database values
+|--------------------------------------------------------------------------
+|
+|
+*/
+
+App::before(function()
+{
+	$config = DB::table('config')->get();
+
+	foreach ($config as $item) {
+		$name = $item->name;
+		$values = json_decode($item->config);
+
+		foreach ($values as $key => $value) {
+			Config::set($name . '::' . $key, $value);
+		}
+	}
+});
