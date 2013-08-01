@@ -1,8 +1,8 @@
 <?= Form::open(array('url' => array('admin/config'), 'method' => 'POST', 'class' => 'form-horizontal')) ?>
 	
-	<input type="hidden" name="config" value="laravel-facebook">
+	<input type="hidden" name="config" value="laravel-google-analytics">
 
-	<?= Form::control('text', 'laravel-facebook[appId]', 'Application ID', Config::get('laravel-facebook::appId')) ?>
+	<?= Form::control('text', 'laravel-google-analytics[id]', 'ID', Config::get('laravel-google-analytics::id')) ?>
 	
 	<div class="form-actions">
 		<div class="pull-left">

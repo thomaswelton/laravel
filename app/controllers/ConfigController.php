@@ -14,7 +14,8 @@ class ConfigController extends AdminBaseController {
 		}
 
 		$this->layout->content = View::make('admin.config.index', array(
-			'form' => View::make('admin.config.tabs.' . $tab)
+			'form' => View::make('admin.config.tabs.' . $tab),
+			'tab' => $tab
 		));
 	}
 
@@ -33,7 +34,7 @@ class ConfigController extends AdminBaseController {
 		$config->name = $configItem;
 		$config->config = json_encode($configValues);
 		
-		if($config->update())
+		if($config->save())
 		{
 			Session::flash('success', 'Config saved');
 		}else{
