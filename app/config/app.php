@@ -114,6 +114,7 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Thomaswelton\LaravelFacebook\LaravelFacebookServiceProvider',
+		'Thomaswelton\LaravelGoogleAnalytics\LaravelGoogleAnalyticsServiceProvider',
 		'Cartalyst\Sentry\SentryServiceProvider'
 
 	),
@@ -181,6 +182,7 @@ return array(
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
 		'Facebook'		  => 'Thomaswelton\LaravelFacebook\Facades\Facebook',
+		'GoogleAnalytics' => 'Thomaswelton\LaravelGoogleAnalytics\Facades\GoogleAnalytics',
 		'Sentry' => 'Cartalyst\Sentry\Facades\Laravel\Sentry'
 	),
 

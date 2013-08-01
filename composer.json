@@ -4,6 +4,7 @@
 	"require": {
 		"laravel/framework": "4.0.*",
 		"thomaswelton/laravel-facebook": "dev-master",
+		"thomaswelton/laravel-google-analytics": "dev-master",
 		"laravelbook/ardent": "dev-master",
 		"cartalyst/sentry": "2.0.*"
 	},
