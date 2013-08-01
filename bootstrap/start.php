@@ -26,12 +26,10 @@ $app->redirectIfTrailingSlash();
 |
 */
 
-$env = $app->detectEnvironment(array(
-
-    'local' => array('Thomas-Weltons-MacBook-Pro-2.local'),
-    'production' => array()
-
-));
+$env = $app->detectEnvironment(function()
+{
+    return (getenv('LARAVEL_ENVIROMENT')) ? getenv('LARAVEL_ENVIROMENT') : 'local';
+});
 
 /*
 |--------------------------------------------------------------------------
