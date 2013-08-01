@@ -10,9 +10,6 @@
       "type": "git",
       "url": "https://github.com/thomaswelton/laravel.git"
   }
-  , "peerDependencies": {
-    "bower": "~0.x"
-  }
   , "devDependencies": {
       "grunt-contrib-imagemin": ">= 0.1.4"
     , "grunt-notify": ">= 0.2.3"
@@ -23,11 +20,12 @@
   }
   , "dependencies": {
       "grunt": ">= 0.4.1"
-    , "grunt-contrib-compass": ">= 0.2.0"
-    , "grunt-contrib-coffee": ">= 0.6.6"
-    , "grunt-contrib-requirejs": ">= 0.4.0"
-    , "grunt-contrib-clean": "~0.4.1"
-    , "grunt-parallel": ">= 0.1.0"
+    , "bower": "0.10.0"
+    , "grunt-contrib-compass": ">= 0.4.1"
+    , "grunt-contrib-coffee": ">= 0.7.0"
+    , "grunt-contrib-requirejs": ">= 0.4.1"
+    , "grunt-contrib-clean": "~0.5.0"
+    , "grunt-parallel": ">= 0.2.0"
     , "grunt-remove-logging": ">= 0.1.0"
     , "grunt-modernizr": ">= 0.2.2"
     , "grunt-bower-requirejs": "~0.4.4"
