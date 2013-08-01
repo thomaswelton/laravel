@@ -13,12 +13,11 @@ Once these requirements are met the project can be deployed using the following 
 
 ### Setup
 
+Run database migrations, install sample data, compile assets and install dependencies
+
 ```
-cd project-name
-php artisan migrate --package=cartalyst/sentry
-git init
-git add .
-git commit -m "Installed Laravel bootstrap"
+composer install
+php artisan app:init
 ```
 
 ### Deployment
@@ -26,6 +25,8 @@ git commit -m "Installed Laravel bootstrap"
 ```
 php artisan heroku:deploy
 heroku open
+
+php artisan heroku:deploy --name custom_name
 ```
 
 ### Contributing
