@@ -7,7 +7,8 @@
     <meta charset="UTF-8" />
 
     <!--[if lt IE 9]>
-        <script src="/assets/scripts/components/html5shiv/dist/html5shiv.js"></script>
+        <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <script>window.html5 || document.write('<script src="js/vendor/html5shiv.js"><\/script>')</script>
     <![endif]-->
     
     <link rel="stylesheet" type="text/css" href="/assets/stylesheets/compiled/admin.css">
