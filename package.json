@@ -11,7 +11,7 @@
       "url": "https://github.com/thomaswelton/laravel.git"
   }
   , "peerDependencies": {
-    "bower": ">= 0.10.0"
+    "bower": "~0.x"
   }
   , "devDependencies": {
       "grunt-contrib-imagemin": ">= 0.1.4"
