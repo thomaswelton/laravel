@@ -1,4 +1,4 @@
-require ['requirejs-facebook'], (Facebook) ->
+require [], (Facebook) ->
 	console.log 'Admin'
 
 	requirejs ['jquery'], ($) ->
