@@ -37,10 +37,10 @@ class ConfigController extends BaseController {
 		$configValues = Input::get($configItem);
 
 		
-		$config = App\Models\Config::where('name', '=', $configItem)->first();
+		$config = \App\Models\Config::where('name', '=', $configItem)->first();
 
 		if(is_null($config)){
-			$config = new App\Models\Config();
+			$config = new \App\Models\Config();
 		}
 
 		$config->name = $configItem;
