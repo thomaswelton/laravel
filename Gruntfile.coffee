@@ -271,6 +271,8 @@ module.exports = (grunt) =>
 			## Deletes all files that do not need to be in the Heroku slug
 			slug:
 				src: ['node_modules', 'bower_components', 'public-build', 'public/sass', 'public/coffee']
+			app:
+				src: ['node_modules', 'bower_components', 'public-build', 'vendor', 'bootstrap/compiled.php', 'composer.lock', 'public/assets/stylesheets/compiled', 'public/assets/scripts/compiled', 'public/assets/scripts/bower_components', 'public/assets/images/generated']
 
 	
 	#########################################			
@@ -333,10 +335,11 @@ module.exports = (grunt) =>
 	
 	grunt.registerTask 'modernizr_build', 'Compile modernizr tests and build modernizr', ['coffee:modernizr', 'modernizr']
 
+	grunt.registerTask 'clean-app', 'Cleans compiled files, and installed dependencies', ['clean:app']
 
 	grunt.registerTask 'test', ['phplint']
 
-	grunt.registerTask 'heroku', ['build', 'clean']
+	grunt.registerTask 'heroku', ['build', 'clean:slug']
 
 	grunt.registerTask 'cdn', ['build', 'cloudfiles:prod']
 	
