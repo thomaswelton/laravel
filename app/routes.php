@@ -13,11 +13,11 @@
 
 Route::group(array('prefix' => 'admin'), function() {
     
-    Route::resource('users', 'UserController');
+    Route::resource('users', 'Admin\\UserController');
 
-    Route::controller('config/{tab?}', 'ConfigController');
+    Route::controller('config/{tab?}', 'Admin\\ConfigController');
 
-	Route::controller('/','AdminHomeController');
+	Route::controller('/','Admin\\HomeController');
 	
 });
 
