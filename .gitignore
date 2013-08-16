@@ -23,10 +23,12 @@ Thumbs.db
 /bootstrap/compiled.php
 /node_modules/
 /components/
+/bower_components/
 /vendor/
 
 .sass-cache/
 public/assets/scripts/components/
+public/assets/scripts/bower_components/
 public/assets/scripts/compiled/
 public/assets/stylesheets/compiled/
 public/assets/images/generated/
