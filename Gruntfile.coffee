@@ -29,26 +29,6 @@ module.exports = (grunt) =>
 				options:
 					stdout: true
 
-			open_finder:
-				command: "open . &"
-				options:
-					stdout: true
-
-			open_sublime:
-				command: "subl . &"
-				options:
-					stdout: true
-
-			open_tower:
-				command: "gittower . &"
-				options:
-					stdout: true
-
-			open_site:
-				command: "open http://localhost:8000"
-				options:
-					stdout: true
-
 		## Growl notifications
 		notify:
 			compass:
@@ -73,7 +53,7 @@ module.exports = (grunt) =>
 		bower_install:
 			install:
 				options:
-					targetDir: 'public/assets/scripts/components'
+					targetDir: 'public/assets/scripts/bower_components'
 
 
 		modernizr:
@@ -112,17 +92,19 @@ module.exports = (grunt) =>
 		## Run tasks when files are modified
 		watch:
 			npm:
-				files: 'package.json'
+				files: ['package.json']
 				tasks: 'shell:npm_install'
 				
 			sass:
 				## Compile SCSS when scss or sass file are modified, or items in the sprites directory are modified
-				files: ['src/sass/**/*.{scss,sass}','public/assets/images/sprites/**/*.png','public/assets/fonts/**/*']
+				files: ['public/sass/**/*.{scss,sass}','public/assets/images/sprites/**/*.png','public/assets/fonts/**/*']
 				tasks: ['compass:app', 'notify:compass']
 
 			coffee:
 				files: ['public/coffee/**/*.coffee','!public/coffee/config.coffee']
 				tasks: ['coffee:app']
+				options:
+					spawn: false
 
 			coffee_config:
 				files: ['public/coffee/config.coffee']
@@ -151,11 +133,13 @@ module.exports = (grunt) =>
 					noLineComments: true
 					outputStyle: 'compressed'
 					force: true
+					bundleExec: true
 
 			app:
 				options:
 					noLineComments: false
 					outputStyle: 'expanded'
+					bundleExec: true
 
 		## Compile coffeescript
 		coffee:
@@ -279,34 +263,42 @@ module.exports = (grunt) =>
 					}
 				]
 
-			open:
-				tasks: [
-					{
-						grunt: true
-						args: ['shell:open_site']
-					},
-					{
-						grunt: true
-						args: ['shell:open_sublime']
-					},
-					{
-						grunt: true
-						args: ['shell:open_finder']
-					},
-					{
-						grunt: true
-						args: ['shell:open_tower']
-					}
-				]
-
 		bowerrjs:
 			target:
 				rjsConfig: 'public/assets/scripts/compiled/config.js'
 
 		clean:
-			## Deletes all files that od not need to be in the Heroku slug
+			## Deletes all files that do not need to be in the Heroku slug
 			slug:
-				src: ['node_modules', 'components', 'src', 'public']
+				src: ['node_modules', 'bower_components', 'public-build', 'public/sass', 'public/coffee']
+
+	
+	#########################################			
+	## Compile individual coffeescript files
+	
+	changedCoffee = Object.create null
+
+	onChange = grunt.util._.debounce () ->
+		console.log 'changed', changedCoffee
+		## Should only be ran for coffee in coffee
+		## Get all the changed files stripping coffee/ form the start
+	
+		pattern = (src.substr('public/coffee/'.length) for src in Object.keys(changedCoffee))
+		compileMap = grunt.file.expandMapping pattern, 'public/assets/scripts/compiled',
+			cwd : 'public/coffee'
+			ext: '.js'
+
+		grunt.config ['coffee', 'app', 'files'],  compileMap
+		changedCoffee = Object.create null
+	, 200
+
+	grunt.event.on 'watch', (action, filepath) ->
+		coffeeWatchFiles = grunt.config.get ['watch', 'coffee', 'files']
+		if grunt.file.isMatch coffeeWatchFiles, filepath
+			changedCoffee[filepath] = action
+			onChange()
+
+	#########################################
 
 	grunt.loadNpmTasks 'grunt-bower-requirejs'
 	grunt.renameTask 'bower', 'bowerrjs'
@@ -344,7 +336,7 @@ module.exports = (grunt) =>
 
 	grunt.registerTask 'test', ['phplint']
 
-	grunt.registerTask 'heroku', ['build']
+	grunt.registerTask 'heroku', ['build', 'clean']
 
 	grunt.registerTask 'cdn', ['build', 'cloudfiles:prod']
 	
@@ -354,7 +346,4 @@ module.exports = (grunt) =>
 	grunt.registerTask 'composer', 'Install composer dependencies', ['shell:composer']
 
 	grunt.registerTask 'server', 'Start a server', ['php']
-
-	grunt.registerTask 'open', 'Open the project in the finder, browser and Sublime', () ->
-		grunt.task.run 'parallel:open'
 
