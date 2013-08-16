@@ -34,4 +34,4 @@ add_import_path sass_dir + "/imports"
 
 # Require any additional compass plugins here.
 require 'compass_twitter_bootstrap'
-
+require 'compass-normalize'
