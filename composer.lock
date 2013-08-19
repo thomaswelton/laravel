@@ -723,12 +723,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "98ee63d14de2b481758323b70957e2ea4282ce9c"
+                "reference": "41ef43e48153c4daa85ccd22b3fe21636c78fa22"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/98ee63d14de2b481758323b70957e2ea4282ce9c",
-                "reference": "98ee63d14de2b481758323b70957e2ea4282ce9c",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/41ef43e48153c4daa85ccd22b3fe21636c78fa22",
+                "reference": "41ef43e48153c4daa85ccd22b3fe21636c78fa22",
                 "shasum": ""
             },
             "require": {
@@ -827,7 +827,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2013-08-15 13:38:09"
+            "time": "2013-08-16 15:14:14"
         },
         {
             "name": "laravelbook/ardent",
