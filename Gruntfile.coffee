@@ -13,6 +13,14 @@ module.exports = (grunt) =>
 		phplint:
 			files: ['app/**/*.php', 'bootstrap/**/*.php', 'public/**/*.php']
 
+		phpunit:
+			classes:
+				dir: 'app/tests'
+			options:
+				bin: 'vendor/bin/phpunit'
+				configuration: 'phpunit.xml'
+				verbose: true
+
 		shell:
 			bundle:
 				command: 'bundle install'
@@ -327,6 +335,7 @@ module.exports = (grunt) =>
 	grunt.loadNpmTasks 'grunt-shell'
 	grunt.loadNpmTasks 'grunt-php'
 	grunt.loadNpmTasks 'grunt-phplint'
+	grunt.loadNpmTasks 'grunt-phpunit'
 
 
 	grunt.registerTask 'default', [ 'composer', 'parallel:default']
@@ -337,7 +346,7 @@ module.exports = (grunt) =>
 
 	grunt.registerTask 'clean-app', 'Cleans compiled files, and installed dependencies', ['clean:app']
 
-	grunt.registerTask 'test', ['phplint']
+	grunt.registerTask 'test', ['phplint', 'phpunit']
 
 	grunt.registerTask 'heroku', ['build', 'clean:slug']
 
