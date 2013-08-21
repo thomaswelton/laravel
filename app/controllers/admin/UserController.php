@@ -16,6 +16,8 @@ use Cartalyst\Sentry\Facades\Laravel\Sentry;
 use Cartalyst\Sentry\Users\UserExistsException;
 use Cartalyst\Sentry\Users\UserNotFoundException;
 
+use \User;
+
 class UserController extends BaseController {
 
 	/**
