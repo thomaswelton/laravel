@@ -10,8 +10,8 @@
         <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <script>window.html5 || document.write('<script src="js/vendor/html5shiv.js"><\/script>')</script>
     <![endif]-->
-    
-    <link rel="stylesheet" type="text/css" href="/assets/scripts/bower_components/bootstrap/dist/css/bootstrap.css">
+
+    <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="/assets/stylesheets/compiled/admin.css">
 </head>
 <body>
@@ -29,12 +29,12 @@
 
             <a class="navbar-brand" href="<?= url('admin') ?>">Laravel Bootstrap</a>
         </div>
-        
+
         <?php if(Sentry::check()): ?>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <?= HTML::render_menu(array(
-                    array('href' => 'admin/config', 'title' => 'Config'), 
+                    array('href' => 'admin/config', 'title' => 'Config'),
                     array('href' => 'admin/users', 'title' => 'Users')
                 )) ?>
 
@@ -45,13 +45,13 @@
             </div><!-- /.navbar-collapse -->
         <?php endif; ?>
     </nav>
-    
+
     <div class="container" role="main">
         <?= $content ?>
     </div>
-    
-    <script src="/assets/scripts/components/requirejs/require.js"></script>
-    
+
+    <script src="/bower_components/requirejs/require.js"></script>
+
     <?php if ('production' != App::environment()): ?>
         <script>
             require.config({
@@ -63,12 +63,12 @@
     <script type="text/javascript">
         <?= File::get(public_path().'/assets/scripts/compiled/config.js'); ?>
         requirejs.config({
-            baseUrl: '/assets/scripts',
+            baseUrl: './',
             config:{
 
             }
         });
-        
+
         require(["/assets/scripts/compiled/admin.js"]);
     </script>
 </body>

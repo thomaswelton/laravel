@@ -1,7 +1,7 @@
 module.exports = (grunt) =>
 	grunt.initConfig
 		pkg: grunt.file.readJSON 'package.json'
-		
+
 		php:
 			dist:
 				options:
@@ -57,13 +57,6 @@ module.exports = (grunt) =>
 			options:
 				enabled: true
 
-		## Bower, for front end dependencies
-		bower_install:
-			install:
-				options:
-					targetDir: 'public/assets/scripts/bower_components'
-
-
 		modernizr:
 			devFile: "remote"
 			outputFile: "public/assets/scripts/compiled/modernizr.js"
@@ -87,7 +80,7 @@ module.exports = (grunt) =>
 			uglify: true
 			## Test names https://github.com/Modernizr/modernizr.com/blob/gh-pages/i/js/modulizr.js#L15-157
 			tests: [
-				
+
 			]
 			parseFiles: true
 			files: []
@@ -102,7 +95,7 @@ module.exports = (grunt) =>
 			npm:
 				files: ['package.json']
 				tasks: 'shell:npm_install'
-				
+
 			sass:
 				## Compile SCSS when scss or sass file are modified, or items in the sprites directory are modified
 				files: ['public/sass/**/*.{scss,sass}','public/assets/images/sprites/**/*.png','public/assets/fonts/**/*']
@@ -210,7 +203,7 @@ module.exports = (grunt) =>
 					dir: "public-build"
 					mainConfigFile: "public/assets/scripts/compiled/config.js"
 					baseUrl: "assets/scripts"
-					
+
 		## Optimize images
 		imagemin:
 			app:
@@ -271,6 +264,11 @@ module.exports = (grunt) =>
 					}
 				]
 
+		bower_install:
+			install:
+				options:
+					copy: false
+
 		bowerrjs:
 			target:
 				rjsConfig: 'public/assets/scripts/compiled/config.js'
@@ -282,17 +280,17 @@ module.exports = (grunt) =>
 			app:
 				src: ['node_modules', 'bower_components', 'public-build', 'vendor', 'bootstrap/compiled.php', 'composer.lock', 'public/assets/stylesheets/compiled', 'public/assets/scripts/compiled', 'public/assets/scripts/bower_components', 'public/assets/images/generated']
 
-	
-	#########################################			
+
+	#########################################
 	## Compile individual coffeescript files
-	
+
 	changedCoffee = Object.create null
 
 	onChange = grunt.util._.debounce () ->
 		console.log 'changed', changedCoffee
 		## Should only be ran for coffee in coffee
 		## Get all the changed files stripping coffee/ form the start
-	
+
 		pattern = (src.substr('public/coffee/'.length) for src in Object.keys(changedCoffee))
 		compileMap = grunt.file.expandMapping pattern, 'public/assets/scripts/compiled',
 			cwd : 'public/coffee'
@@ -310,18 +308,6 @@ module.exports = (grunt) =>
 
 	#########################################
 
-	grunt.loadNpmTasks 'grunt-bower-requirejs'
-	grunt.renameTask 'bower', 'bowerrjs'
-
-	grunt.loadNpmTasks 'grunt-bower-task'
-	grunt.renameTask 'bower', 'bower_install'
-
-	grunt.registerTask 'bower', 'Install and wire up bower', () ->
-		## always use force when watching
-		grunt.option 'force', true
-		grunt.task.run ['bower_install', 'coffee:config', 'bowerrjs']
-
-
 	grunt.loadNpmTasks 'grunt-contrib-compass'
 	grunt.loadNpmTasks 'grunt-contrib-coffee'
 	grunt.loadNpmTasks 'grunt-contrib-requirejs'
@@ -337,11 +323,20 @@ module.exports = (grunt) =>
 	grunt.loadNpmTasks 'grunt-phplint'
 	grunt.loadNpmTasks 'grunt-phpunit'
 
+	grunt.loadNpmTasks 'grunt-bower-requirejs'
+	grunt.renameTask 'bower', 'bowerrjs'
+
+	grunt.loadNpmTasks 'grunt-bower-task'
+	grunt.renameTask 'bower', 'bower_install'
+
+	grunt.registerTask 'bower', 'Install and wire up bower', () ->
+		grunt.option 'force', true
+		grunt.task.run ['bower_install', 'coffee:config', 'bowerrjs']
 
 	grunt.registerTask 'default', [ 'composer', 'parallel:default']
 
 	grunt.registerTask 'build', ['coffee:prod', 'modernizr_build', 'bower', 'removelogging', 'compass:prod', 'requirejs']
-	
+
 	grunt.registerTask 'modernizr_build', 'Compile modernizr tests and build modernizr', ['coffee:modernizr', 'modernizr']
 
 	grunt.registerTask 'clean-app', 'Cleans compiled files, and installed dependencies', ['clean:app']
@@ -351,7 +346,7 @@ module.exports = (grunt) =>
 	grunt.registerTask 'heroku', ['build', 'clean:slug']
 
 	grunt.registerTask 'cdn', ['build', 'cloudfiles:prod']
-	
+
 	grunt.registerTask 'compile', ['parallel:assetsDev']
 
 	grunt.registerTask 'bundle', 'Install ruby gem dependencies', ['shell:bundle']

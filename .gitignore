@@ -23,7 +23,7 @@ Thumbs.db
 /bootstrap/compiled.php
 /node_modules/
 /components/
-/bower_components/
+**/bower_components/
 /vendor/
 
 .sass-cache/

@@ -1,5 +1,4 @@
 requirejs.config
 	paths:
-		domReady: "components/requirejs-domready/domReady"
-		main: 'compiled/main'
-		home: 'compiled/pages/home'
+		main: 'assets/scripts/compiled/main'
+		home: 'assets/scripts/compiled/pages/home'
