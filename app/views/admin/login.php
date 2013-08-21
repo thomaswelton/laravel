@@ -1,33 +1,37 @@
-<?= Form::open(array('url' => 'admin/login', 'class' => 'login-form form-horizontal span8 offset2')) ?>
+<?= Form::open(array('url' => 'admin/login', 'class' => 'login-form form-horizontal col-md-8 col-md-offset-2')) ?>
 	<fieldset>
 		<legend>Login</legend>
 		
 		<?= HTML::flash() ?>
-
-		<div class="control-group">
-		  	<label class="control-label" for="email">Email:</label>
-		 	<div class="controls">
-				<input type="text" name="email" value="" id="email">
+			
+		<div class="form-group">
+		  	<label class="col-sm-2 control-label" for="email">Email:</label>
+		 	<div class="col-sm-6">
+				<input type="text" name="email" value="" id="email" class="form-control">
 		  	</div>
 		</div>
-
-		<div class="control-group">
-		  	<label class="control-label" for="password">Password:</label> 
-		 	<div class="controls">
-				<input type="password" name="password" value="" id="password">
+		
+		<div class="form-group">
+		  	<label class="col-sm-2 control-label" for="password">Password:</label>
+		 	<div class="col-sm-6">
+				<input type="password" name="password" value="" id="password" class="form-control">
 		  	</div>
 		</div>
-		  
-			<div class="control-group">
-				<div class="controls">	
-				<label class="checkbox">
-		  			Remember Me<input type="checkbox" name="remember" value="1" id="remember">
-				</label>
+		
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-6">
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" name="remember" value="1"> Remember me
+					</label>
+				</div>
 			</div>
 		</div>
-
-		<div class="form-actions">
-			<button type="submit" name="submit" class="btn btn-primary">Login</button>
+		
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-6">
+				<button type="submit" class="btn btn-primary">Login</button>
+			</div>
 		</div>
 	</fieldset>
 <?= Form::close() ?>

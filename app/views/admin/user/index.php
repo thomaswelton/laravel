@@ -3,10 +3,6 @@
   		<span>Admin Users</span>
 
 		<span class="pull-right">
-  			<a class="btn" data-ajax-nav=false href="<?= 'admin/entries/csv' . '?' . $_SERVER['QUERY_STRING'] ?>">
-  				<i class="icon-download-alt"></i>  Download CSV
-  			</a>
-
   			<a class="btn btn-success" href="/admin/users/create">New Entry</a>
   		</span>
   	</h1>
@@ -17,18 +13,19 @@
 <table class="table table-striped table-bordered table-hover table-valign-middle" valign="middle">
 	<tr>
 		<th width=65>ID</th>
-		<th>Email</th>
-		<th width=80></th>
+		<th colspan=3>Email</th>
 	</tr>
 	
 	<?php foreach ($users as $user): ?>
 		<tr>
 			<td><?= $user->id ?></td>
 			<td><?= $user->email ?></td>
-			<td class="text-center">
+			<td width=10 class="text-center">
+				<a class="btn btn-link unstyled-link glyphicon glyphicon-pencil" href="<?= '/admin/users/'.$user->id .'/edit'?>"></a>
+			</td>
+			<td width=10 class="text-center">
 				<?= Form::open(array('url' => '/admin/users/'.$user->id, 'method' => 'delete')) ?>
-					<a class="btn btn-link" href="<?= '/admin/users/'.$user->id .'/edit'?>"><i class="icon-pencil icon-white"></i></a>
-					<button class="btn btn-link" type="submit"><i class="icon-trash"></i></button>
+					<button class="btn btn-link unstyled-link glyphicon glyphicon-trash" type="submit"></button>
 				<?= Form::close() ?>
 			</td>
 		</tr>

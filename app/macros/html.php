@@ -3,12 +3,12 @@
 HTML::macro('flash', function($syntax = null) {
     $output =  '';
     $alert_types = array("error", "success", "warning", "info");
-    
+
     foreach ($alert_types as $type) {
         if( Session::has($type) ) {
             $output = '<div class="alert';
             $output .= ($type == 'warning') ? '">' : ' alert-'. $type .'">';
-            $output .= '<button type="button" class="close" data-dismiss="alert">&times;</button>';
+            $output .= '<button type="button" class="close" data-dismiss="alert"  aria-hidden="true">&times;</button>';
             $output .=  Session::get($type) . '</div>';
         }
     }
@@ -16,7 +16,7 @@ HTML::macro('flash', function($syntax = null) {
 });
 
 HTML::macro('render_menu', function($menulinks){
-    $html = '<ul class="nav">';
+    $html = '<ul class="nav navbar-nav">';
 
     foreach($menulinks as $link){
         $attributes = $link;

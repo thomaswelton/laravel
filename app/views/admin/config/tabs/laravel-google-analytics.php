@@ -4,8 +4,8 @@
 
 	<?= Form::control('text', 'laravel-google-analytics[id]', 'ID', Config::get('laravel-google-analytics::id')) ?>
 	
-	<div class="form-actions">
-		<div class="pull-left">
+	<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-6">
 			<button type="submit" name="action" value="save" class="btn btn-primary">Save changes</button>
 			<a href="<?= url('admin/config/laravel-google-analytics') ?>" class="btn">Cancel</a>
 		</div>

@@ -11,29 +11,40 @@
         <script>window.html5 || document.write('<script src="js/vendor/html5shiv.js"><\/script>')</script>
     <![endif]-->
     
+    <link rel="stylesheet" type="text/css" href="/assets/scripts/bower_components/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="/assets/stylesheets/compiled/admin.css">
 </head>
 <body>
-    
-    <div class="navbar navbar-static-top">
-        <div class="navbar-inner">
-            <a class="brand" href="/admin">Bootstrap Admin</a>
-            
+    <nav class="navbar navbar-default" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
             <?php if(Sentry::check()): ?>
-            
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            <?php endif; ?>
+
+            <a class="navbar-brand" href="<?= url('admin') ?>">Laravel Bootstrap</a>
+        </div>
+        
+        <?php if(Sentry::check()): ?>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <?= HTML::render_menu(array(
-                    array('href' => 'admin', 'title' => 'Home'), 
                     array('href' => 'admin/config', 'title' => 'Config'), 
                     array('href' => 'admin/users', 'title' => 'Users')
                 )) ?>
 
-                <div class="pull-right">
-                    <a href="/" class="btn btn-info" target="_blank">View Site <i class="icon-eye-open"></i></a>
-                    <a class="btn btn-inverse" href="/admin/logout">Logout <i class="icon-signout"></i></a>
-                </div>
-            <?php endif; ?>
-        </div>
-    </div>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/" target="_blank">View Site</a>
+                    <li><a href="/admin/logout">Logout</a>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        <?php endif; ?>
+    </nav>
     
     <div class="container" role="main">
         <?= $content ?>

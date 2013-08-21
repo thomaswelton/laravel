@@ -4,7 +4,7 @@
       "requirejs": "2.1.*"
     , "requirejs-plugins": "1.0.*"
     , "requirejs-domready": "2.0.*"
-    , "bootstrap": "2.3.2"
+    , "bootstrap": "3.0.0"
     , "requirejs-facebook": "0.0.7"
   },
   "exportsOverride": {
