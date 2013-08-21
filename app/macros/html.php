@@ -2,16 +2,31 @@
 
 HTML::macro('flash', function($syntax = null) {
     $output =  '';
-    $alert_types = array("error", "success", "warning", "info");
-
-    foreach ($alert_types as $type) {
+    
+    foreach (array("error", "danger", "success", "warning", "info") as $type) {
         if( Session::has($type) ) {
-            $output = '<div class="alert';
-            $output .= ($type == 'warning') ? '">' : ' alert-'. $type .'">';
-            $output .= '<button type="button" class="close" data-dismiss="alert"  aria-hidden="true">&times;</button>';
-            $output .=  Session::get($type) . '</div>';
+            
+            switch ($type) {
+                case 'warning':
+                    $class = '';
+                    break;
+
+                case 'error':
+                    $class = 'alert-danger';
+                    break;
+                
+                default:
+                    $class = 'alert-'.$type;
+                    break;
+            }
+
+            $output .= View::make('macros/html_flash', array(
+                'class' => $class,
+                'text' => Session::get($type)
+            ));
         }
     }
+
     return $output;
 });
 
