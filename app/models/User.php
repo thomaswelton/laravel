@@ -6,6 +6,8 @@ use Cartalyst\Sentry\Users\UserNotFoundException;
 
 class User extends Ardent{
 
+	public $guarded = array('_token', 'action');
+
 	/**
 	* Ardent validation rules
 	*/
@@ -32,12 +34,12 @@ class User extends Ardent{
 	 * @var array
 	 */
 	protected $hidden = array('password');
-	
+
 
 	public static function destroy($id){
 
 		$currentUser = Sentry::getUser();
-		
+
 		if($id == $currentUser->id){
 			throw new Exception("You can not delete yourself");
 		}
