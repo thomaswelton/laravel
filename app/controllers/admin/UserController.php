@@ -17,6 +17,7 @@ use Cartalyst\Sentry\Users\UserExistsException;
 use Cartalyst\Sentry\Users\UserNotFoundException;
 
 use \User;
+use \Keboola\Csv\CsvFile;
 
 class UserController extends BaseController {
 
@@ -27,9 +28,44 @@ class UserController extends BaseController {
 	 */
 	public function index()
 	{
-		$this->layout->content = View::make('admin.user.index', array(
-			'users' => Sentry::getUserProvider()->findAll()
-		));
+		$users = User::all();
+
+		switch(Request::query('format')){
+			case 'csv':
+				// Get data to put into CSV
+				$data = $users->toArray();
+
+				// Create a tempoary file in the systme temp dir
+				$tmpName = tempnam(sys_get_temp_dir(), 'csv');
+
+				$csvFile = new CsvFile($tmpName);
+
+				// Write column names
+				$csvFile->writeRow(array_keys($data[0]));
+
+				// Write rows
+				foreach ($data as $row) {
+				    $csvFile->writeRow(array_values($row));
+				}
+
+				//Delete the file once the response is returned
+				App::finish(function($request, $response) use ($tmpName)
+				{
+					File::delete($tmpName);
+				});
+
+				return Response::download($tmpName, 'users.csv');
+				break;
+
+			case 'json':
+				return Response::json($users);
+				break;
+
+			default:
+				$this->layout->content = View::make('admin.user.index', array(
+					'users' => $users
+				));
+		}
 	}
 
 	/**
