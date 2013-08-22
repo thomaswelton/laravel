@@ -47,7 +47,6 @@ Route::filter('auth.basic', function()
 Route::filter('auth.admin', function()
 {	
 	if(!Sentry::check()){
-		Session::flash('error', 'Login to view this page');
 		return Redirect::guest('admin/login');
 	}
 });
