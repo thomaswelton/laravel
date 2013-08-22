@@ -11,6 +11,7 @@ use \Input;
 use \File;
 use \Session;
 use \URL;
+use \Exception;
 
 use Cartalyst\Sentry\Facades\Laravel\Sentry;
 use Cartalyst\Sentry\Users\UserExistsException;
