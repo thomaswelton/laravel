@@ -27,8 +27,10 @@ class UserController extends BaseController {
 	 */
 	public function index()
 	{
+		$data = new User();
+
 		$this->layout->content = View::make('admin.user.index', array(
-			'users' => Sentry::getUserProvider()->findAll()
+			'users' => $data->paginate(2)
 		));
 	}
 
@@ -106,7 +108,7 @@ class UserController extends BaseController {
 		try
 		{
 		    $user = Sentry::getUserProvider()->findById($id);
-		    
+
 		    $this->layout->content = View::make('admin.user.form', array(
 		    	'header' => 'Edit User',
 		    	'user' => $user

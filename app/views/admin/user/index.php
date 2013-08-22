@@ -15,7 +15,7 @@
 		<th width=65>ID</th>
 		<th colspan=3>Email</th>
 	</tr>
-	
+
 	<?php foreach ($users as $user): ?>
 		<tr>
 			<td><?= $user->id ?></td>
@@ -31,3 +31,5 @@
 		</tr>
 	<?php endforeach; ?>
 </table>
+
+<?php echo $users->links(); ?>
