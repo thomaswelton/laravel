@@ -1,23 +1,22 @@
 <?php namespace Admin;
 
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Config;
-use Illuminate\Routing\Controllers\Controller;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Response;
-use Illuminate\Support\Facades\Request;
-use Illuminate\Support\Facades\View;
-use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\URL;
+use \App;
+use \Config;
+use \Controller;
+use \Redirect;
+use \Response;
+use \Request;
+use \View;
+use \Input;
+use \File;
+use \Session;
+use \URL;
 
 use Cartalyst\Sentry\Facades\Laravel\Sentry;
 use Cartalyst\Sentry\Users\UserExistsException;
 use Cartalyst\Sentry\Users\UserNotFoundException;
 
 use \User;
-use \Keboola\Csv\CsvFile;
 
 class UserController extends BaseController {
 
@@ -32,29 +31,7 @@ class UserController extends BaseController {
 
 		switch(Request::query('format')){
 			case 'csv':
-				// Get data to put into CSV
-				$data = $users->toArray();
-
-				// Create a tempoary file in the systme temp dir
-				$tmpName = tempnam(sys_get_temp_dir(), 'csv');
-
-				$csvFile = new CsvFile($tmpName);
-
-				// Write column names
-				$csvFile->writeRow(array_keys($data[0]));
-
-				// Write rows
-				foreach ($data as $row) {
-				    $csvFile->writeRow(array_values($row));
-				}
-
-				//Delete the file once the response is returned
-				App::finish(function($request, $response) use ($tmpName)
-				{
-					File::delete($tmpName);
-				});
-
-				return Response::download($tmpName, 'users.csv');
+				return Response::csv($users->toArray(), 'user.csv');
 				break;
 
 			case 'json':
