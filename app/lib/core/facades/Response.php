@@ -1,6 +1,7 @@
 <?php namespace Core\Facades;
 
 use App;
+use File;
 use Illuminate\Support\Facades\Response as BaseResponse;
 use Keboola\Csv\CsvFile;
 
@@ -14,7 +15,7 @@ class Response extends BaseResponse {
     	}
 
     	// Create a tempoary file in the systme temp dir
-    	$tmpName = tempnam(sys_get_temp_dir(), 'csv');
+    	$tmpName = tempnam(storage_path(), 'csv');
 
     	$csvFile = new CsvFile($tmpName);
 
