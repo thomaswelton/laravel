@@ -21,11 +21,11 @@
 			<td><?= $user->id ?></td>
 			<td><?= $user->email ?></td>
 			<td width=10 class="text-center">
-				<a class="btn btn-link unstyled-link glyphicon glyphicon-pencil" href="<?= '/admin/users/'.$user->id .'/edit'?>"></a>
+				<a class="btn btn-link unstyled-link" href="<?= '/admin/users/'.$user->id .'/edit'?>"><?= HTML::icon('pencil') ?></a>
 			</td>
 			<td width=10 class="text-center">
 				<?= Form::open(array('url' => '/admin/users/'.$user->id, 'method' => 'delete')) ?>
-					<button class="btn btn-link unstyled-link glyphicon glyphicon-trash" type="submit"></button>
+					<button class="btn btn-link unstyled-link" type="submit"><?= HTML::icon('trash') ?></button>
 				<?= Form::close() ?>
 			</td>
 		</tr>
