@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\URL;
 
-use \Sentry;
+use Cartalyst\Sentry\Facades\Laravel\Sentry;
 use Cartalyst\Sentry\Users\LoginRequiredException;
 use Cartalyst\Sentry\Users\PasswordRequiredException;
 use Cartalyst\Sentry\Users\WrongPasswordException;
@@ -39,7 +39,7 @@ class HomeController extends BaseController {
 		    );
 
 		    // Try to authenticate the user
-		    $user = Sentry::authenticate($credentials, false);
+		    $user = Sentry::authenticate($credentials, Input::get('remember'));
 		    return Redirect::to('admin');
 		}
 		catch (LoginRequiredException $e)
@@ -69,7 +69,7 @@ class HomeController extends BaseController {
 	public function getLogout(){
 		Sentry::logout();
 		Session::flash('success', 'Logout successful');
-		
+
 		return Redirect::to('admin/login');
 	}
 }

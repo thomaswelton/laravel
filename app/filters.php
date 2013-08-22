@@ -45,10 +45,20 @@ Route::filter('auth.basic', function()
 });
 
 Route::filter('auth.admin', function()
-{	
-	if(!Sentry::check()){
-		return Redirect::guest('admin/login');
+{
+	$loggedIn = Sentry::check();
+
+	if($loggedIn){
+		$user =  Sentry::getUser();
+
+		//Return if user is an admin
+		if($user->hasAccess('admin')) return;
+
+		// If the user is logged in but not an admin
+		Session::flash('error', 'You do not have permission to view this page');
 	}
+
+    return Redirect::guest('admin/login');
 });
 
 /*

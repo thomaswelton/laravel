@@ -4,18 +4,36 @@ class UsersTableSeeder extends Seeder {
 
     public function run(){
 
-		Sentry::register(array(
-	            'email' => 'admin@example.com',
-	            'password' => 'password',
-	            'activated' => 1
-	    ));
+    	// Create Admins
+    	$adminGroup = Sentry::getGroupProvider()->findByName('admin');
 
-        for ($i=1; $i <= 5; $i++) {
-        	Sentry::register(array(
-	                'email' => 'admin' . $i . '@example.com',
-	                'password' => 'password',
-	                'activated' => 1
-	        ));
-        }
+		$superUser = Sentry::register(array(
+	            'email' => 'superuser@example.com',
+	            'password' => 'password',
+	            'permissions' => array(
+	            	'superuser' => 1
+	            )
+	    ), true);
+
+
+    	// Create Admins
+    	$adminGroup = Sentry::getGroupProvider()->findByName('admin');
+
+		$admin = Sentry::register(array(
+	            'email' => 'admin@example.com',
+	            'password' => 'password'
+	    ), true);
+
+	    $admin->addGroup($adminGroup);
+
+	    // Create Users
+	    $userGroup = Sentry::getGroupProvider()->findByName('user');
+
+	    $user = Sentry::register(array(
+                'email' => 'user@example.com',
+                'password' => 'password'
+        ), true);
+
+        $user->addGroup($userGroup);
 	}
 }

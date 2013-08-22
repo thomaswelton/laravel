@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\URL;
 
 class BaseController extends \BaseController {
 
-	public $layout = 'layouts.admin';
+	public $layout = 'admin.layouts.default';
 
 	public function __construct(){
 		// Require authorization for all pages expect login

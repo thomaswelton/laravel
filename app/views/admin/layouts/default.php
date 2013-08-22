@@ -18,7 +18,7 @@
     <nav class="navbar navbar-default" role="navigation">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <?php if(Sentry::check()): ?>
+            <?php if($adminUser): ?>
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
@@ -30,7 +30,7 @@
             <a class="navbar-brand" href="<?= url('admin') ?>">Laravel Bootstrap</a>
         </div>
 
-        <?php if(Sentry::check()): ?>
+        <?php if($adminUser): ?>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <?= HTML::render_menu(array(
