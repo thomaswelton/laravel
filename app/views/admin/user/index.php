@@ -3,7 +3,10 @@
   		<span>Admin Users</span>
 
 		<span class="pull-right">
-  			<a class="btn btn-success" href="/admin/users/create">New Entry</a>
+  			<div class="btn-group">
+  				<a class="btn btn-info" href="/admin/users?format=csv"><?= HTML::icon('download-alt') ?> Download CSV</a>
+  				<a class="btn btn-success" href="/admin/users/create"><?= HTML::icon('plus-sign') ?> New Entry</a>
+  			</div>
   		</span>
   	</h1>
 </div>

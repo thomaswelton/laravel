@@ -2,10 +2,10 @@
 
 HTML::macro('flash', function($syntax = null) {
     $output =  '';
-    
+
     foreach (array("error", "danger", "success", "warning", "info") as $type) {
         if( Session::has($type) ) {
-            
+
             switch ($type) {
                 case 'warning':
                     $class = '';
@@ -14,7 +14,7 @@ HTML::macro('flash', function($syntax = null) {
                 case 'error':
                     $class = 'alert-danger';
                     break;
-                
+
                 default:
                     $class = 'alert-'.$type;
                     break;
@@ -54,5 +54,5 @@ HTML::macro('page_header', function($header){
 });
 
 HTML::macro('icon', function($icon){
-    return "<span class=\"glyphicon glyphicon-block glyphicon-{$icon}\"></span>";
+    return "<span class=\"glyphicon glyphicon-{$icon}\"></span>";
 });

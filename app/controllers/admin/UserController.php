@@ -1,16 +1,16 @@
 <?php namespace Admin;
 
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Config;
-use Illuminate\Routing\Controllers\Controller;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Response;
-use Illuminate\Support\Facades\Request;
-use Illuminate\Support\Facades\View;
-use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\URL;
+use \App;
+use \Config;
+use \Controller;
+use \Redirect;
+use \Response;
+use \Request;
+use \View;
+use \Input;
+use \File;
+use \Session;
+use \URL;
 
 use Cartalyst\Sentry\Facades\Laravel\Sentry;
 use Cartalyst\Sentry\Users\UserExistsException;
@@ -29,9 +29,20 @@ class UserController extends BaseController {
 	{
 		$data = new User();
 
-		$this->layout->content = View::make('admin.user.index', array(
-			'users' => $data->paginate(2)
-		));
+		switch(Request::query('format')){
+			case 'csv':
+				return Response::csv($data->all(), 'user.csv');
+				break;
+
+			case 'json':
+				return Response::json($data->all());
+				break;
+
+			default:
+				$this->layout->content = View::make('admin.user.index', array(
+					'users' => $data->paginate(5)
+				));
+		}
 	}
 
 	/**
