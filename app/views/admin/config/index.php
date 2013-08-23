@@ -4,6 +4,9 @@
 
 
 <ul class="nav nav-tabs">
+	<li class="<?php if($tab == 'site') echo 'active' ?>">
+		<a href="<?= url('admin/config/site') ?>">Site</a>
+	</li>
 	<li class="<?php if($tab == 'laravel-facebook') echo 'active' ?>">
 		<a href="<?= url('admin/config/laravel-facebook') ?>">Facebook</a>
 	</li>
