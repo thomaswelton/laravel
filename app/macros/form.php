@@ -1,11 +1,18 @@
 <?php
 
-Form::macro('control', function($type, $name, $title = null, $value = null, $options = array())
+Form::macro('control', function($type, $name, $title = null, $value = null, $options = array('class' => 'form-control'))
 {
+	if(!is_string($value)) $value = '';
+
 	if(is_null($title)) $title = ucfirst($name);
 
 	if($type == 'password'){
 		$input = Form::password($name, array('class' => 'form-control'));
+	}else if($type == 'checkbox'){
+		if($value == 1){
+			$options['checked'] = 'checked';
+		}
+		$input = Form::input($type, $name, 1, $options);
 	}else{
 		$input = Form::$type($name, $value, array('class' => 'form-control'));
 	}
