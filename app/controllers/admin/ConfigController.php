@@ -20,12 +20,8 @@ class ConfigController extends BaseController {
 	 *
 	 * @return Response
 	 */
-	public function getIndex($tab = null)
+	public function getIndex($tab = 'site')
 	{
-		if(is_null($tab)){
-			$tab = 'laravel-facebook';
-		}
-
 		$this->layout->content = View::make('admin.config.index', array(
 			'form' => View::make('admin.config.tabs.' . $tab),
 			'tab' => $tab
@@ -35,7 +31,7 @@ class ConfigController extends BaseController {
 	public function postIndex()
 	{
 		$configItem = Input::get('config');
-		$configValues = Input::get($configItem);
+		$configValues = (array) Input::get($configItem);
 
 
 		$config = \App\Models\Config::where('name', '=', $configItem)->first();
