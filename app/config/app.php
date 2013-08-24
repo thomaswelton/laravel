@@ -116,6 +116,7 @@ return array(
 		'Thomaswelton\LaravelFacebook\LaravelFacebookServiceProvider',
 		'Thomaswelton\LaravelGoogleAnalytics\LaravelGoogleAnalyticsServiceProvider',
 		'Cartalyst\Sentry\SentryServiceProvider',
+		'Thomaswelton\LaravelGravatar\LaravelGravatarServiceProvider',
 	),
 
 	/*
@@ -183,6 +184,7 @@ return array(
 		'Facebook'		  	=> 'Thomaswelton\LaravelFacebook\Facades\Facebook',
 		'GoogleAnalytics' 	=> 'Thomaswelton\LaravelGoogleAnalytics\Facades\GoogleAnalytics',
 		'Sentry' 			=> 'Cartalyst\Sentry\Facades\Laravel\Sentry',
+		'Gravatar' 			=> 'Thomaswelton\LaravelGravatar\Facades\Gravatar',
 	),
 
 );
