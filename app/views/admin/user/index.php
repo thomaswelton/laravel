@@ -16,12 +16,14 @@
 <table class="table table-striped table-bordered table-hover table-valign-middle" valign="middle">
 	<tr>
 		<th width=65>ID</th>
+		<th width=50>Avatar</th>
 		<th colspan=3>Email</th>
 	</tr>
 
 	<?php foreach ($users as $user): ?>
 		<tr>
 			<td><?= $user->id ?></td>
+			<td><?= Gravatar::image($user->email, $user->name, array('width' => 50, 'height' => 50)) ?></td>
 			<td><?= $user->email ?></td>
 			<td width=10 class="text-center">
 				<a class="btn btn-link unstyled-link" href="<?= '/admin/users/'.$user->id .'/edit'?>"><?= HTML::icon('pencil') ?></a>
