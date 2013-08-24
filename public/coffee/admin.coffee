@@ -1,5 +1,5 @@
 require [], () ->
 	console.log 'Admin'
 
-	requirejs ['jquery'], ($) ->
-		requirejs ['bootstrap']
+	## Load jQuery and twitter bootstrap
+	requirejs ['twbs']
