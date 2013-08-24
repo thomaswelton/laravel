@@ -27,6 +27,16 @@ class HomeController extends BaseController {
 	}
 
 	public function getLogin(){
+		if(Sentry::check()){
+			$user =  Sentry::getUser();
+
+			//Return if user is an admin
+			if($user->hasAccess('admin')){
+				Session::flash('info', 'Already logged in as ' . $user->email);
+				return Redirect::to('admin');
+			}
+		}
+
 		$this->layout->content = View::make('admin.login');
 	}
 

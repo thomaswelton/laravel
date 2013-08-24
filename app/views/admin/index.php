@@ -1,1 +1,2 @@
-<?= HTML::page_header('Admin Homepage') ?>
+<?= HTML::page_header('Administration') ?>
+<?= HTML::flash() ?>
