@@ -11,6 +11,8 @@
         <script>window.html5 || document.write('<script src="js/vendor/html5shiv.js"><\/script>')</script>
     <![endif]-->
 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="/assets/stylesheets/compiled/admin.css">
 </head>
@@ -63,10 +65,7 @@
     <script type="text/javascript">
         <?= File::get(public_path().'/assets/scripts/compiled/config.js'); ?>
         requirejs.config({
-            baseUrl: './',
-            config:{
-
-            }
+            baseUrl: './'
         });
 
         require(["/assets/scripts/compiled/admin.js"]);
