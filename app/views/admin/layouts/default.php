@@ -65,7 +65,7 @@
     <script type="text/javascript">
         <?= File::get(public_path().'/assets/scripts/compiled/config.js'); ?>
         requirejs.config({
-            baseUrl: './'
+            baseUrl: '/'
         });
 
         require(["/assets/scripts/compiled/admin.js"]);
