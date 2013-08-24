@@ -56,3 +56,9 @@ HTML::macro('page_header', function($header){
 HTML::macro('icon', function($icon){
     return "<span class=\"glyphicon glyphicon-{$icon}\"></span>";
 });
+
+HTML::macro('pr', function($var){
+    return View::make('macros/html_pr', array(
+        'var' => $var
+    ));
+});
