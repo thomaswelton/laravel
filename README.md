@@ -1,6 +1,7 @@
 ## Laravel Bootstrap
 [![Build Status](https://travis-ci.org/thomaswelton/laravel.png)](https://travis-ci.org/thomaswelton/laravel)
 [![Dependency Status](https://david-dm.org/thomaswelton/laravel.png)](https://david-dm.org/thomaswelton/laravel)
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/thomaswelton/laravel/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
 <img src="icon.png" align="right" height=150>
 

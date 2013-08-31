@@ -117,6 +117,7 @@ return array(
 		'Thomaswelton\LaravelGoogleAnalytics\LaravelGoogleAnalyticsServiceProvider',
 		'Cartalyst\Sentry\SentryServiceProvider',
 		'Thomaswelton\LaravelGravatar\LaravelGravatarServiceProvider',
+		'Thomaswelton\LaravelOauth\LaravelOauthServiceProvider',
 	),
 
 	/*
@@ -185,6 +186,7 @@ return array(
 		'GoogleAnalytics' 	=> 'Thomaswelton\LaravelGoogleAnalytics\Facades\GoogleAnalytics',
 		'Sentry' 			=> 'Cartalyst\Sentry\Facades\Laravel\Sentry',
 		'Gravatar' 			=> 'Thomaswelton\LaravelGravatar\Facades\Gravatar',
+		'OAuth' 			=> 'Thomaswelton\LaravelOauth\Facades\OAuth',
 	),
 
 );
