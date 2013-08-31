@@ -26,8 +26,7 @@ $app->redirectIfTrailingSlash();
 |
 */
 
-$env = $app->detectEnvironment(function()
-{
+$env = $app->detectEnvironment(function() {
     return (getenv('LARAVEL_ENVIROMENT')) ? getenv('LARAVEL_ENVIROMENT') : 'local';
 });
 

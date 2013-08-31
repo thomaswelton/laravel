@@ -4,7 +4,7 @@ HTML::macro('flash', function($syntax = null) {
     $output =  '';
 
     foreach (array("error", "danger", "success", "warning", "info") as $type) {
-        if( Session::has($type) ) {
+        if ( Session::has($type) ) {
 
             switch ($type) {
                 case 'warning':
@@ -33,7 +33,7 @@ HTML::macro('flash', function($syntax = null) {
 HTML::macro('render_menu', function($menulinks){
     $html = '<ul class="nav navbar-nav">';
 
-    foreach($menulinks as $link){
+    foreach ($menulinks as $link) {
         $attributes = $link;
         unset($attributes['title']);
         unset($attributes['href']);

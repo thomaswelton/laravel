@@ -1,3 +1,3 @@
 <pre>
-	<?= print_r($var); ?>
+    <?= print_r($var); ?>
 </pre>

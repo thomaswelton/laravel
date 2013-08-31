@@ -11,15 +11,12 @@
 |
 */
 
-App::before(function($request)
-{
-	//
+App::before(function($request) {
+    //
 });
 
-
-App::after(function($request, $response)
-{
-	//
+App::after(function($request, $response) {
+    //
 });
 
 /*
@@ -33,37 +30,32 @@ App::after(function($request, $response)
 |
 */
 
-Route::filter('auth', function()
-{
-	if (!Sentry::check()) return Redirect::guest('login');
+Route::filter('auth', function() {
+    if (!Sentry::check()) return Redirect::guest('login');
 });
 
-Route::filter('auth.protected', function()
-{
-	if (!Sentry::check() && (!Request::is('login'))){
-		return Redirect::to('login');
-	}
+Route::filter('auth.protected', function() {
+    if (!Sentry::check() && (!Request::is('login'))) {
+        return Redirect::to('login');
+    }
 });
 
-
-Route::filter('auth.basic', function()
-{
-	return Auth::basic();
+Route::filter('auth.basic', function() {
+    return Auth::basic();
 });
 
-Route::filter('auth.admin', function()
-{
-	$loggedIn = Sentry::check();
+Route::filter('auth.admin', function() {
+    $loggedIn = Sentry::check();
 
-	if($loggedIn){
-		$user =  Sentry::getUser();
+    if ($loggedIn) {
+        $user =  Sentry::getUser();
 
-		//Return if user is an admin
-		if($user->hasAccess('admin')) return;
+        //Return if user is an admin
+        if($user->hasAccess('admin')) return;
 
-		// If the user is logged in but not an admin
-		Session::flash('error', 'You do not have permission to view this page');
-	}
+        // If the user is logged in but not an admin
+        Session::flash('error', 'You do not have permission to view this page');
+    }
 
     return Redirect::guest('admin/login');
 });
@@ -79,9 +71,8 @@ Route::filter('auth.admin', function()
 |
 */
 
-Route::filter('guest', function()
-{
-	if (Auth::check()) return Redirect::to('/');
+Route::filter('guest', function() {
+    if (Auth::check()) return Redirect::to('/');
 });
 
 /*
@@ -95,10 +86,8 @@ Route::filter('guest', function()
 |
 */
 
-Route::filter('csrf', function()
-{
-	if (Session::token() != Input::get('_token'))
-	{
-		throw new Illuminate\Session\TokenMismatchException;
-	}
+Route::filter('csrf', function() {
+    if (Session::token() != Input::get('_token')) {
+        throw new Illuminate\Session\TokenMismatchException;
+    }
 });

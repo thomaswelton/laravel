@@ -2,16 +2,16 @@
 
 use LaravelBook\Ardent\Ardent;
 
-class Config extends Ardent{
+class Config extends Ardent
+{
+    public static $rules = array(
+        'name'     => 'required'
+    );
 
-	public static $rules = array(
-		'name'     => 'required'
-	);
-	
-	/**
-	 * The database table used by the model.
-	 *
-	 * @var string
-	 */
-	protected $table = 'config';
+    /**
+     * The database table used by the model.
+     *
+     * @var string
+     */
+    protected $table = 'config';
 }

@@ -2,55 +2,48 @@
 
 use \App;
 use \Config;
-use \Controller;
 use \Redirect;
 use \Response;
-use \Request;
 use \View;
 use \Input;
-use \File;
 use \Session;
-use \URL;
-use \Exception;
 
-class ConfigController extends BaseController {
+class ConfigController extends BaseController
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     */
+    public function getIndex($tab = 'site')
+    {
+        $this->layout->content = View::make('admin.config.index', array(
+            'form' => View::make('admin.config.tabs.' . $tab),
+            'tab' => $tab
+        ));
+    }
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function getIndex($tab = 'site')
-	{
-		$this->layout->content = View::make('admin.config.index', array(
-			'form' => View::make('admin.config.tabs.' . $tab),
-			'tab' => $tab
-		));
-	}
+    public function postIndex()
+    {
+        $configItem = Input::get('config');
+        $configValues = (array) Input::get($configItem);
 
-	public function postIndex()
-	{
-		$configItem = Input::get('config');
-		$configValues = (array) Input::get($configItem);
+        $config = \App\Models\Config::where('name', '=', $configItem)->first();
 
+        if (is_null($config)) {
+            $config = new \App\Models\Config();
+        }
 
-		$config = \App\Models\Config::where('name', '=', $configItem)->first();
+        $config->name = $configItem;
+        $config->config = json_encode($configValues);
 
-		if(is_null($config)){
-			$config = new \App\Models\Config();
-		}
+        if ($config->save()) {
+            Session::flash('success', 'Config saved');
+        } else {
+            Session::flash('error', 'Config could not be saved.');
+        }
 
-		$config->name = $configItem;
-		$config->config = json_encode($configValues);
-
-		if($config->save())
-		{
-			Session::flash('success', 'Config saved');
-		}else{
-			Session::flash('error', 'Config could not be saved.');
-		}
-
-		return Redirect::to("admin/config/" . $configItem);
-	}
+        return Redirect::to("admin/config/" . $configItem);
+    }
 
 }
