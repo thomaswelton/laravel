@@ -38,6 +38,13 @@ Route::filter('auth', function()
 	if (!Sentry::check()) return Redirect::guest('login');
 });
 
+Route::filter('auth.protected', function()
+{
+	if (!Sentry::check() && (!Request::is('login'))){
+		return Redirect::to('login');
+	}
+});
+
 
 Route::filter('auth.basic', function()
 {
