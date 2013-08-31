@@ -59,25 +59,21 @@ class UserController extends BaseController
      */
     public function store()
     {
-        $ardent = new User;
+        try {
+            $user = Sentry::register(array(
+            	'email' => Input::get('email'),
+            	'password' => Input::get('password')
+            ), true);
 
-        if ( $ardent->validate() ) {
-            $validData = $ardent->getAttributes();
+            Session::flash('success', 'User added');
 
-            try {
-                $user = Sentry::register($validData, true);
-
-                Session::flash('success', 'User added');
-
-                return Redirect::to('admin/users');
-            } catch (Exception $e) {
-                Session::flash('error', $e->getMessage());
-            }
+            return Redirect::to('admin/users');
+        } catch (Exception $e) {
+            Session::flash('error', $e->getMessage());
         }
 
         Input::flash();
-
-        return Redirect::to('admin/users/create')->withErrors($ardent->errors());
+        return Redirect::to('admin/users/create');
     }
 
     /**

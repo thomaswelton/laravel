@@ -1,10 +1,11 @@
 <?php
 
-use LaravelBook\Ardent\Ardent;
 use Cartalyst\Sentry\Facades\Laravel\Sentry;
 use Cartalyst\Sentry\Users\UserNotFoundException;
+use Illuminate\Auth\UserInterface;
+use Cartalyst\Sentry\Users\Eloquent\User as SentryUserModel;
 
-class User extends Ardent
+class User extends SentryUserModel implements UserInterface
 {
     public $guarded = array('_token', 'action');
 
@@ -15,11 +16,6 @@ class User extends Ardent
         'email'     => 'required|between:3,64|email',
         'password'  =>'required|between:4,8'
     );
-
-    /**
-    * Ardent hyrdate from Input
-    */
-    public $autoHydrateEntityFromInput = true;
 
     /**
      * The database table used by the model.
@@ -49,5 +45,25 @@ class User extends Ardent
         } catch (UserNotFoundException $e) {
             throw new Exception("User was not found.");
         }
+    }
+
+    /**
+     * Get the unique identifier for the user.
+     *
+     * @return mixed
+     */
+    public function getAuthIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    /**
+     * Get the password for the user.
+     *
+     * @return string
+     */
+    public function getAuthPassword()
+    {
+        return $this->password;
     }
 }
