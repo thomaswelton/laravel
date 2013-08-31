@@ -4,6 +4,13 @@ class BaseController extends Controller {
 
 	public $data = array();
 
+	public function __construct(){
+		if(Config::get('site::protected') == 1)
+		{
+			$this->beforeFilter('auth.protected');
+		}
+    }
+
 	/**
 	 * Setup the layout used by the controller.
 	 *

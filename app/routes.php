@@ -13,6 +13,10 @@
 
 Route::group(array('prefix' => 'admin'), function() {
 
+	Route::get('/logout','Admin\\AuthController@getLogout');
+	Route::get('/login','Admin\\AuthController@getIndex');
+	Route::post('/login','Admin\\AuthController@postIndex');
+
     Route::resource('users', 'Admin\\UserController');
 
     Route::controller('config/{tab?}', 'Admin\\ConfigController');
@@ -20,6 +24,11 @@ Route::group(array('prefix' => 'admin'), function() {
 	Route::controller('/','Admin\\HomeController');
 
 });
+
+
+Route::get('/logout','AuthController@getLogout');
+Route::get('/login','AuthController@getIndex');
+Route::post('/login','AuthController@postIndex');
 
 
 Route::controller('/','HomeController');
