@@ -1,7 +1,7 @@
 <?php
 
 Form::macro('control', function($type, $name, $title = null, $value = null, $options = array('class' => 'form-control')) {
-    if(!is_string($value)) $value = '';
+    if(is_array($value)) $value = '';
 
     if(is_null($title)) $title = ucfirst($name);
 
