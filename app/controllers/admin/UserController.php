@@ -61,8 +61,8 @@ class UserController extends BaseController
     {
         try {
             $user = Sentry::register(array(
-            	'email' => Input::get('email'),
-            	'password' => Input::get('password')
+                'email' => Input::get('email'),
+                'password' => Input::get('password')
             ), true);
 
             Session::flash('success', 'User added');
@@ -73,6 +73,7 @@ class UserController extends BaseController
         }
 
         Input::flash();
+
         return Redirect::to('admin/users/create');
     }
 
@@ -169,7 +170,7 @@ class UserController extends BaseController
         $msg = (string) View::make('admin.partials.flash_user_deleted', array('id' => $id));
         Session::flash('success', $msg);
 
-      	return Redirect::to('admin/users');
+          return Redirect::to('admin/users');
     }
 
     /**
@@ -180,11 +181,11 @@ class UserController extends BaseController
      */
     public function postRestore($id)
     {
-    	User::withTrashed()->where('id', $id)->restore();
+        User::withTrashed()->where('id', $id)->restore();
 
         Session::flash('success', 'User restored');
 
-		return Redirect::to('admin/users');
+        return Redirect::to('admin/users');
     }
 
 }
