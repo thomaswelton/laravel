@@ -6,6 +6,17 @@
 	text-decoration:none;
 }
 
+.unstyled-button{
+	padding: 0;
+	cursor: pointer;
+	background: transparent;
+	border: 0;
+	color: inherit;
+	-webkit-appearance: none;
+	&:hover{
+		text-decoration: underline;
+	}
+}
 
 /*
 |--------------------
