@@ -166,9 +166,25 @@ class UserController extends BaseController
             return Redirect::to('admin/users');
         }
 
-        Session::flash('success', 'User deleted');
+        $msg = (string) View::make('admin.partials.flash_user_deleted', array('id' => $id));
+        Session::flash('success', $msg);
 
-           return Redirect::to('admin/users');
+      	return Redirect::to('admin/users');
+    }
+
+    /**
+     * Restore the specified resource from trash.
+     *
+     * @param  int      $id
+     * @return Response
+     */
+    public function postRestore($id)
+    {
+    	User::withTrashed()->where('id', $id)->restore();
+
+        Session::flash('success', 'User restored');
+
+		return Redirect::to('admin/users');
     }
 
 }

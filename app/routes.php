@@ -13,7 +13,8 @@
 
 Route::group(array('prefix' => 'admin'), function() {
 
-    Route::resource('users', 'Admin\\UserController');
+	Route::resource('users', 'Admin\\UserController');
+	Route::controller('users', 'Admin\\UserController');
 
     Route::controller('config/{tab?}', 'Admin\\ConfigController');
 

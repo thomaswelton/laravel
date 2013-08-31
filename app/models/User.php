@@ -24,6 +24,8 @@ class User extends SentryUserModel implements UserInterface
      */
     protected $table = 'users';
 
+    protected $softDelete = true;
+
     /**
      * The attributes excluded from the model's JSON form.
      *
