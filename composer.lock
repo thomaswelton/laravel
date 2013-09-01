@@ -2272,12 +2272,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/thomaswelton/laravel-gravatar.git",
-                "reference": "141211af8f19e278830ef878ecd42d694f03c302"
+                "reference": "086a968ab10fe17e7b181454a1fb5559e350230c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thomaswelton/laravel-gravatar/zipball/141211af8f19e278830ef878ecd42d694f03c302",
-                "reference": "141211af8f19e278830ef878ecd42d694f03c302",
+                "url": "https://api.github.com/repos/thomaswelton/laravel-gravatar/zipball/086a968ab10fe17e7b181454a1fb5559e350230c",
+                "reference": "086a968ab10fe17e7b181454a1fb5559e350230c",
                 "shasum": ""
             },
             "require": {
@@ -2296,6 +2296,7 @@
                 {
                     "name": "ThomasWelton",
                     "email": "thomaswelton@me.com",
+                    "homepage": "https://github.com/thomaswelton",
                     "role": "Developer"
                 }
             ],
@@ -2306,7 +2307,7 @@
                 "laravel",
                 "laravel4"
             ],
-            "time": "2013-08-26 17:15:00"
+            "time": "2013-09-01 22:54:44"
         },
         {
             "name": "thomaswelton/laravel-oauth",
@@ -2314,18 +2315,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/thomaswelton/laravel-oauth.git",
-                "reference": "8ed902dccc5603796ea3f5395c8c27b322062739"
+                "reference": "4f4387c071bb637d6f07f19c232f604635b8601c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thomaswelton/laravel-oauth/zipball/8ed902dccc5603796ea3f5395c8c27b322062739",
-                "reference": "8ed902dccc5603796ea3f5395c8c27b322062739",
+                "url": "https://api.github.com/repos/thomaswelton/laravel-oauth/zipball/4f4387c071bb637d6f07f19c232f604635b8601c",
+                "reference": "4f4387c071bb637d6f07f19c232f604635b8601c",
                 "shasum": ""
             },
             "require": {
                 "illuminate/support": "4.0.x",
                 "jwage/purl": "0.0.2",
                 "lusitanian/oauth": "~0.1",
+                "nesbot/carbon": "*",
                 "php": ">=5.3.0"
             },
             "type": "library",
@@ -2370,7 +2372,7 @@
                 "twitter",
                 "windows live"
             ],
-            "time": "2013-09-01 04:49:47"
+            "time": "2013-09-01 20:23:08"
         }
     ],
     "packages-dev": [
