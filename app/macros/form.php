@@ -1,6 +1,6 @@
 <?php
 
-Form::macro('control', function($type, $name, $title = null, $value = null, $options = array('class' => 'form-control')) {
+Form::macro('control', function($type, $name, $title = null, $value = null, $options = array()) {
     if(is_array($value)) $value = '';
 
     if(is_null($title)) $title = ucfirst($name);
@@ -11,7 +11,7 @@ Form::macro('control', function($type, $name, $title = null, $value = null, $opt
         if ($value == 1) {
             $options['checked'] = 'checked';
         }
-        $input = Form::input($type, $name, 1, $options);
+        $input = '<div class="checkbox">' . Form::input($type, $name, 1, $options) . '</div>';
     } else {
         $input = Form::$type($name, $value, array('class' => 'form-control'));
     }
