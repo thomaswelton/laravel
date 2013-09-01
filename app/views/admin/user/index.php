@@ -26,11 +26,11 @@
             <td><?= Gravatar::image($user->email, $user->name, array('width' => 50, 'height' => 50)) ?></td>
             <td><?= $user->email ?></td>
             <td width=10 class="text-center">
-                <a class="btn btn-link unstyled-link" href="<?= '/admin/users/'.$user->id .'/edit'?>"><?= HTML::icon('pencil') ?></a>
+                <a class="btn btn-link unstyled-link" href="<?= '/admin/users/'.$user->id .'/edit'?>" data-toggle="tooltip" data-trigger="hover" data-placement="auto" title="Edit User"><?= HTML::icon('pencil') ?></a>
             </td>
             <td width=10 class="text-center">
                 <?= Form::open(array('url' => '/admin/users/'.$user->id, 'method' => 'delete')) ?>
-                    <button class="btn btn-link unstyled-link" type="submit"><?= HTML::icon('trash') ?></button>
+                    <button class="btn btn-link unstyled-link" type="submit"  data-toggle="tooltip" data-trigger="hover" data-placement="auto" title="Delete User"><?= HTML::icon('trash') ?></button>
                 <?= Form::close() ?>
             </td>
         </tr>
