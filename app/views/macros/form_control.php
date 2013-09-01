@@ -5,5 +5,8 @@
         <?php if($errors->has($field)): ?>
             <span class="help-inline"><?= $errors->first($field) ?></span>
         <?php endif; ?>
+        <? if(isset($help)): ?>
+        	<span class="help-block"><?= $help ?></span>
+        <? endif ?>
     </div>
 </div>
