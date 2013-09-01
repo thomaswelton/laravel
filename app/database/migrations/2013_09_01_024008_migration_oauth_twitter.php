@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 
-class MigrationOauthUsers extends Migration {
+class MigrationOauthTwitter extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -11,10 +11,12 @@ class MigrationOauthUsers extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('oauth_users', function($table) {
+		Schema::create('oauth_twitter', function($table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
-            $table->text('facebook_uid');
+            $table->integer('user_id')->unsigned()->unique();
+            $table->text('oauth_uid');
+            $table->text('access_token');
+            $table->integer('expire_time');
 
             $table->timestamps();
 
@@ -29,7 +31,7 @@ class MigrationOauthUsers extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('oauth_users');
+		Schema::drop('oauth_twitter');
 	}
 
 }
