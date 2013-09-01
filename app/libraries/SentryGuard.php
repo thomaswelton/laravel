@@ -74,4 +74,24 @@ class SentryGuard extends Guard {
     {
         Sentry::logout();
     }
+
+    /**
+     * Determine if the current user is authenticated.
+     *
+     * @return bool
+     */
+    public function check()
+    {
+        return Sentry::check();
+    }
+
+    /**
+     * Get the currently authenticated user.
+     *
+     * @return \Illuminate\Auth\UserInterface|null
+     */
+    public function user()
+    {
+        return Sentry::getUser();
+    }
 }
