@@ -31,6 +31,7 @@
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-6">
                 <button type="submit" class="btn btn-primary">Login</button>
+                <a href="<?= OAuth::login('facebook')->redirect('admin') ?>" class="btn btn-primary">Login with Facebook</a>
             </div>
         </div>
     </fieldset>

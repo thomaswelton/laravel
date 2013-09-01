@@ -2314,12 +2314,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/thomaswelton/laravel-oauth.git",
-                "reference": "1777f2fb88f816109788b51e19258e4445ad0a89"
+                "reference": "8ed902dccc5603796ea3f5395c8c27b322062739"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thomaswelton/laravel-oauth/zipball/1777f2fb88f816109788b51e19258e4445ad0a89",
-                "reference": "1777f2fb88f816109788b51e19258e4445ad0a89",
+                "url": "https://api.github.com/repos/thomaswelton/laravel-oauth/zipball/8ed902dccc5603796ea3f5395c8c27b322062739",
+                "reference": "8ed902dccc5603796ea3f5395c8c27b322062739",
                 "shasum": ""
             },
             "require": {
@@ -2370,7 +2370,7 @@
                 "twitter",
                 "windows live"
             ],
-            "time": "2013-09-01 01:01:41"
+            "time": "2013-09-01 04:49:47"
         }
     ],
     "packages-dev": [
