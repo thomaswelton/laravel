@@ -33,6 +33,10 @@ class User extends SentryUserModel implements UserInterface
      */
     protected $hidden = array('password');
 
+    public function facebook(){
+        return $this->hasOne('Thomaswelton\LaravelOauth\Eloquent\Facebook');
+    }
+
     public static function destroy($id)
     {
         $currentUser = Sentry::getUser();

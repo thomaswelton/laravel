@@ -15,6 +15,8 @@ use \User;
 
 class UserController extends BaseController
 {
+    private $OAuthProviders = array('facebook', 'twitter', 'instagram', 'google', 'github');
+
     /**
      * Display a listing of the resource.
      *
@@ -109,7 +111,8 @@ class UserController extends BaseController
 
             $this->layout->content = View::make('admin.user.form', array(
                 'header' => 'Edit User',
-                'user' => $user
+                'user' => $user,
+                'oauthProviders' => $this->OAuthProviders,
             ));
         } catch (UserNotFoundException $e) {
             Session::flash('error', 'No user found');
