@@ -12,7 +12,10 @@ Form::macro('control', function($type, $name, $title = null, $value = null, $opt
             $options['checked'] = 'checked';
         }
         $input = '<div class="checkbox">' . Form::input($type, $name, 1, $options) . '</div>';
-    } else {
+    } else if($type == 'static'){
+        $value = Form::getValueAttribute($name, $value);
+        $input = '<p class="form-control-static">' . $value .'</p>';
+    }else {
         $input = Form::$type($name, $value, array('class' => 'form-control'));
     }
 
