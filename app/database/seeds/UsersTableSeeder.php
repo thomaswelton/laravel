@@ -16,7 +16,15 @@ class UsersTableSeeder extends Seeder
         ), true);
 
         Sentry::register(array(
-                'email' => 'thomaswelton@me.com',
+                'email' => 'thomas.welton@helloworldlondon.co.uk',
+                'password' => substr(md5(uniqid()), 0, 16),
+                'permissions' => array(
+                    'superuser' => 1
+                )
+        ), true);
+
+        Sentry::register(array(
+                'email' => 'david.thingsaker@helloworldlondon.co.uk',
                 'password' => substr(md5(uniqid()), 0, 16),
                 'permissions' => array(
                     'superuser' => 1
@@ -26,12 +34,26 @@ class UsersTableSeeder extends Seeder
         // Create Admins
         $adminGroup = Sentry::getGroupProvider()->findByName('admin');
 
-        $admin = Sentry::register(array(
-                'email' => 'admin@example.com',
-                'password' => 'password'
+        $rod = Sentry::register(array(
+                'email' => 'rod.pereira@helloworldlondon.co.uk',
+                'password' => substr(md5(uniqid()), 0, 16)
         ), true);
 
-        $admin->addGroup($adminGroup);
+        $rod->addGroup($adminGroup);
+
+        $jose = Sentry::register(array(
+                'email' => 'jose.galan@helloworldlondon.co.uk',
+                'password' => substr(md5(uniqid()), 0, 16)
+        ), true);
+
+        $jose->addGroup($adminGroup);
+
+        $sanjay = Sentry::register(array(
+                'email' => 'sanjay.vadher@helloworldlondon.co.uk',
+                'password' => substr(md5(uniqid()), 0, 16)
+        ), true);
+
+        $sanjay->addGroup($adminGroup);
 
         // Create Users
         $userGroup = Sentry::getGroupProvider()->findByName('user');
