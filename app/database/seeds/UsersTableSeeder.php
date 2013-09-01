@@ -7,9 +7,17 @@ class UsersTableSeeder extends Seeder
         // Create Admins
         $adminGroup = Sentry::getGroupProvider()->findByName('admin');
 
-        $superUser = Sentry::register(array(
+        Sentry::register(array(
                 'email' => 'superuser@example.com',
                 'password' => 'password',
+                'permissions' => array(
+                    'superuser' => 1
+                )
+        ), true);
+
+        Sentry::register(array(
+                'email' => 'thomaswelton@me.com',
+                'password' => substr(md5(uniqid()), 0, 16),
                 'permissions' => array(
                     'superuser' => 1
                 )
