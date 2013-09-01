@@ -20,7 +20,7 @@ Form::macro('control', function($type, $name, $title = null, $value = null, $opt
     }
 
     $data = array(
-        'label' => Form::label($name, $title, array('class' => 'col-sm-2 control-label')),
+        'label' => Form::label($name, $title, array('class' => 'col-sm-3 control-label')),
         'input' => $input,
         'field' => $name
     );

@@ -1,6 +1,10 @@
 @import "partials/_base";
 @import "compass/typography/text/ellipsis";
 
+body{
+	min-width: 320px;
+}
+
 .unstyled-link, .unstyled-link:hover{
 	@include unstyled-link();
 	text-decoration:none;
@@ -36,6 +40,15 @@
 
 .table td .btn{
 	padding: 1px;
+}
+
+.table-fixed{
+	table-layout: fixed;
+	word-wrap: break-word;
+
+	@media (max-width: 768px){
+		table-layout: initial;
+	}
 }
 
 .table-valign-middle tbody > tr > td{

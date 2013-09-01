@@ -14,8 +14,12 @@
     </li>
 </ul>
 <br>
-<div class="tab-content">
-    <div class="tab-pane active">
-        <?= $form ?>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="tab-content">
+            <div class="tab-pane active">
+                <?= $form ?>
+            </div>
+        </div>
     </div>
 </div>
