@@ -15,20 +15,21 @@
 
 <table class="table table-striped table-bordered table-hover table-valign-middle" valign="middle">
     <tr>
-        <th width=65>ID</th>
+        <th class="text-center" width=40>ID</th>
         <th width=50>Avatar</th>
-        <th colspan=3>Email</th>
+        <th>Email</th>
+        <th class="text-center text-muted" colspan=2>Actions</th>
     </tr>
 
     <?php foreach ($users as $user): ?>
         <tr>
-            <td><?= $user->id ?></td>
+            <td class="text-center"><?= $user->id ?></td>
             <td><?= Gravatar::image($user->email, $user->name, array('width' => 50, 'height' => 50)) ?></td>
             <td><?= $user->email ?></td>
-            <td width=10 class="text-center">
+            <td width=10 class="row-action">
                 <a class="btn btn-link unstyled-link" href="<?= '/admin/users/'.$user->id .'/edit'?>" data-toggle="tooltip" data-trigger="hover" data-placement="auto" title="Edit User"><?= HTML::icon('pencil') ?></a>
             </td>
-            <td width=10 class="text-center">
+            <td width=10 class="row-action">
                 <?= Form::open(array('url' => '/admin/users/'.$user->id, 'method' => 'delete')) ?>
                     <button class="btn btn-link unstyled-link" type="submit"  data-toggle="tooltip" data-trigger="hover" data-placement="auto" title="Delete User"><?= HTML::icon('trash') ?></button>
                 <?= Form::close() ?>

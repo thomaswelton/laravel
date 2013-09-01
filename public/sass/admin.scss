@@ -38,6 +38,24 @@
 	padding: 1px;
 }
 
+.table-valign-middle tbody > tr > td{
+	vertical-align: middle;
+}
+
+th.text-muted{
+	font-weight: 300;
+}
+
+.row-action{
+	text-align: center;
+
+	&:not(:first-of-type){
+		border-left: 0;
+		border-right: 0;
+	}
+}
+
+
 .glyphicon:empty{
 	width: 1em;
 }
