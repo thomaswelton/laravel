@@ -24,20 +24,18 @@ class UserController extends BaseController
      */
     public function index()
     {
-        $data = new User();
-
         switch (Request::query('format')) {
             case 'csv':
-                return Response::csv($data->all(), 'user.csv');
+                return Response::csv(User::all(), 'user.csv');
                 break;
 
             case 'json':
-                return Response::json($data->all());
+                return Response::json(User::all());
                 break;
 
             default:
                 $this->layout->content = View::make('admin.user.index', array(
-                    'users' => $data->paginate(5)
+                    'users' => User::with('facebook')->paginate(10)
                 ));
         }
     }
