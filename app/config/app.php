@@ -118,6 +118,7 @@ return array(
         'Cartalyst\Sentry\SentryServiceProvider',
         'Thomaswelton\LaravelGravatar\LaravelGravatarServiceProvider',
         'Thomaswelton\LaravelOauth\LaravelOauthServiceProvider',
+        'Profiler\ProfilerServiceProvider',
     ),
 
     /*
@@ -187,6 +188,7 @@ return array(
         'Sentry' 			=> 'Cartalyst\Sentry\Facades\Laravel\Sentry',
         'Gravatar' 			=> 'Thomaswelton\LaravelGravatar\Facades\Gravatar',
         'OAuth' 			=> 'Thomaswelton\LaravelOauth\Facades\OAuth',
+        'Profiler'          => 'Profiler\Facades\Profiler',
     ),
 
 );
