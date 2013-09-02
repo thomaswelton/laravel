@@ -163,6 +163,13 @@ class UserController extends BaseController
     {
         // TODO: cant delete the last superadmin only super admins can delete
         try {
+            $user = Sentry::getUserProvider()->findById($id);
+
+            // Only super users and can delete other super users
+            if($user->isSuperUser() && !Sentry::getUser()->isSuperUser()){
+                throw new Exception('You are not authorized to delete this user.');
+            }
+
             User::destroy($id);
         } catch (Exception $e) {
             Session::flash('error', $e->getMessage());
@@ -173,7 +180,7 @@ class UserController extends BaseController
         $msg = (string) View::make('admin.partials.flash_user_deleted', array('id' => $id));
         Session::flash('success', $msg);
 
-          return Redirect::to('admin/users');
+        return Redirect::to('admin/users');
     }
 
     /**

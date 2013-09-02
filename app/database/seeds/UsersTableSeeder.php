@@ -55,6 +55,13 @@ class UsersTableSeeder extends Seeder
 
         $sanjay->addGroup($adminGroup);
 
+        $admin = Sentry::register(array(
+                'email' => 'admin@example.com',
+                'password' => 'password'
+        ), true);
+
+        $admin->addGroup($adminGroup);
+
         // Create Users
         $userGroup = Sentry::getGroupProvider()->findByName('user');
 
