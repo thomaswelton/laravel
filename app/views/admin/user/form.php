@@ -28,10 +28,11 @@
         </div>
 
     <?= Form::close() ?>
-
-    <div class="col-sm-3 col-sm-offset-1">
-        <img src="<?= $user->getAvatar(320) ?>" alt="<?= $user->name ?>" class="img-circle img-responsive hidden-xs">
-    </div>
+    <?php if(isset($user)): ?>
+        <div class="col-sm-3 col-sm-offset-1">
+            <img src="<?= $user->getAvatar(320) ?>" alt="<?= $user->name ?>" class="img-circle img-responsive hidden-xs">
+        </div>
+    <?php endif; ?>
 </div>
 
 <?php if(isset($user)): ?>

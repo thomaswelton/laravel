@@ -37,6 +37,13 @@ class User extends SentryUserModel implements UserInterface
         return $this->hasOne('Thomaswelton\LaravelOauth\Eloquent\Facebook');
     }
 
+    public function getAvatar($width){
+        if($this->facebook){
+            return "http://graph.facebook.com/{$this->facebook->oauth_uid}/picture?type=large&width={$width}&height={$width}";
+        }
+        return Gravatar::src($this->email, 275);
+    }
+
     public static function destroy($id)
     {
         $currentUser = Sentry::getUser();

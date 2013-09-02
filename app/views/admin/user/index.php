@@ -27,7 +27,7 @@
         <?php foreach ($users as $user): ?>
             <tr>
                 <td class="text-center"><?= $user->id ?></td>
-                <td><?= Gravatar::image($user->email, $user->name, array('width' => 50, 'height' => 50)) ?></td>
+                <td><img src="<?= $user->getAvatar(50) ?>" width=50 height=50 alt="<?= $user->name ?>" class="img-rounded"></td>
                 <td><?= $user->email ?></td>
                 <td width=10 class="row-action">
                     <a class="btn btn-link unstyled-link" href="<?= '/admin/users/'.$user->id .'/edit'?>" data-toggle="tooltip" data-trigger="hover" data-placement="auto" title="Edit User"><?= HTML::icon('pencil') ?></a>
