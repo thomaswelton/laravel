@@ -20,8 +20,11 @@ Thumbs.db
 ############
 
 /public-build/
+/public/assets/scripts-build/
 /bootstrap/compiled.php
-/node_modules/
+/node_modules/*
+!.gitkeep
+
 /components/
 **/bower_components/
 /vendor/
