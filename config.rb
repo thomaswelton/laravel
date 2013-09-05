@@ -26,12 +26,11 @@ http_generated_images_path = http_path + "/assets/images/generated"
 sprite_load_path = ["public/assets/images",  'public/assets/images/sprites']
 
 sass_options = (environment == :production) ? { :quiet => true } : { :debug_info => true }
-disable_warnings = (environment == :production) ? true : false 
+disable_warnings = (environment == :production) ? true : false
 
 extentions_dir = 'vendor'
 
 add_import_path sass_dir + "/imports"
 
 # Require any additional compass plugins here.
-require 'compass_twitter_bootstrap'
 require 'compass-normalize'
