@@ -3,7 +3,7 @@
   , "description": "Laravel bootstrap"
   , "version": "0.0.0"
   , "engines": {
-      "node": ">=0.10.16"
+      "node": ">=0.10.15"
     , "npm":  "1.2.x"
   }
   , "repository": {
