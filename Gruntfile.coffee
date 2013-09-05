@@ -199,10 +199,10 @@ module.exports = (grunt) =>
 				options:
 					optimise: "uglify2"
 					logLevel: 1
-					appDir: "public"
-					dir: "public-build"
+					appDir: "public/assets/scripts"
+					dir: "public/assets/scripts-build"
 					mainConfigFile: "public/assets/scripts/compiled/config.js"
-					baseUrl: "assets/scripts"
+					baseUrl: "./"
 
 		## Optimize images
 		imagemin:
