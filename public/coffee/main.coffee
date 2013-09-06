@@ -1,2 +1,2 @@
-require ['home','AjaxNav'], (Home, AjaxNav) ->
+require ['home'], (Home) ->
 	console.log 'main.coffee'
