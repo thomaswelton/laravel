@@ -31,18 +31,18 @@ class UserController extends BaseController
      */
     public function index()
     {
+        $query = User::with('facebook');
+
+        $users = new UserListView($query);
+
         switch (Request::query('format')) {
             case 'csv':
-                return Response::csv(User::all(), 'user.csv');
-                break;
-
-            case 'json':
-                return Response::json(User::all());
+                return Response::csv($users->toArray(), 'user.csv');
                 break;
 
             default:
                 $this->layout->content = View::make('admin.user.index', array(
-                    'users' => User::with('facebook')->paginate(10)
+                    'users' => $users
                 ));
         }
     }

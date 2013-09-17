@@ -12,6 +12,7 @@
 		, "thomaswelton/laravel-oauth": "dev-master"
 		, "loic-sharma/profiler": "1.1.*"
 		, "kindari/laravel-markdown": "1.0.*"
+		, "jwage/purl": "*"
 	}
 	, "require-dev": {
         "phpunit/phpunit": "3.7.*"

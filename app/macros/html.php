@@ -57,6 +57,29 @@ HTML::macro('icon', function($icon){
     return "<span class=\"glyphicon glyphicon-{$icon}\"></span>";
 });
 
+
+HTML::macro('order_by', function($field, $title){
+
+    $url = new \Purl\Url(Request::fullUrl());
+    $url->query->set('orderBy', $field);
+
+    $dir = 'asc';
+
+    if(Input::get('orderBy') == $field){
+       if(Input::get('orderDir', 'asc') == 'asc'){
+            $dir = 'desc';
+        }
+    }
+
+    $url->query->set('orderDir', $dir);
+
+    return View::make('macros/html_order_by', array(
+        'field' => $field,
+        'title' => $title,
+        'url' => $url
+    ));
+});
+
 HTML::macro('pr', function($var){
     return View::make('macros/html_pr', array(
         'var' => $var
