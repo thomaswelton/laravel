@@ -119,6 +119,7 @@ return array(
         'Thomaswelton\LaravelGravatar\LaravelGravatarServiceProvider',
         'Thomaswelton\LaravelOauth\LaravelOauthServiceProvider',
         'Profiler\ProfilerServiceProvider',
+        'Kindari\LaravelMarkdown\MarkdownServiceProvider',
     ),
 
     /*
