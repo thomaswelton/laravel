@@ -13,10 +13,17 @@ use Cartalyst\Sentry\Users\UserNotFoundException;
 
 use \User;
 
+/***************
+ View Composers
+****************/
+
+View::composer('admin.user.form', function($view)
+{
+    $view->with('groups', Sentry::findAllGroups());
+});
+
 class UserController extends BaseController
 {
-    private $OAuthProviders = array('facebook', 'twitter', 'instagram', 'google', 'github');
-
     /**
      * Display a listing of the resource.
      *
@@ -105,12 +112,13 @@ class UserController extends BaseController
     public function edit($id)
     {
         try {
+            // Get user
             $user = Sentry::getUserProvider()->findById($id);
 
             $this->layout->content = View::make('admin.user.form', array(
                 'header' => 'Edit User',
                 'user' => $user,
-                'oauthProviders' => $this->OAuthProviders,
+                'oauthProviders' => array('facebook', 'twitter', 'instagram', 'google', 'github'),
             ));
         } catch (UserNotFoundException $e) {
             Session::flash('error', 'No user found');
@@ -133,6 +141,17 @@ class UserController extends BaseController
 
             // Update the user details
             $user->email = Input::get('email');
+
+            //If password is set update the password
+            if(Input::has('password')){
+                $user->password = Input::get('password');
+            }
+
+            if(Input::has('superuser')){
+                $user->superuser = Input::get('superuser');
+            }
+
+            $user->groups = Input::get('groups');
 
             // Update the user
             if ($user->save()) {

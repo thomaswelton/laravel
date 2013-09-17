@@ -4,24 +4,65 @@
 
 <div class="row">
     <?php if(isset($user)): ?>
-        <?= Form::model($user, array('url' => array('admin/users/'.$user->id), 'method' => 'PUT', 'class' => 'form-horizontal col-sm-8')) ?>
+        <?= Form::model($user, array('url' => array('admin/users/'.$user->id), 'method' => 'PUT', 'class' => 'form-horizontal col-sm-8', 'autocomplete' => 'off')) ?>
     <?php else: ?>
-        <?= Form::open(array('url' => array('admin/users'), 'method' => 'POST', 'class' => 'form-horizontal col-sm-8')) ?>
+        <?= Form::open(array('url' => array('admin/users'), 'method' => 'POST', 'class' => 'form-horizontal col-sm-8', 'autocomplete' => 'off')) ?>
     <?php endif; ?>
 
-        <?= Form::control('email', 'email', 'Email') ?>
 
-        <? if(isset($user)): ?>
-            <?= Form::control('password', 'password')->with('help', 'Leave empty to remain unchanged') ?>
-            <?= Form::control('static', 'created_at', 'Date created') ?>
-            <?= Form::control('static', 'updated_at', 'Last Edit') ?>
-        <? else: ?>
-            <?= Form::control('password', 'password') ?>
-        <? endif ?>
+        <fieldset>
+            <legend>Details</legend>
+
+            <?= Form::control('text', 'first_name', 'First Name') ?>
+            <?= Form::control('text', 'last_name', 'Last Name') ?>
+            <?= Form::control('email', 'email', 'Email') ?>
+
+            <? if(isset($user)): ?>
+                <?= Form::control('password', 'password')->with('help', 'Leave empty to remain unchanged') ?>
+                <?= Form::control('static', 'created_at', 'Date created') ?>
+                <?= Form::control('static', 'updated_at', 'Last Edit') ?>
+            <? else: ?>
+                <?= Form::control('password', 'password') ?>
+            <? endif ?>
+
+        </fieldset>
+
+        <br>
+
+        <fieldset>
+            <legend>Permissions</legend>
+
+            <div class="col-sm-3 control-label">
+                <b>User permissions</b>
+            </div>
+
+            <div class="col-sm-9">
+                <label class="checkbox-inline">
+                    <? $superuserChecked = (isset($user)) ? $user->isSuperUser() : null ?>
+                    <? $superuserAttributes = (Auth::user()->isSuperUser()) ? null : array('disabled' => true) ?>
+                    <?= Form::checkbox('superuser', 1, $superuserChecked, $superuserAttributes) ?>
+                    <span title="Super users have full access to the website, and can delete any other user" data-toggle="tooltip">Super User</span>
+                </label>
+
+                <? foreach($groups as $group): ?>
+                    <label class="checkbox-inline">
+                        <? if(isset($user)): ?>
+                            <?= Form::checkbox('groups[]', $group->id, $user->inGroup($group)) ?>
+                        <? else: ?>
+                            <?= Form::checkbox('groups[]', $group->id) ?>
+                        <? endif ?>
+
+                        <?= Str::studly($group->name) ?>
+                    </label>
+                <? endforeach ?>
+            </div>
+
+        </fieldset>
+
+        <br>
 
         <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-6">
-                <hr>
+            <div class="col-sm-offset-3 col-sm-9">
                 <button type="submit" name="action" value="save" class="btn btn-primary">Save changes</button>
                 <a href="<?= action('Admin\\UserController@index') ?>" class="btn btn-link">Cancel</a>
             </div>
@@ -62,7 +103,7 @@
                                 <input type="hidden" name="redirect" value="<?= Request::url() ?>">
                                 <button type="submit" name="action" value="delete" class="btn btn-block btn-danger">Delete Link</button>
                             <?= Form::close() ?>
-                        <? else: ?>
+                        <? elseif($user->id == Auth::user()->id): ?>
                             <a href="<?= OAuth::associate($provider)->redirect(Request::url()) ?>" class="btn btn-block btn-primary">Link to <?= Str::studly($provider) ?></a>
                         <? endif ?>
                     </td>

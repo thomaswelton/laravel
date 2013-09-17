@@ -37,6 +37,51 @@ class User extends SentryUserModel implements UserInterface
         return $this->hasOne('Thomaswelton\LaravelOauth\Eloquent\Facebook');
     }
 
+    public function getSuperuserAttribute(){
+        return $this->isSuperUser();
+    }
+
+    public function setSuperuserAttribute($isSuperUser){
+        // Return if there is no change to be made
+        if($isSuperUser == $this->superuser) return;
+
+        // Only other super admins should be able to change a users
+        // Super admin permission level
+
+        $user = Auth::user();
+        if($user->isSuperUser()){
+            $permissions = $this->getPermissions();
+            $permissions['superuser'] = (bool) $isSuperUser;
+
+            $this->permissions = $permissions;
+        }else{
+            throw new Exception("You do not have permission to create or edit super users", 1);
+        }
+    }
+
+    public function getGroupsAttribute(){
+        return $this->getGroups();
+    }
+
+    public function setGroupsAttribute($groups){
+        $existingGroups = $this->groups;
+
+        if(count($existingGroups) > 0){
+            foreach ($existingGroups as $group) {
+                if(!is_array($groups) || !in_array($group->id, $groups)){
+                    $this->removeGroup($group);
+                }
+            }
+        }
+
+        if(is_array($groups)){
+            foreach ($groups as $id) {
+                $group = Sentry::findGroupById($id);
+                $this->addGroup($group);
+            }
+        }
+    }
+
     public function getAvatar($width){
         if($this->facebook){
             return "http://graph.facebook.com/{$this->facebook->oauth_uid}/picture?type=large&width={$width}&height={$width}";
