@@ -99,8 +99,10 @@
                     <td><? if(is_object($user->$provider) && !is_null($user->$provider->expire_time)) echo $user->$provider->expire_time->diffForHumans() ?></td>
                     <td width=10 class="row-action">
                         <? if(is_object($user->$provider)): ?>
-                            <?= Form::open(array('url' => array('oauth/' . $provider), 'method' => 'DELETE', 'class' => 'form-horizontal')) ?>
-                                <input type="hidden" name="redirect" value="<?= Request::url() ?>">
+                            <?= Form::open(array('url' => array('admin/users/oauth/' . $user->id), 'method' => 'DELETE', 'class' => 'form-horizontal')) ?>
+
+                                <?= Form::hidden('provider', $provider) ?>
+
                                 <button type="submit" name="action" value="delete" class="btn btn-block btn-danger">Delete Link</button>
                             <?= Form::close() ?>
                         <? elseif($user->id == Auth::user()->id): ?>

@@ -201,10 +201,28 @@ class UserController extends BaseController
     }
 
     /**
+     * Delete an oath link
+     *
+     * @param  int      $id
+     * @return Redirect
+     */
+    public function deleteOauth($id)
+    {
+        $provider = Input::get('provider');
+        $user = User::find($id);
+
+        $user->$provider()->delete();
+
+        Session::flash('success', 'Account link deleted');
+
+        return Redirect::to('admin/users/' . $id . '/edit');
+    }
+
+    /**
      * Restore the specified resource from trash.
      *
      * @param  int      $id
-     * @return Response
+     * @return Redirect
      */
     public function postRestore($id)
     {
