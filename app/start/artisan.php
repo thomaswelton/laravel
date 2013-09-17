@@ -13,3 +13,4 @@
 
 Artisan::add(new HerokuDeployCommand);
 Artisan::add(new AppInitCommand);
+Artisan::add(new FbusersCommand);

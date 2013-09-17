@@ -1,8 +1,18 @@
 @import "partials/_base";
 @import "compass/typography/text/ellipsis";
 
+$base-font-size: 14px;
+
+$brand-primary: #428bca;
+$brand-success: #5cb85c;
+$brand-warning: #f0ad4e;
+$brand-danger:  #d9534f;
+$brand-info:    #5bc0de;
+
 body{
+	font-size: $base-font-size;
 	min-width: 320px;
+	padding-bottom: 75px;
 }
 
 .unstyled-link, .unstyled-link:hover{
@@ -19,6 +29,85 @@ body{
 	-webkit-appearance: none;
 	&:hover{
 		text-decoration: underline;
+	}
+}
+
+table.userlistview{
+	th.table-actions{
+		width: 48px;
+	}
+	th.facebook_oauth_uid{
+		width: 125px;
+	}
+	th.created_at{
+		width: 100px;
+	}
+	th.first_name, th.last_name{
+		width: 200px;
+	}
+}
+
+/*
+|--------------------
+| Genreal Table views
+|--------------------
+*/
+
+table{
+	th{
+		$line-height: 1.5;
+		$background-color: #f9f9f9;
+
+		position:relative;
+		line-height: $line-height;
+		background-color: $background-color;
+
+		a{
+			display: block;
+			padding: 0 1em;
+		}
+
+		.glyphicon{
+			position: absolute;
+			top: 0.5 * ($line-height * $base-font-size);
+			right: 8px;
+
+			color: darken($background-color, 15%);
+		}
+
+		.glyphicon-sort{
+			@include single-transition(opacity, 0.5s);
+			opacity: 0;
+		}
+
+		&:hover{
+			.glyphicon-sort{
+				opacity: 1;
+			}
+		}
+	}
+
+	th.id{
+		width: 45px;
+		text-align: center;
+	}
+	td.id, th.avatar{
+		text-align: center;
+	}
+
+	th.avatar{
+		width: 48px;
+	}
+
+	th.email{
+		width: 325px;
+	}
+
+	.glyphicon-trash{
+		@include single-transition(color, 0.25s);
+		&:hover{
+			color: $brand-danger;
+		}
 	}
 }
 
@@ -75,4 +164,8 @@ th.text-muted{
 
 .form-group .help-block{
 	margin-bottom: 0;
+}
+
+.input-group .input-group-btn .btn:first-of-type{
+	border-left: 0;
 }
