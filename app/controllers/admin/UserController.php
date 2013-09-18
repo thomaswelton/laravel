@@ -67,10 +67,20 @@ class UserController extends BaseController
     public function store()
     {
         try {
-            $user = Sentry::register(array(
+            $user = Sentry::createUser(array(
                 'email' => Input::get('email'),
-                'password' => Input::get('password')
-            ), true);
+                'password' => Input::get('password'),
+                'first_name' => Input::get('first_name'),
+                'last_name' => Input::get('last_name'),
+            ));
+            // Activate user
+            $user->attemptActivation($user->getActivationCode());
+
+            if(Input::has('superuser')){
+                $user->superuser = Input::get('superuser');
+            }
+
+            $user->groups = Input::get('groups');
 
             Session::flash('success', 'User added');
 
