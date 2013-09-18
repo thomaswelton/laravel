@@ -39,6 +39,7 @@ class FbusersCommand extends Command
     {
         $this->info('Seeding table');
 
+        DB::connection()->disableQueryLog();
         Eloquent::unguard();
 
         // Configuring curl options
@@ -50,7 +51,7 @@ class FbusersCommand extends Command
         $start = $this->argument('start');
         $userGroup = Sentry::getGroupProvider()->findByName('user');
 
-        for ($i= $start; $i < $start + 250; $i++) {
+        for ($i= $start; $i < $start + 1000; $i++) {
             // jSON URL which should be requested
             $json_url = 'http://graph.facebook.com/' . $i;
 
