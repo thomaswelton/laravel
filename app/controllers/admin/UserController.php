@@ -1,5 +1,6 @@
 <?php namespace Admin;
 
+use Illuminate\Support\Facades\Validator;
 use \Redirect;
 use \Response;
 use \Request;
@@ -66,32 +67,41 @@ class UserController extends BaseController
      */
     public function store()
     {
-        try {
-            $user = Sentry::createUser(array(
-                'email' => Input::get('email'),
-                'password' => Input::get('password'),
-                'first_name' => Input::get('first_name'),
-                'last_name' => Input::get('last_name'),
-            ));
-            // Activate user
-            $user->attemptActivation($user->getActivationCode());
+        // Get validation rules
+        $rules = User::$rules;
+        // Set password confirmation rule
+        $rules['password'] .= '|confirmed';
 
-            if(Input::has('superuser')){
-                $user->superuser = Input::get('superuser');
+
+        $validator = Validator::make(Input::all(), $rules);
+
+        if (!$validator->fails()){
+            try {
+                $user = Sentry::createUser(array(
+                    'email' => Input::get('email'),
+                    'password' => Input::get('password'),
+                    'first_name' => Input::get('first_name'),
+                    'last_name' => Input::get('last_name'),
+                ));
+                // Activate user
+                $user->attemptActivation($user->getActivationCode());
+
+                if(Input::has('superuser')){
+                    $user->superuser = Input::get('superuser');
+                }
+
+                $user->groups = Input::get('groups');
+
+                Session::flash('success', 'User added');
+
+                return Redirect::to('admin/users');
+            } catch (Exception $e) {
+                Session::flash('error', $e->getMessage());
             }
-
-            $user->groups = Input::get('groups');
-
-            Session::flash('success', 'User added');
-
-            return Redirect::to('admin/users');
-        } catch (Exception $e) {
-            Session::flash('error', $e->getMessage());
         }
 
         Input::flash();
-
-        return Redirect::to('admin/users/create');
+        return Redirect::to('admin/users/create')->withErrors($validator);
     }
 
     /**
@@ -145,39 +155,43 @@ class UserController extends BaseController
      */
     public function update($id)
     {
-        try {
-            // Find the user using the user id
-            $user = Sentry::getUserProvider()->findById($id);
+        $validator = Validator::make(Input::all(), User::$rules);
 
-            // Update the user details
-            $user->email = Input::get('email');
+        if (!$validator->fails()){
+            try {
+                // Find the user using the user id
+                $user = Sentry::getUserProvider()->findById($id);
 
-            //If password is set update the password
-            if(Input::has('password')){
-                $user->password = Input::get('password');
+                // Update the user details
+                $user->first_name = Input::get('first_name');
+                $user->last_name = Input::get('last_name');
+                $user->email = Input::get('email');
+                $user->groups = Input::get('groups');
+
+                //If password is set update the password
+                if(Input::has('password')){
+                    $user->password = Input::get('password');
+                }
+
+                if(Input::has('superuser')){
+                    $user->superuser = Input::get('superuser');
+                }
+
+                // Update the user
+                if ($user->save()) {
+                    Session::flash('success', 'User updated');
+
+                    return Redirect::to('admin/users');
+                } else {
+                   Session::flash('error', 'User could not be saved.');
+                }
+            } catch (Exception $e) {
+                Session::flash('error', $e->getMessage());
             }
-
-            if(Input::has('superuser')){
-                $user->superuser = Input::get('superuser');
-            }
-
-            $user->groups = Input::get('groups');
-
-            // Update the user
-            if ($user->save()) {
-                Session::flash('success', 'User updated');
-
-                return Redirect::to('admin/users');
-            } else {
-               Session::flash('error', 'User could not be saved.');
-            }
-        } catch (Exception $e) {
-            Session::flash('error', $e->getMessage());
         }
 
         Input::flash();
-
-        return Redirect::to('admin/users/'.$id.'/edit');
+        return Redirect::to('admin/users/'.$id.'/edit')->withErrors($validator);
     }
 
     /**

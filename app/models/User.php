@@ -10,9 +10,11 @@ class User extends SentryUserModel implements UserInterface
     public $guarded = array('_token', 'action');
 
     /**
-    * Ardent validation rules
+    * Validation rules
     */
     public static $rules = array(
+        'first_name' => 'required',
+        'last_name' => 'required',
         'email'     => 'required|between:3,64|email',
         'password'  =>'required|between:4,16'
     );

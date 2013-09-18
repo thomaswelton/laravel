@@ -23,6 +23,7 @@
                 <?= Form::control('static', 'updated_at', 'Last Edit') ?>
             <? else: ?>
                 <?= Form::control('password', 'password') ?>
+                <?= Form::control('password', 'password_confirmation', 'Confirm Password') ?>
             <? endif ?>
 
         </fieldset>
