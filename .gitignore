@@ -35,3 +35,4 @@ public/assets/images/generated/
 /npm-debug.log
 
 /app/config/packages/thomaswelton/laravel-facebook/config.php
+/app/config/local/
