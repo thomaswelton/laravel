@@ -16,6 +16,8 @@ Route::group(array('prefix' => 'admin'), function() {
     Route::resource('users', 'Admin\\UserController');
     Route::controller('users', 'Admin\\UserController');
 
+    Route::resource('entries', 'Admin\\EntriesController');
+
     Route::controller('config/{tab?}', 'Admin\\ConfigController');
 
     Route::controller('/','Admin\\HomeController');
