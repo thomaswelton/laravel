@@ -34,5 +34,11 @@
                 <a href="<?= OAuth::login('facebook')->redirect('admin') ?>" class="btn btn-primary">Login with Facebook</a>
             </div>
         </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-6">
+                <a href="<?= URL::to('password') ?>">Reset Password</a>
+            </div>
+        </div>
     </fieldset>
 <?= Form::close() ?>

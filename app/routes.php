@@ -22,6 +22,7 @@ Route::group(array('prefix' => 'admin'), function() {
 
 });
 
+Route::controller('/password','PasswordController');
 
 Route::controller('/','HomeController');
 
