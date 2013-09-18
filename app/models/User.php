@@ -14,7 +14,7 @@ class User extends SentryUserModel implements UserInterface
     */
     public static $rules = array(
         'email'     => 'required|between:3,64|email',
-        'password'  =>'required|between:4,8'
+        'password'  =>'required|between:4,16'
     );
 
     /**
