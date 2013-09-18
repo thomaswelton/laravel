@@ -6,7 +6,7 @@
     <div class="col-sm-5 pull-left">
         <span class="pull-right">
             <div class="btn-group">
-                <a class="btn btn-info" href="<?= Request::fullUrl() ?>&amp;format=csv"><?= HTML::icon('download-alt') ?> Download CSV</a>
+                <a class="btn btn-info" href="<?= Request::fullUrl() ?>?&amp;format=csv"><?= HTML::icon('download-alt') ?> Download CSV</a>
                 <a class="btn btn-success" href="/admin/users/create"><?= HTML::icon('plus-sign') ?> New Entry</a>
             </div>
         </span>
