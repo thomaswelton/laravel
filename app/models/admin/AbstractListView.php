@@ -143,7 +143,7 @@ class AbstractListView
 	public function getCsvFile(){
 		\DB::connection()->disableQueryLog();
 
-		$tmpName = tempnam(storage_path(), 'csv');
+		$tmpName = tempnam(storage_path() . 'csv' , 'csv');
 
         $csvFile = new \Keboola\Csv\CsvFile($tmpName);
         $csvFile->writeRow(array_values($this->columns));
