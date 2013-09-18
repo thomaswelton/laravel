@@ -1,48 +1,15 @@
 <?php namespace Admin;
 
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Input;
 use \View;
 use \HTML;
 use \Str;
+use \DB;
 
 class AbstractListView
 {
-	public function __construct(Builder $query){
+	public function __construct($query){
 		$this->query = $query;
-
-		if(Input::has('filter') || Input::has('orderBy') || Input::has('search')){
-			$this->joinTables();
-		}
-
-		// Sort the query by anything specified in the query string
-		if(Input::has('orderBy')){
-			// If order by is a string then order by the column for this model
-			// Or if in dot notation order by the models relation
-
-			$orderByParts = explode('.', Input::get('orderBy'));
-			$direction = Input::get('orderDir', 'asc');
-
-			if(count($orderByParts) == 1){
-				$this->query->orderBy($orderByParts[0], $direction);
-			}else{
-				$model = $query->getModel();
-				$relationName = $orderByParts[0];
-
-				$relation = $this->query->getRelation($relationName);
-				$related_table = $relation->getRelated()->getTable();
-
-				$this->query->orderBy($related_table . '.' . $orderByParts[1], $direction);
-			}
-		}
-
-		if(Input::has('search')){
-			$this->search(Input::get('search'));
-		}
-
-		if(Input::has('filter')){
-			$this->applyFilter(Input::get('filter'));
-		}
 	}
 
 	public function applyFilter($filter){
@@ -96,6 +63,39 @@ class AbstractListView
 	}
 
 	public function paginate($rows = 5){
+		if(Input::has('filter') || Input::has('orderBy') || Input::has('search')){
+			$this->joinTables();
+		}
+
+		// Sort the query by anything specified in the query string
+		if(Input::has('orderBy')){
+			// If order by is a string then order by the column for this model
+			// Or if in dot notation order by the models relation
+
+			$orderByParts = explode('.', Input::get('orderBy'));
+			$direction = Input::get('orderDir', 'asc');
+
+			if(count($orderByParts) == 1){
+				$this->query->orderBy($orderByParts[0], $direction);
+			}else{
+				$model = $query->getModel();
+				$relationName = $orderByParts[0];
+
+				$relation = $this->query->getRelation($relationName);
+				$related_table = $relation->getRelated()->getTable();
+
+				$this->query->orderBy($related_table . '.' . $orderByParts[1], $direction);
+			}
+		}
+
+		if(Input::has('search')){
+			$this->search(Input::get('search'));
+		}
+
+		if(Input::has('filter')){
+			$this->applyFilter(Input::get('filter'));
+		}
+
 		return $this->query->paginate(Input::get('perPage', $rows));
 	}
 
@@ -140,16 +140,34 @@ class AbstractListView
 		));
 	}
 
-	public function toArray(){
-		$data = $this->query->get();
+	public function getCsvFile(){
+		\DB::connection()->disableQueryLog();
 
-		$return = null;
-		foreach ($data as $index => $row){
-			foreach ($this->columns as $field => $column){
-				$return[$index][$field] = $this->getColumnData($row, $field);
+		$tmpName = tempnam(storage_path(), 'csv');
+
+        $csvFile = new \Keboola\Csv\CsvFile($tmpName);
+        $csvFile->writeRow(array_values($this->columns));
+
+		// Determine how many chunks to get
+		$limit = 1000;
+		$count = $this->query->count();
+		$chunks = ceil($count / $limit);
+
+		for ($i=0; $i < $chunks; $i++) {
+			$this->query->take($limit)->skip($i * $limit);
+			$data = $this->query->get();
+
+			foreach ($data as $index => $row){
+				$csvRow = array();
+
+				foreach ($this->columns as $field => $column){
+					$csvRow[] = $this->getColumnData($row, $field);
+				}
+
+				$csvFile->writeRow($csvRow);
 			}
 		}
 
-		return $return;
+		return $tmpName;
 	}
 }

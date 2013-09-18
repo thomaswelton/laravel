@@ -38,7 +38,7 @@ class UserController extends BaseController
 
         switch (Request::query('format')) {
             case 'csv':
-                return Response::csv($users->toArray(), 'user.csv');
+                return Response::download($users->getCsvFile(), 'user.csv');
                 break;
 
             default:
