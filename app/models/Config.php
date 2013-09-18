@@ -1,6 +1,7 @@
 <?php namespace App\Models;
 
 use LaravelBook\Ardent\Ardent;
+use \Cache;
 
 class Config extends Ardent
 {
@@ -14,4 +15,16 @@ class Config extends Ardent
      * @var string
      */
     protected $table = 'config';
+
+    public function afterSave()
+    {
+    	Cache::forget('config:all');
+    }
+
+    public static function all($columns = array())
+    {
+    	return Cache::rememberForever('config:all', function(){
+    		return parent::all();
+    	});
+    }
 }

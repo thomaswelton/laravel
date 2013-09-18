@@ -92,9 +92,10 @@ require app_path().'/macros/form.php';
 */
 
 App::before(function() {
-    $config = DB::table('config')->get();
+    $config = App::make('App\\Models\\Config');
+    $items = $config->all();
 
-    foreach ($config as $item) {
+    foreach ($items as $item) {
         $name = $item->name;
         $values = json_decode($item->config);
 
