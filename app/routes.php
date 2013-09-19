@@ -22,7 +22,13 @@ Route::group(array('prefix' => 'admin'), function() {
 
 });
 
-Route::controller('/password','PasswordController');
+Route::get('/login','AuthController@getLogin');
+Route::get('/logout','AuthController@getLogout');
+Route::post('/login','AuthController@postLogin');
+
+Route::get('/password','AuthController@getForgot');
+Route::post('/password','AuthController@postForgot');
+Route::controller('/password','AuthController');
 
 Route::controller('/','HomeController');
 
