@@ -1,16 +1,65 @@
 <?php
 
 use Cartalyst\Sentry\Facades\Laravel\Sentry;
+use Cartalyst\Sentry\Users\LoginRequiredException;
+use Cartalyst\Sentry\Users\PasswordRequiredException;
+use Cartalyst\Sentry\Users\WrongPasswordException;
+use Cartalyst\Sentry\Users\UserNotFoundException;
+use Cartalyst\Sentry\Users\UserNotActivatedException;
 
-class PasswordController extends BaseController
+class AuthController extends BaseController
 {
-
-    public function getIndex()
+    public function getLogin()
     {
-        return View::make('password.index');
+        if (Sentry::check()) {
+            return Redirect::to('/');
+        }
+
+        return View::make('auth.login');
     }
 
-    public function postIndex()
+    public function getLogout()
+    {
+        Sentry::logout();
+        Session::flash('success', 'Logout successful');
+
+        return Redirect::to('/');
+    }
+
+    public function postLogin()
+    {
+        try {
+            // Set login credentials
+            $credentials = array(
+                'email'    => Input::get('email'),
+                'password' => Input::get('password'),
+            );
+
+            // Try to authenticate the user
+            $user = Sentry::authenticate($credentials, Input::get('remember'));
+
+            return Redirect::to('/');
+        } catch (LoginRequiredException $e) {
+            Session::flash('error', 'Login field is required.');
+        } catch (PasswordRequiredException $e) {
+            Session::flash('error', 'Password field is required.');
+        } catch (WrongPasswordException $e) {
+            Session::flash('error', 'Wrong password, try again.');
+        } catch (UserNotFoundException $e) {
+            Session::flash('error', 'User was not found.');
+        } catch (UserNotActivatedException $e) {
+            Session::flash('error', 'User is not activated.');
+        }
+
+        return Redirect::to('/login');
+    }
+
+    public function getForgot()
+    {
+        return View::make('auth.forgot');
+    }
+
+    public function postForgot()
     {
         $this->beforeFilter('csrf');
         $email = Input::get('email');
@@ -29,7 +78,7 @@ class PasswordController extends BaseController
             });
 
             Session::flash('success', 'An email has been sent with your password reset code');
-            return Redirect::action('PasswordController@getReset');
+            return Redirect::action('AuthController@getReset');
         }
         catch (Cartalyst\Sentry\Users\UserNotFoundException $e)
         {
@@ -37,17 +86,17 @@ class PasswordController extends BaseController
             Input::flash();
         }
 
-        return Redirect::action('PasswordController@getIndex');
+        return Redirect::action('AuthController@getForgot');
     }
 
     public function getReset()
     {
-        return View::make('password.reset');
+        return View::make('auth.reset');
     }
 
     public function getDone()
     {
-        return View::make('password.done');
+        return View::make('auth.done');
     }
 
     public function postReset()
@@ -78,7 +127,7 @@ class PasswordController extends BaseController
                         {
                             $message->to($user->email, $user->first_name . ' ' . $user->last_name)->subject('Password Reset Successful');
                         });
-                        return Redirect::action('PasswordController@getDone');
+                        return Redirect::action('AuthController@getDone');
                     }
                     else{
                         // Password reset failed
@@ -98,6 +147,6 @@ class PasswordController extends BaseController
         }
 
         Input::flash();
-        return Redirect::action('PasswordController@getReset')->withErrors($validator);
+        return Redirect::action('AuthController@getReset')->withErrors($validator);
     }
 }
