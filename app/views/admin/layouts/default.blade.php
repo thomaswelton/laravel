@@ -20,50 +20,51 @@
     <nav class="navbar navbar-default" role="navigation">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <?php if($adminUser): ?>
+            @if($adminUser)
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-            <?php endif; ?>
+            @endif
 
-            <a class="navbar-brand" href="<?= url('admin') ?>">Laravel Bootstrap</a>
+            <a class="navbar-brand" href="{{ url('admin') }}">Laravel Bootstrap</a>
         </div>
 
-        <?php if($adminUser): ?>
+        @if($adminUser)
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <?= HTML::render_menu(array(
+                {{ HTML::render_menu(array(
                     array('href' => 'admin/config', 'title' => 'Config'),
                     array('href' => 'admin/users', 'title' => 'Users')
-                )) ?>
+                )) }}
 
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="/" target="_blank">View Site</a>
                     <li><a href="/admin/logout">Logout</a>
                 </ul>
             </div><!-- /.navbar-collapse -->
-        <?php endif; ?>
+        @endif
     </nav>
 
     <div class="container" role="main">
-        <?= $content ?>
+        @yield('content')
     </div>
 
     <script src="/bower_components/requirejs/require.js"></script>
 
-    <?php if ('production' != App::environment()): ?>
+    @if ('production' != App::environment())
         <script>
             require.config({
                 urlArgs: "bust=" + (new Date()).getTime()
             });
         </script>
-    <?php endif ?>
+    @endif
 
     <script type="text/javascript">
-        <?= File::get(public_path().'/assets/scripts/compiled/config.js'); ?>
+        {{ File::get(public_path().'/assets/scripts/compiled/config.js') }}
+
         requirejs.config({
             baseUrl: '/'
         });

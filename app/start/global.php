@@ -112,3 +112,13 @@ Auth::extend('sentry', function() {
         App::make('session')
     );
 });
+
+View::composer('layouts.default', function($view)
+{
+    if(!$view->offsetExists('page_title')){
+        $view->with('page_title', 'Default title');
+    }
+    if(!$view->offsetExists('page_description')){
+        $view->with('page_description', 'Default description');
+    }
+});

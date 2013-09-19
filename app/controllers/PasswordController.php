@@ -4,11 +4,10 @@ use Cartalyst\Sentry\Facades\Laravel\Sentry;
 
 class PasswordController extends BaseController
 {
-    public $layout = 'layouts.bootstrap';
 
     public function getIndex()
     {
-        $this->layout->content = View::make('password.index');
+        return View::make('password.index');
     }
 
     public function postIndex()
@@ -43,12 +42,12 @@ class PasswordController extends BaseController
 
     public function getReset()
     {
-        $this->layout->content = View::make('password.reset');
+        return View::make('password.reset');
     }
 
     public function getDone()
     {
-        $this->layout->content = View::make('password.done');
+        return View::make('password.done');
     }
 
     public function postReset()

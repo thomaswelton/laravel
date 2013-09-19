@@ -9,11 +9,9 @@ use Cartalyst\Sentry\Users\UserNotActivatedException;
 
 class HomeController extends BaseController
 {
-    public $layout = 'layouts.default';
-
     public function getIndex()
     {
-        $this->layout->content = View::make('pages.index');
+        return View::make('pages.index');
     }
 
     public function getLogin()
@@ -22,11 +20,7 @@ class HomeController extends BaseController
             return Redirect::to('/');
         }
 
-        // Change the default layout
-        $this->layout = 'layouts.bootstrap';
-        parent::setUpLayout();
-
-        $this->layout->content = View::make('pages.login');
+        return View::make('pages.login');
     }
 
     public function getLogout()

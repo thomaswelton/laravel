@@ -17,7 +17,7 @@ class ConfigController extends BaseController
      */
     public function getIndex($tab = 'site')
     {
-        $this->layout->content = View::make('admin.config.index', array(
+        return View::make('admin.config.index', array(
             'form' => View::make('admin.config.tabs.' . $tab),
             'tab' => $tab
         ));

@@ -16,20 +16,21 @@
 </head>
 <body>
     <div class="container" role="main">
-        <?= $content ?>
+        @yield('content')
     </div>
 
     <script src="/bower_components/requirejs/require.js"></script>
-    <?php if ('production' != App::environment()): ?>
+    @if ('production' != App::environment())
         <script>
             require.config({
                 urlArgs: "bust=" + (new Date()).getTime()
             });
         </script>
-    <?php endif ?>
+    @endif
 
     <script type="text/javascript">
-        <?= File::get(public_path().'/assets/scripts/compiled/config.js'); ?>
+        {{ File::get(public_path().'/assets/scripts/compiled/config.js') }}
+
         requirejs.config({
             baseUrl: './'
         });

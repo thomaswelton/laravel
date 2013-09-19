@@ -42,7 +42,7 @@ class UserController extends BaseController
                 break;
 
             default:
-                $this->layout->content = View::make('admin.user.index', array(
+                return View::make('admin.user.index', array(
                     'users' => $users
                 ));
         }
@@ -55,7 +55,7 @@ class UserController extends BaseController
      */
     public function create()
     {
-        $this->layout->content = View::make('admin.user.form', array(
+        return View::make('admin.user.form', array(
             'header' => 'Create User'
         ));
     }
@@ -135,7 +135,7 @@ class UserController extends BaseController
             // Get user
             $user = Sentry::getUserProvider()->findById($id);
 
-            $this->layout->content = View::make('admin.user.form', array(
+            return View::make('admin.user.form', array(
                 'header' => 'Edit User',
                 'user' => $user,
                 'oauthProviders' => array('facebook', 'twitter', 'instagram', 'google', 'github'),
