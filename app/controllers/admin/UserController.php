@@ -8,6 +8,8 @@ use \View;
 use \Input;
 use \Session;
 use \Exception;
+use \URL;
+use \Mail;
 
 use Cartalyst\Sentry\Facades\Laravel\Sentry;
 use Cartalyst\Sentry\Users\UserNotFoundException;
@@ -91,6 +93,17 @@ class UserController extends BaseController
                 }
 
                 $user->groups = Input::get('groups');
+
+                if(Input::get('notify')){
+                    // Send notifcation email
+                    $loginLink = ($user->hasAccess('admin')) ? URL::to('admin/login') : URL::to('login');
+                    $mailData = array('user' => $user, 'password' => Input::get('password'), 'loginLink' => $loginLink);
+
+                    Mail::queue(array('emails.admin.newuser', 'emails.admin.newuser_text'), $mailData, function($message) use ($user)
+                    {
+                        $message->to($user->email, $user->first_name . ' ' . $user->last_name)->subject('Huurd.it - User account created');
+                    });
+                }
 
                 Session::flash('success', 'User added');
 

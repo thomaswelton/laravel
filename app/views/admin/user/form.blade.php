@@ -27,6 +27,13 @@
                 <? else: ?>
                     <?= Form::control('password', 'password') ?>
                     <?= Form::control('password', 'password_confirmation', 'Confirm Password') ?>
+
+                    <div class="col-sm-9 col-sm-offset-3">
+                        <label class="checkbox-inline">
+                            <?= Form::checkbox('notify', 1) ?>
+                            <span title="Email this user with their login details" data-toggle="tooltip">Notify User</span>
+                        </label>
+                    </div>
                 <? endif ?>
 
             </fieldset>
