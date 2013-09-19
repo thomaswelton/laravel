@@ -35,7 +35,7 @@ Route::filter('auth', function() {
 });
 
 Route::filter('auth.protected', function() {
-    if (!Sentry::check() && (!Request::is('login'))) {
+    if (!Sentry::check() && !(Request::is('login') || Request::segment(1) == 'admin' || Request::segment(1) == 'password')) {
         return Redirect::to('login');
     }
 });
