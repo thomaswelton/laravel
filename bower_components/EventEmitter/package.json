@@ -1,0 +1,11 @@
+{
+    "name": "bower-event-emitter"
+  , "description": "Event-Emitter"
+  , "version": "0.0.0"
+  , "scripts": {
+    "test": "grunt travis --verbose"
+  }
+  , "devDependencies": {
+    "grunt-contrib-coffee": ">= 0.6.6"
+  }
+}

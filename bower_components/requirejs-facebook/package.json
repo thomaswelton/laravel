@@ -1,0 +1,29 @@
+{
+   "name": "requirejs-facebook"
+  , "description": "Convenience wrapper for the Facebook SDK"
+  , "version": "0.0.0"
+  , "scripts": {
+    "test": "grunt tests --verbose"
+  }
+  , "engines": {
+      "node": "0.8.24"
+  }
+  , "repository": {
+      "type": "git",
+      "url": "https://github.com/thomaswelton/requirejs-facebook.git"
+  }
+  , "dependencies": {
+      "bower": ">= 0.9.x"
+    , "grunt": ">= 0.4.1"
+    , "grunt-contrib-coffee": ">= 0.6.6"
+    , "grunt-markdown": "git://github.com/thomaswelton/grunt-markdown.git"
+    , "grunt-contrib-watch": "~0.4.4"
+    , "grunt-contrib-connect": "~0.3.0"
+    , "grunt-exec": "~0.4.0"
+    , "grunt-bower-task": "git://github.com/thomaswelton/grunt-bower-task.git"
+    , "grunt-contrib-nodeunit": "~0.2.0"
+  }
+  , "devDependencies": {
+    "coffee-script": "~1.6.2"
+  }
+}

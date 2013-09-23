@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Bower Facebook Demo</title>
+	
+	<script data-main="main" src="components/requirejs/require.js"></script>
+	<script>
+		requirejs.config({
+			baseUrl: "",
+			config:{
+				'Facebook': {
+					'appId'      : '359907880785611',
+					'channelUrl' : 'http://localhost:9001/channel.html'
+				}
+			},
+			paths:{
+				'domReady' : 'components/requirejs-domready/domReady',
+				'EventEmitter': 'components/EventEmitter/dist/EventEmitter',
+				'Facebook' : 'Facebook',
+				'mootools' : '//ajax.googleapis.com/ajax/libs/mootools/1.4.5/mootools-yui-compressed'
+			}
+		});
+	</script>
+</head>
+<body>
+	<h1>Facebook</h1>
+	
+	<!-- Login user and request user likes -->
+	<button data-fb-login="user_likes">Sign in with Facebook</button>
+
+	<button id="logout">Logout</button>
+
+	<button id="uninstall">Uninstall</button>
+	
+
+	<form class="permissions" method="get">
+		<fieldset style="width:45%; float:left;">
+			<legend>User Information</legend>
+			
+			<ul>
+				<li>
+					<label>
+						<input type="checkbox" name="field" value="languages">languages
+					</label>
+				</li>
+				<li>
+					<label>
+						<input type="checkbox" name="field" value="bio">bio
+					</label>
+				</li>
+				<li>
+					<label>
+						<input type="checkbox" name="field" value="birthday">birthday
+					</label>
+				</li>
+				<li>
+					<label>
+						<input type="checkbox" name="field" value="education">education
+					</label>
+				</li>
+				<li>
+					<label>
+						<input type="checkbox" name="field" value="email">email
+					</label>
+				</li>
+				<li>
+					<label>
+						<input type="checkbox" name="field" value="hometown">hometown
+					</label>
+				</li>
+				<li>
+					<label>
+						<input type="checkbox" name="field" value="interested_in">interested_in
+					</label>
+				</li>
+				<li>
+					<label>
+						<input type="checkbox" name="field" value="location">location
+					</label>
+				</li>
+				<li>
+					<label>
+						<input type="checkbox" name="field" value="political">political
+					</label>
+				</li>
+				<li>
+					<label>
+						<input type="checkbox" name="field" value="favorite_athletes">favorite_athletes
+					</label>
+				</li>
+				<li>
+					<label>
+						<input type="checkbox" name="field" value="favorite_teams">favorite_teams
+					</label>
+				</li>
+				<li>
+					<label>
+						<input type="checkbox" name="field" value="quotes">quotes
+					</label>
+				</li>
+				<li>
+					<label>
+						<input type="checkbox" name="field" value="relationship_status">relationship_status
+					</label>
+				</li>
+				<li>
+					<label>
+						<input type="checkbox" name="field" value="religion">religion
+					</label>
+				</li>
+				<li>
+					<label>
+						<input type="checkbox" name="field" value="significant_other">significant_other
+					</label>
+				</li>
+				<li>
+					<label>
+						<input type="checkbox" name="field" value="website">website
+					</label>
+				</li>
+				<li>
+					<label>
+						<input type="checkbox" name="field" value="work">work
+					</label>
+				</li>
+			</ul>
+
+		</fieldset>
+		<fieldset style="width:45%; float:left;">
+			<legend>Results</legend>
+			<textarea style="width:100%; height:500px;">
+				
+			</textarea>
+		</fieldset>
+
+		<button type="submit">Get Data</button>
+	</form>
+</body>
+</html>
