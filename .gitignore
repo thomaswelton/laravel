@@ -21,14 +21,10 @@ Thumbs.db
 
 /public-build/
 /bootstrap/compiled.php
-/node_modules/
-/components/
-**/bower_components/
-/vendor/
+/vendor/autoload.php
+/vendor/composer
 
 .sass-cache/
-public/assets/scripts/components/
-public/assets/scripts/bower_components/
 public/assets/scripts/compiled/
 public/assets/stylesheets/compiled/
 public/assets/images/generated/
