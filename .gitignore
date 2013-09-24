@@ -24,7 +24,8 @@ Thumbs.db
 /node_modules/
 /components/
 **/bower_components/
-/vendor/
+/vendor/*
+!/vendor/cache
 
 .sass-cache/
 public/assets/scripts/components/
