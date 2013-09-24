@@ -168,7 +168,14 @@ class UserController extends BaseController
      */
     public function update($id)
     {
-        $validator = Validator::make(Input::all(), User::$rules);
+        $rules = User::$rules;
+
+        // Password not required if not set
+        if(!Input::has('password')){
+            unset($rules['password']);
+        }
+
+        $validator = Validator::make(Input::all(), $rules);
 
         if (!$validator->fails()){
             try {
