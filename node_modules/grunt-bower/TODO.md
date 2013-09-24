@@ -1,1 +1,0 @@
-* handle other file extensions
