@@ -16,23 +16,25 @@ Thumbs.db
 *.sublime-project
 *.sublime-workspace
 
+# Dependencies #
+################
+
+/node_modules/
+/vendor/
+/public/assets/bower_components/
+
+.sass-cache/
+/npm-debug.log
+
 # Compiled #
 ############
 
-/public-build/
-/bootstrap/compiled.php
-/node_modules/
-/components/
-**/bower_components/
-/vendor/
-
-.sass-cache/
-public/assets/scripts/components/
-public/assets/scripts/bower_components/
+public/assets/scripts-build
 public/assets/scripts/compiled/
+public/assets/scripts/config.js
 public/assets/stylesheets/compiled/
 public/assets/images/generated/
-/npm-debug.log
+
 
 /app/config/packages/thomaswelton/laravel-facebook/config.php
 /app/config/local/

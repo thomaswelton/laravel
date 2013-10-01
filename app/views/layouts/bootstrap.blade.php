@@ -10,14 +10,14 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/assets/bower_components/bootstrap/dist/css/bootstrap.css">
 </head>
 <body>
     <div class="container" role="main">
         @yield('content')
     </div>
 
-    <script src="/bower_components/requirejs/require.js"></script>
+    <script src="assets/bower_components/requirejs/require.js"></script>
     @if ('production' != App::environment())
         <script>
             require.config({
@@ -27,10 +27,10 @@
     @endif
 
     <script type="text/javascript">
-        {{ File::get(public_path().'/assets/scripts/compiled/config.js') }}
+        {{ File::get(public_path().'/assets/scripts/config.js') }}
 
         requirejs.config({
-            baseUrl: './'
+            baseUrl: '/assets/scripts'
         });
 
         require(["twbs"]);

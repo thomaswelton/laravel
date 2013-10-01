@@ -5,8 +5,17 @@ requirejs.config
             exports: "$.fn.popover"
         enforceDefine: true
 
+    modules:[
+        {
+            name: 'admin'
+        },
+        {
+            name: 'main'
+        }
+    ]
+
     paths:
-        main: 'assets/scripts/compiled/main'
-        home: 'assets/scripts/compiled/pages/home'
-        admin: 'assets/scripts/compiled/admin'
-        twbs: 'assets/scripts/compiled/modules/twbs'
+        main: 'compiled/main'
+        home: 'compiled/pages/home'
+        admin: 'compiled/admin'
+        twbs: 'compiled/modules/twbs'

@@ -6,13 +6,5 @@
     , "requirejs-domready": "2.0.*"
     , "bootstrap": "3.0.0"
     , "requirejs-facebook": "0.0.7"
-  },
-  "exportsOverride": {
-     "requirejs": {
-      "": "require.js"
-    }
-    , "requirejs-domready": {
-      "": "domReady.js"
-    }
   }
 }

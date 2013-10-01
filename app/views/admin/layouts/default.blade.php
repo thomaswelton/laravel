@@ -15,7 +15,7 @@
 
     <link rel="icon" type="image/png" href="{{ asset('assets/images/favicon.png') }}">
 
-    <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/assets/bower_components/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="/assets/stylesheets/compiled/admin.css">
 </head>
 <body>
@@ -54,7 +54,7 @@
         @yield('content')
     </div>
 
-    <script src="/bower_components/requirejs/require.js"></script>
+    <script src="/assets/bower_components/requirejs/require.js"></script>
 
     @if ('production' != App::environment())
         <script>
@@ -65,10 +65,10 @@
     @endif
 
     <script type="text/javascript">
-        {{ File::get(public_path().'/assets/scripts/compiled/config.js') }}
+        {{ File::get(public_path().'/assets/scripts/config.js') }}
 
         requirejs.config({
-            baseUrl: '/'
+            baseUrl: '/assets/scripts'
         });
 
         require(["/assets/scripts/compiled/admin.js"]);
