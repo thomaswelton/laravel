@@ -54,24 +54,20 @@
         @yield('content')
     </div>
 
-    <script src="/assets/bower_components/requirejs/require.js"></script>
-
-    @if ('production' != App::environment())
+    @if ('production' == App::environment() || 'staging' == App::environment())
+        <script async defer src="/assets/scripts/compiled/rjsbuild/admin.js"></script>
+    @else
+        <script src="/assets/bower_components/requirejs/require.js"></script>
         <script>
-            require.config({
-                urlArgs: "bust=" + (new Date()).getTime()
+            {{ File::get(public_path().'/assets/scripts/config.js') }}
+
+            requirejs.config({
+                urlArgs: "bust=" + (new Date()).getTime(),
+                baseUrl: '/assets/scripts'
             });
+
+            require(["/assets/scripts/compiled/admin.js"]);
         </script>
     @endif
-
-    <script type="text/javascript">
-        {{ File::get(public_path().'/assets/scripts/config.js') }}
-
-        requirejs.config({
-            baseUrl: '/assets/scripts'
-        });
-
-        require(["/assets/scripts/compiled/admin.js"]);
-    </script>
 </body>
 </html>
