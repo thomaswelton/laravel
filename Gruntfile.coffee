@@ -288,9 +288,9 @@ module.exports = (grunt) =>
         clean:
             ## Deletes all files that do not need to be in the Heroku slug
             slug:
-                src: ['node_modules', 'bower_components', 'public-build', 'public/sass', 'public/coffee', 'ruby', 'vendor/bundle', 'vendor/cache', 'vendor/ruby-2.0.0']
+                src: ['node_modules', 'public/sass', 'public/coffee', 'ruby', 'vendor/bundle', 'vendor/cache', 'vendor/ruby-2.0.0']
             app:
-                src: ['node_modules', 'bower_components', 'public-build', 'vendor', 'bootstrap/compiled.php', 'composer.lock', 'public/assets/stylesheets/compiled', 'public/assets/scripts/compiled', 'public/assets/scripts/bower_components', 'public/assets/images/generated']
+                src: ['node_modules', 'public/bower_components', 'vendor', 'bootstrap/compiled.php', 'composer.lock', 'public/assets/stylesheets/compiled', 'public/assets/scripts/compiled', 'public/assets/images/generated']
 
 
     #########################################
