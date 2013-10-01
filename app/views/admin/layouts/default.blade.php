@@ -15,7 +15,7 @@
 
     <link rel="icon" type="image/png" href="{{ asset('assets/images/favicon.png') }}">
 
-    <link rel="stylesheet" type="text/css" href="/assets/bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="/assets/stylesheets/compiled/admin.css">
 </head>
 <body>
@@ -57,7 +57,7 @@
     @if ('production' == App::environment() || 'staging' == App::environment())
         <script async defer src="/assets/scripts/compiled/rjsbuild/admin.js"></script>
     @else
-        <script src="/assets/bower_components/requirejs/require.js"></script>
+        <script src="/bower_components/requirejs/require.js"></script>
         <script>
             {{ File::get(public_path().'/assets/scripts/config.js') }}
 

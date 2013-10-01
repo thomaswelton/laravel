@@ -10,14 +10,14 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" type="text/css" href="/assets/bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.css">
 </head>
 <body>
     <div class="container" role="main">
         @yield('content')
     </div>
 
-    <script src="assets/bower_components/requirejs/require.js"></script>
+    <script src="bower_components/requirejs/require.js"></script>
     @if ('production' != App::environment())
         <script>
             require.config({
