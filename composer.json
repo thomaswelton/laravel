@@ -14,6 +14,7 @@
 		, "kindari/laravel-markdown": "1.0.*"
 		, "jwage/purl": "*"
 		, "intervention/image": "dev-master"
+		, "thomaswelton/laravel-rackspace-opencloud": "0.0.2"
 	}
 	, "require-dev": {
         "phpunit/phpunit": "3.7.*"

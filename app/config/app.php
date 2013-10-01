@@ -121,6 +121,7 @@ return array(
         'Profiler\ProfilerServiceProvider',
         'Kindari\LaravelMarkdown\MarkdownServiceProvider',
         'Intervention\Image\ImageServiceProvider',
+        'Thomaswelton\LaravelRackspaceOpencloud\LaravelRackspaceOpencloudServiceProvider',
     ),
 
     /*
@@ -192,6 +193,7 @@ return array(
         'OAuth' 			=> 'Thomaswelton\LaravelOauth\Facades\OAuth',
         'Profiler'          => 'Profiler\Facades\Profiler',
         'Image'             => 'Intervention\Image\Facades\Image',
+        'OpenCloud'         => 'Thomaswelton\LaravelRackspaceOpencloud\Facades\OpenCloud',
     ),
 
 );

@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-## Optimise class loader
-php/bin/php www/artisan optimize
+## Run artisan tasks
+php/bin/php www/artisan heroku:compile
