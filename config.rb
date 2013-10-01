@@ -28,6 +28,8 @@ sprite_load_path = ["public/assets/images",  'public/assets/images/sprites']
 sass_options = (environment == :production) ? { :quiet => true } : { :debug_info => true }
 disable_warnings = (environment == :production) ? true : false
 
+asset_cache_buster :none
+
 extentions_dir = 'vendor'
 
 add_import_path sass_dir + "/imports"
