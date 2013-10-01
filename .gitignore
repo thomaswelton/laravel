@@ -35,6 +35,7 @@ public/assets/scripts/config.js
 public/assets/stylesheets/compiled/
 public/assets/images/generated/
 
+# Config Files #
+################
 
-/app/config/packages/thomaswelton/laravel-facebook/config.php
-/app/config/local/
+/app/config/**/local/
