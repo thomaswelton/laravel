@@ -195,14 +195,26 @@ module.exports = (grunt) =>
         ## Optimize the requirejs project
         ## https://github.com/jrburke/r.js/blob/master/build/example.build.js
         requirejs:
-            compile:
+            main:
                 options:
                     optimise: "uglify2"
                     logLevel: 1
-                    appDir: "public/assets/scripts"
-                    dir: "public/assets/scripts-build"
                     mainConfigFile: "public/assets/scripts/config.js"
-                    baseUrl: "./"
+                    baseUrl: "./public/assets/scripts"
+                    name: "almond",
+                    include: "main",
+                    out: "public/assets/scripts/compiled/rjsbuild/main.js",
+                    wrap: true
+            admin:
+                options:
+                    optimise: "uglify2"
+                    logLevel: 1
+                    mainConfigFile: "public/assets/scripts/config.js"
+                    baseUrl: "./public/assets/scripts"
+                    name: "almond",
+                    include: "admin",
+                    out: "public/assets/scripts/compiled/rjsbuild/admin.js",
+                    wrap: true
 
         ## Optimize images
         imagemin:

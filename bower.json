@@ -2,6 +2,7 @@
   "name": "Laravel"
   , "dependencies": {
       "requirejs": "2.1.*"
+    , "almond": "0.2.*"
     , "requirejs-plugins": "1.0.*"
     , "requirejs-domready": "2.0.*"
     , "bootstrap": "3.0.0"
