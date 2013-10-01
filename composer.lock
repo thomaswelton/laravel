@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "77a78bf8696d6d436ff23194a11784cf",
+    "hash": "e75e140d6dad6d16e9583c9a70cae899",
     "packages": [
         {
             "name": "cartalyst/sentry",
@@ -781,6 +781,56 @@
                 "zf2"
             ],
             "time": "2013-06-10 12:22:13"
+        },
+        {
+            "name": "intervention/image",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Intervention/image.git",
+                "reference": "8242dee95209178ae010caaca9c3105ef26136c5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Intervention/image/zipball/8242dee95209178ae010caaca9c3105ef26136c5",
+                "reference": "8242dee95209178ae010caaca9c3105ef26136c5",
+                "shasum": ""
+            },
+            "require": {
+                "ext-gd": "*",
+                "illuminate/support": "4.*",
+                "php": ">=5.3.0"
+            },
+            "suggest": {
+                "intervention/imagecache": "Caching extension for the Intervention Image library"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Intervention\\Image": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oliver Vogel",
+                    "email": "oliver@olivervogel.net",
+                    "homepage": "http://olivervogel.net/"
+                }
+            ],
+            "description": "Image handling and manipulation library with support for Laravel 4 integration",
+            "homepage": "http://intervention.olivervogel.net/image/",
+            "keywords": [
+                "gd",
+                "image",
+                "laravel",
+                "thumbnail",
+                "watermark"
+            ],
+            "time": "2013-09-24 18:03:23"
         },
         {
             "name": "ircmaxell/password-compat",
@@ -2952,7 +3002,8 @@
         "laravelbook/ardent": 20,
         "keboola/csv": 20,
         "thomaswelton/laravel-gravatar": 20,
-        "thomaswelton/laravel-oauth": 20
+        "thomaswelton/laravel-oauth": 20,
+        "intervention/image": 20
     },
     "platform": [
 

@@ -1,5 +1,21 @@
 <?php
 
+HTML::macro('spacer', function($width, $height, $alt = '') {
+    $key = "img_spacer_{$width}_{$height}";
+
+    $src = Cache::remember($key, 1440,  function() use ($width, $height, $alt)
+    {
+        return Image::canvas($width, $height)->encode('data-url');
+    });
+
+    return View::make('macros/html_spacer', array(
+        'width'     => $width,
+        'height'    => $height,
+        'alt'       => $alt,
+        'src'       => $src,
+    ));
+});
+
 HTML::macro('flash', function($syntax = null) {
     $output =  '';
 

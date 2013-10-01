@@ -13,6 +13,7 @@
 		, "loic-sharma/profiler": "1.1.*"
 		, "kindari/laravel-markdown": "1.0.*"
 		, "jwage/purl": "*"
+		, "intervention/image": "dev-master"
 	}
 	, "require-dev": {
         "phpunit/phpunit": "3.7.*"

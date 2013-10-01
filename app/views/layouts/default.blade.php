@@ -12,6 +12,8 @@
         <meta name="description" content="{{ $page_description }}">
         <meta name="viewport" content="width=device-width">
 
+        <link rel="icon" type="image/png" href="{{ asset('assets/images/favicon.png') }}">
+
         <!--[if lt IE 9]>
             <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
             <script>window.html5 || document.write('<script src="js/vendor/html5shiv.js"><\/script>')</script>

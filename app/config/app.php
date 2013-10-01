@@ -120,6 +120,7 @@ return array(
         'Thomaswelton\LaravelOauth\LaravelOauthServiceProvider',
         'Profiler\ProfilerServiceProvider',
         'Kindari\LaravelMarkdown\MarkdownServiceProvider',
+        'Intervention\Image\ImageServiceProvider',
     ),
 
     /*
@@ -190,6 +191,7 @@ return array(
         'Gravatar' 			=> 'Thomaswelton\LaravelGravatar\Facades\Gravatar',
         'OAuth' 			=> 'Thomaswelton\LaravelOauth\Facades\OAuth',
         'Profiler'          => 'Profiler\Facades\Profiler',
+        'Image'             => 'Intervention\Image\Facades\Image',
     ),
 
 );

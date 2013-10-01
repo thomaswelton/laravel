@@ -34,7 +34,7 @@ body{
 
 table.userlistview{
 	th.table-actions{
-		width: 48px;
+		width: 64px;
 	}
 	th.facebook_oauth_uid{
 		width: 125px;
@@ -64,7 +64,7 @@ table{
 
 		a{
 			display: block;
-			padding: 0 1em;
+			padding: 0 1em 0 0;
 		}
 
 		.glyphicon{
@@ -96,7 +96,7 @@ table{
 	}
 
 	th.avatar{
-		width: 48px;
+		width: 68px;
 	}
 
 	th.email{
