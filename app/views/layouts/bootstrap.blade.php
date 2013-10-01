@@ -3,8 +3,6 @@
 <!--[if IE 8]>    <html class="ie8 oldie" > <![endif]-->
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-
     <!--[if lt IE 9]>
         <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <script>window.html5 || document.write('<script src="js/vendor/html5shiv.js"><\/script>')</script>
