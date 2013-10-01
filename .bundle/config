@@ -2,6 +2,5 @@
 BUNDLE_PATH: vendor/bundle
 BUNDLE_DISABLE_SHARED_GEMS: '1'
 BUNDLE_BINSTUBS: vendor/bundle/bin
-BUNDLE_FROZEN: '1'
 BUNDLE_BIN: vendor/bundle/bin
 BUNDLE_CACHE_ALL: true
