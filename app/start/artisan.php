@@ -11,6 +11,8 @@
 |
 */
 
+
+Artisan::add(new GruntCommand);
 Artisan::add(new HerokuCompileCommand);
 Artisan::add(new HerokuDeployCommand);
 Artisan::add(new AppInitCommand);
