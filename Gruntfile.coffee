@@ -334,8 +334,8 @@ module.exports = (grunt) =>
     grunt.registerTask 'composer', 'Install composer dependencies', ['shell:composer']
 
     ## The heroku task is triggered from the buildpack.
-    ## All is needs to do is compile compass. The other
-    ## tasks can can be triggered from the artisan task
+    ## And runs on every build
     grunt.registerTask 'heroku', ['compass:app', 'coffee:app', 'modernizr_build', 'bower', 'compass:app']
 
-    grunt.registerTask 'build-production', ['removelogging', 'requirejs']
+    ## Can optionally be called from the PHP command heroku:compile depeending on enviroment
+    grunt.registerTask 'build-production', ['removelogging', 'requirejs', 'clean:slug']
