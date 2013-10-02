@@ -2,14 +2,6 @@ module.exports = (grunt) =>
     grunt.initConfig
         pkg: grunt.file.readJSON 'package.json'
 
-        php:
-            dist:
-                options:
-                    keepalive: true
-                    open: true
-                    port: 8000
-                    base: 'public'
-
         phplint:
             files: ['app/**/*.php', 'bootstrap/**/*.php', 'public/**/*.php']
 
@@ -315,7 +307,6 @@ module.exports = (grunt) =>
     grunt.loadNpmTasks 'grunt-contrib-imagemin'
     grunt.loadNpmTasks 'grunt-modernizr'
     grunt.loadNpmTasks 'grunt-shell'
-    grunt.loadNpmTasks 'grunt-php'
     grunt.loadNpmTasks 'grunt-phplint'
     grunt.loadNpmTasks 'grunt-phpunit'
 
@@ -337,14 +328,10 @@ module.exports = (grunt) =>
 
     grunt.registerTask 'test', ['phplint', 'phpunit']
 
-    grunt.registerTask 'cdn', ['build', 'cloudfiles:prod']
-
     grunt.registerTask 'compile', ['parallel:assetsDev']
 
     grunt.registerTask 'bundle', 'Install ruby gem dependencies', ['shell:bundle']
     grunt.registerTask 'composer', 'Install composer dependencies', ['shell:composer']
-
-    grunt.registerTask 'server', 'Start a server', ['php']
 
     ## The heroku task is triggered from the buildpack.
     ## All is needs to do is compile compass. The other
