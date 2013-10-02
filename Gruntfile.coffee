@@ -192,6 +192,24 @@ module.exports = (grunt) =>
                     out: "public/assets/scripts/compiled/rjsbuild/admin.js",
                     wrap: true
 
+            css:
+                options:
+                    optimizeCss: 'standard'
+                    appDir: "public/assets/stylesheets"
+                    dir: "public/assets/stylesheets-built"
+
+        copy:
+            builtcss:
+                files: [
+                    {
+                        expand: true
+                        cwd: 'public/assets/stylesheets-built'
+                        src: ['**']
+                        dest: 'public/assets/stylesheets/'
+                    }
+                ]
+
+
         ## Optimize images
         imagemin:
             app:
@@ -264,7 +282,7 @@ module.exports = (grunt) =>
         clean:
             ## Deletes all files that do not need to be in the Heroku slug
             slug:
-                src: ['node_modules', 'public/sass', 'public/coffee', 'ruby', 'vendor/bundle', 'vendor/cache', 'vendor/ruby-2.0.0']
+                src: ['node_modules', 'public/assets/stylesheets-built', 'public/sass', 'public/coffee', 'ruby', 'vendor/bundle', 'vendor/cache', 'vendor/ruby-2.0.0']
             app:
                 src: ['node_modules', 'public/bower_components', 'vendor', 'bootstrap/compiled.php', 'composer.lock', 'public/assets/stylesheets/compiled', 'public/assets/scripts/compiled', 'public/assets/images/generated']
 
@@ -301,6 +319,7 @@ module.exports = (grunt) =>
     grunt.loadNpmTasks 'grunt-contrib-requirejs'
     grunt.loadNpmTasks 'grunt-contrib-watch'
     grunt.loadNpmTasks 'grunt-contrib-clean'
+    grunt.loadNpmTasks 'grunt-contrib-copy'
     grunt.loadNpmTasks 'grunt-notify'
     grunt.loadNpmTasks 'grunt-parallel'
     grunt.loadNpmTasks 'grunt-remove-logging'
@@ -338,4 +357,4 @@ module.exports = (grunt) =>
     grunt.registerTask 'heroku', ['compass:app', 'coffee:app', 'modernizr_build', 'bower', 'compass:app']
 
     ## Can optionally be called from the PHP command heroku:compile depeending on enviroment
-    grunt.registerTask 'build-production', ['removelogging', 'requirejs', 'clean:slug']
+    grunt.registerTask 'build-production', ['removelogging', 'requirejs', 'copy:builtcss', 'clean:slug']
