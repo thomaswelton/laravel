@@ -4,21 +4,23 @@ use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
-class HerokuCompileCommand extends Command
+class GruntCommand extends Command
 {
     /**
      * The console command name.
      *
      * @var string
      */
-    protected $name = 'heroku:compile';
+    protected $name = 'grunt';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Deploy the app to a new server instance';
+    protected $description = 'Run a grunt task';
+
+    protected $node_path = null;
 
     /**
      * Create a new command instance.
@@ -28,6 +30,15 @@ class HerokuCompileCommand extends Command
     public function __construct()
     {
         parent::__construct();
+
+        $this->node_path = exec('which node');
+        // Is node available?
+        if(strlen($this->node_path) == 0){
+            // Heroku installs node here
+            if(File::exists('vendor/node/bin/node')){
+                $this->node_path = realpath('vendor/node/bin/node');
+            }
+        }
     }
 
     /**
@@ -37,17 +48,10 @@ class HerokuCompileCommand extends Command
      */
     public function fire()
     {
-        // Optimise class loader
-        $this->call('optimize');
+        $tasks = $this->argument('tasks');
 
-        $this->info('You environment is '. App::environment());
-
-        // Production and staging have CDN assets
-        if('production' == App::environment() || 'staging' == App::environment()){
-            $this->call('grunt', array('tasks' => 'build-production'));
-
-            $this->call('cdn:sync', array('path' => 'public/assets', '--trim' => 'public'));
-        }
+        $this->info("Running grunt {$tasks}");
+        $this->info(passthru("{$this->node_path} node_modules/grunt-cli/bin/grunt {$tasks}"));
     }
 
     /**
@@ -57,7 +61,9 @@ class HerokuCompileCommand extends Command
      */
     protected function getArguments()
     {
-        return array();
+        return array(
+            array('tasks', InputArgument::OPTIONAL, 'Grunt task to run', '')
+        );
     }
 
     /**

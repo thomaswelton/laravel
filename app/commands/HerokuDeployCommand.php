@@ -40,6 +40,7 @@ class HerokuDeployCommand extends Command
         $name = $this->option('name');
 
         $this->info('Creating application');
+        echo `heroku labs:enable user-env-compile`;
         echo `heroku apps:create -b https://github.com/heroku/heroku-buildpack-php.git --region eu`;
         echo `heroku config:add BUILDPACK_URL=git://github.com/ddollar/heroku-buildpack-multi.git`;
 
