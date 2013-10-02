@@ -15,8 +15,8 @@
 
     <link rel="icon" type="image/png" href="{{ asset('assets/images/favicon.png') }}">
 
-    <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="/assets/stylesheets/compiled/admin.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/stylesheets/compiled/bootstrap.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/stylesheets/compiled/admin.css' ) }}">
 </head>
 <body>
     <nav class="navbar navbar-default" role="navigation">

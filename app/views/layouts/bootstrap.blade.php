@@ -10,7 +10,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/stylesheets/compiled/bootstrap.css') }}">
 </head>
 <body>
     <div class="container" role="main">
