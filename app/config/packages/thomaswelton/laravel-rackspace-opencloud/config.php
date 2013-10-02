@@ -1,8 +1,8 @@
 <?php
 
 return array(
-	'region' => 'RACKSPACE_REGION',
-	'username' => 'RACKSPACE_USERNAME',
-	'apiKey' => 'RACKSPACE_API_KEY',
-    'container' => 'DEFUALT_CONTAINER_NAME'
+	'region' => 'LON',
+	'username' => getenv('RS_USER'),
+	'apiKey' => getenv('RS_KEY'),
+    'container' => getenv('RS_CONTAINER')
 );
