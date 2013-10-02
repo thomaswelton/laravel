@@ -126,6 +126,12 @@ module.exports = (grunt) =>
                     noLineComments: false
                     outputStyle: 'expanded'
                     bundleExec: true
+            prod:
+                options:
+                    noLineComments: true
+                    outputStyle: 'expanded'
+                    bundleExec: true
+                    force: true
 
         ## Compile coffeescript
         coffee:
@@ -354,7 +360,7 @@ module.exports = (grunt) =>
 
     ## The heroku task is triggered from the buildpack.
     ## And runs on every build
-    grunt.registerTask 'heroku', ['compass:app', 'coffee:app', 'modernizr_build', 'bower', 'compass:app']
+    grunt.registerTask 'heroku', ['compass:prod', 'coffee:app', 'modernizr_build', 'bower', 'compass:app']
 
     ## Can optionally be called from the PHP command heroku:compile depeending on enviroment
     grunt.registerTask 'build-production', ['removelogging', 'requirejs', 'copy:builtcss', 'clean:slug']
