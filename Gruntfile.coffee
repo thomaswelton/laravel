@@ -163,9 +163,9 @@ module.exports = (grunt) =>
         removelogging:
             files:
                 expand: true
-                cwd: 'public/scripts'
+                cwd: 'public/assets/scripts'
                 src: ['**/*.js']
-                dest: 'public/scripts'
+                dest: 'public/assets/scripts'
                 ext: '.js'
 
         ## Optimize the requirejs project
