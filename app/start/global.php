@@ -109,7 +109,7 @@ App::before(function() {
 Auth::extend('sentry', function() {
     return new SentryGuard(
         new SentryDriver(),
-        App::make('session')
+        App::make('session.store')
     );
 });
 
