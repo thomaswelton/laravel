@@ -33,9 +33,12 @@ public/assets/scripts-build
 public/assets/scripts/compiled/
 public/assets/scripts/config.js
 public/assets/stylesheets/compiled/
+public/assets/stylesheets/build.txt
+public/assets/stylesheets-built/*
 public/assets/images/generated/
 
 # Config Files #
 ################
 
-/app/config/**/local/
+/app/config/local
+/app/config/**/**/**/local
