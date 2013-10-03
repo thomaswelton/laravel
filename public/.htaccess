@@ -5,5 +5,6 @@ AddDefaultCharset utf-8
 	RewriteEngine On
 
 	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond $1 !^(apc\.php)
 	RewriteRule ^ index.php [L]
 </IfModule>
