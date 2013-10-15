@@ -5,8 +5,16 @@ Form::macro('control', function($type, $name, $title = null, $value = null, $opt
 
     if(is_null($title)) $title = ucfirst($name);
 
+    if($type !== 'checkbox'){
+        if(array_key_exists('class', $options)){
+            $options['class'] .= ' form-control';
+        }else{
+            $options['class'] = 'form-control';
+        }
+    }
+
     if ($type == 'password') {
-        $input = Form::password($name, array('class' => 'form-control'));
+        $input = Form::password($name, $options);
     } elseif ($type == 'checkbox') {
         if ($value == 1) {
             $options['checked'] = 'checked';
@@ -16,7 +24,7 @@ Form::macro('control', function($type, $name, $title = null, $value = null, $opt
         $value = Form::getValueAttribute($name, $value);
         $input = '<p class="form-control-static">' . $value .'</p>';
     }else {
-        $input = Form::$type($name, $value, array('class' => 'form-control'));
+        $input = Form::$type($name, $value, $options);
     }
 
     $data = array(

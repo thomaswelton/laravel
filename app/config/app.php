@@ -197,6 +197,7 @@ return array(
         'Image'             => 'Intervention\Image\Facades\Image',
         'OpenCloud'         => 'Thomaswelton\LaravelRackspaceOpencloud\Facades\OpenCloud',
         'Flatten'           => 'Flatten\Facades\Flatten',
+        'Carbon'            => 'Carbon\Carbon',
     ),
 
 );

@@ -17,6 +17,7 @@
 		, "thomaswelton/laravel-rackspace-opencloud": "0.0.2"
 		, "anahkiasen/flatten": "dev-master"
 		, "fitztrev/laravel-html-minify": "dev-master"
+		, "nesbot/Carbon": "1.4.*"
 	}
 	, "require-dev": {
         "phpunit/phpunit": "3.7.*"
