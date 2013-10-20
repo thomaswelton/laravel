@@ -24,7 +24,7 @@ HTML::macro('flash', function($syntax = null) {
 
             switch ($type) {
                 case 'warning':
-                    $class = '';
+                    $class = 'alert-warning';
                     break;
 
                 case 'error':

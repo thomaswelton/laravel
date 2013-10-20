@@ -122,6 +122,8 @@ return array(
         'Kindari\LaravelMarkdown\MarkdownServiceProvider',
         'Intervention\Image\ImageServiceProvider',
         'Thomaswelton\LaravelRackspaceOpencloud\LaravelRackspaceOpencloudServiceProvider',
+        'Flatten\FlattenServiceProvider',
+        'Fitztrev\LaravelHtmlMinify\LaravelHtmlMinifyServiceProvider',
     ),
 
     /*
@@ -194,6 +196,8 @@ return array(
         'Profiler'          => 'Profiler\Facades\Profiler',
         'Image'             => 'Intervention\Image\Facades\Image',
         'OpenCloud'         => 'Thomaswelton\LaravelRackspaceOpencloud\Facades\OpenCloud',
+        'Flatten'           => 'Flatten\Facades\Flatten',
+        'Carbon'            => 'Carbon\Carbon',
     ),
 
 );
