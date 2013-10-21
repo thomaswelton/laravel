@@ -10,7 +10,7 @@
 
 	// The different pages to be ignored when caching
 	// They're all regexes so go crazy
-	'ignore'       => array(),
+	'ignore'       => array(''),
 
 	// List only specific pages to cache, useful if you have a lot of
 	// pages you don't want to see cached
