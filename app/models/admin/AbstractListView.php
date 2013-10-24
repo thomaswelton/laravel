@@ -8,8 +8,17 @@ use \DB;
 
 class AbstractListView
 {
+
+	public $columns = null;
+	public $csv_columns = null;
+	public $orderable = null;
+
 	public function __construct($query){
 		$this->query = $query;
+
+		if(is_null($this->csv_columns)){
+			$this->csv_columns = $this->columns;
+		}
 	}
 
 	public function applyFilter($filter){
@@ -146,7 +155,7 @@ class AbstractListView
 		$tmpName = tempnam(storage_path() . 'csv' , 'csv');
 
         $csvFile = new \Keboola\Csv\CsvFile($tmpName);
-        $csvFile->writeRow(array_values($this->columns));
+        $csvFile->writeRow(array_values($this->csv_columns));
 
 		// Determine how many chunks to get
 		$limit = 1000;
@@ -160,7 +169,7 @@ class AbstractListView
 			foreach ($data as $index => $row){
 				$csvRow = array();
 
-				foreach ($this->columns as $field => $column){
+				foreach ($this->csv_columns as $field => $column){
 					$csvRow[] = $this->getColumnData($row, $field);
 				}
 
