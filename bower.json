@@ -7,5 +7,6 @@
     , "requirejs-domready": "2.0.*"
     , "bootstrap": "3.0.0"
     , "requirejs-facebook": "0.0.7"
+    , "laravel-validator": "git@github.com:davidthingsaker/laravel-validator.git"
   }
 }
