@@ -3,6 +3,11 @@ requirejs.config
         bootstrap:
             deps: ["jquery"],
             exports: "$.fn.popover"
+
+        'laravel-validator':
+            deps: ["jquery"],
+            exports: "$.fn.popover"
+
         enforceDefine: true
 
     paths:
