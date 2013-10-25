@@ -2,9 +2,7 @@
     <?= $label ?>
     <div class="col-sm-9">
         <?= $input ?>
-        <?php if($errors->has($field)): ?>
-            <span class="help-block"><?= $errors->first($field) ?></span>
-        <?php endif; ?>
+            <span class="error-message help-block"><? if($errors->has($field)) echo $errors->first($field) ?></span>
         <? if(isset($help)): ?>
         	<span class="help-block"><?= $help ?></span>
         <? endif ?>

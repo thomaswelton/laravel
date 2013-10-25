@@ -57,8 +57,12 @@ class UserController extends BaseController
      */
     public function create()
     {
+        // Get validation rules
+        $rules = User::$rules;
+
         return View::make('admin.user.form', array(
-            'header' => 'Create User'
+            'header' => 'Create User',
+            'rules' => $rules
         ));
     }
 

@@ -7,9 +7,9 @@
 
     <div class="row">
         <?php if(isset($user)): ?>
-            <?= Form::model($user, array('url' => array('admin/users/'.$user->id), 'method' => 'PUT', 'class' => 'form-horizontal col-sm-8', 'autocomplete' => 'off')) ?>
+            <?= Form::model($user, array('url' => array('admin/users/'.$user->id), 'method' => 'PUT', 'class' => 'form-horizontal col-sm-8', 'autocomplete' => 'off', 'data-validation-rules' => json_encode($rules))) ?>
         <?php else: ?>
-            <?= Form::open(array('url' => array('admin/users'), 'method' => 'POST', 'class' => 'form-horizontal col-sm-8', 'autocomplete' => 'off')) ?>
+            <?= Form::open(array('url' => array('admin/users'), 'method' => 'POST', 'class' => 'form-horizontal col-sm-8', 'autocomplete' => 'off', 'data-validation-rules' => json_encode($rules))) ?>
         <?php endif; ?>
 
 
