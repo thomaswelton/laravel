@@ -1,9 +1,10 @@
 requirejs.config
-    shim:
-        bootstrap:
+    shim: {
+        bootstrap:{
             deps: ["jquery"],
             exports: "$.fn.popover"
-        enforceDefine: true
+        }
+    }
 
     paths:
         main: 'compiled/main'

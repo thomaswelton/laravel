@@ -57,7 +57,7 @@
     @if ('production' == App::environment() || 'staging' == App::environment())
         <script async defer src="/assets/scripts/compiled/rjsbuild/admin.js"></script>
     @else
-        <script src="/bower_components/requirejs/require.js"></script>
+        <script src="/assets/bower_components/requirejs/require.js"></script>
         <script>
             {{ File::get(public_path().'/assets/scripts/config.js') }}
 

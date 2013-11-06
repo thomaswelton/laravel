@@ -21,7 +21,7 @@
   , "dependencies": {
       "grunt": ">= 0.4.1"
     , "grunt-cli": "~0.1.9"
-    , "bower": "~1.1.0"
+    , "bower": "~1.2.7"
     , "grunt-contrib-compass": ">= 0.5.0"
     , "grunt-contrib-coffee": ">= 0.7.0"
     , "grunt-contrib-requirejs": ">= 0.4.1"
@@ -31,6 +31,6 @@
     , "grunt-remove-logging": ">= 0.1.0"
     , "grunt-modernizr": ">= 0.2.2"
     , "grunt-bower-requirejs": "~0.7.1"
-    , "grunt-bower-task": "~0.3.1"
+    , "grunt-bower-task": "git://github.com/thomaswelton/grunt-bower-task.git#devel"
   }
 }
