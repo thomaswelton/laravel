@@ -238,7 +238,11 @@ class UserController extends BaseController
             return Redirect::to('admin/users');
         }
 
-        $msg = (string) View::make('admin.partials.flash_user_deleted', array('id' => $id));
+        $msg = View::make('admin.partials.flash_item_deleted', array(
+            'restore' => URL::action('Admin\\UserController@postRestore', $id),
+            'msg' => 'User deleted.',
+        ))->__toString();
+
         Session::flash('success', $msg);
 
         return Redirect::to('admin/users');
