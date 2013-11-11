@@ -17,7 +17,7 @@
         @yield('content')
     </div>
 
-    <script src="bower_components/requirejs/require.js"></script>
+    <script src="assets/bower_components/requirejs/require.js"></script>
     @if ('production' != App::environment())
         <script>
             require.config({

@@ -1,0 +1,1 @@
+<a href="<?= $row->getLink() ?>" target="blank" class="btn btn-link unstyled-link" data-toggle="tooltip" data-trigger="hover" data-placement="auto" title="View <?= ucfirst(get_class($row)) ?>"><?= HTML::icon('eye-open') ?></a>

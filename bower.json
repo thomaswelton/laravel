@@ -8,4 +8,19 @@
     , "bootstrap": "3.0.0"
     , "requirejs-facebook": "0.0.7"
   }
+
+  , "exportsOverride": {
+      "requirejs": {
+          "./": "require.js"
+      },
+      "requirejs-domready": {
+          "": "domReady.js"
+      },
+      "bootstrap": {
+          "./": ["dist/css/bootstrap.css", "dist/fonts/*", "dist/js/bootstrap.js"]
+      },
+      "jquery": {
+          "./": "jquery.js"
+      }
+  }
 }

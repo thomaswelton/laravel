@@ -276,14 +276,18 @@ module.exports = (grunt) =>
                     }
                 ]
 
-        bower_install:
-            install:
-                options:
-                    copy: false
-
         bowerrjs:
             target:
                 rjsConfig: 'public/assets/scripts/config.js'
+                options:
+                    baseUrl: 'public'
+
+        bower_install:
+            install:
+                options:
+                    targetDir: 'public/assets/bower_components'
+                    cleanTargetDir: true
+                    layout: "byComponent"
 
         clean:
             ## Deletes all files that do not need to be in the Heroku slug

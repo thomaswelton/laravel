@@ -3,6 +3,6 @@
 	data-toggle="tooltip"
 	data-trigger="hover"
 	data-placement="auto"
-	title="Edit User">
+	title="Edit <?= ucfirst(get_class($row)) ?>">
 		<?= HTML::icon('pencil') ?>
 </a>

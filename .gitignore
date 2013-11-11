@@ -21,7 +21,8 @@ Thumbs.db
 
 /node_modules/
 /vendor/
-/public/bower_components/
+/bower_components/
+/public/assets/bower_components/
 
 .sass-cache/
 /npm-debug.log
