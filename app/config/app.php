@@ -124,6 +124,7 @@ return array(
         'Thomaswelton\LaravelRackspaceOpencloud\LaravelRackspaceOpencloudServiceProvider',
         'Flatten\FlattenServiceProvider',
         'Fitztrev\LaravelHtmlMinify\LaravelHtmlMinifyServiceProvider',
+        'Way\Generators\GeneratorsServiceProvider',
     ),
 
     /*
