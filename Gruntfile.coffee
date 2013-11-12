@@ -124,6 +124,10 @@ module.exports = (grunt) =>
                 files: ['public/coffee/modernizr/*']
                 tasks: ['modernizr_build']
 
+            test:
+                files: ['app/**/*.php', 'bootstrap/**/*.php', 'public/**/*.php']
+                tasks: ['test']
+
         ## Compile SCSS
         compass:
             app:
