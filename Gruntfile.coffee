@@ -29,6 +29,11 @@ module.exports = (grunt) =>
                 options:
                     stdout: true
 
+            composer_update:
+                command: 'composer update'
+                options:
+                    stdout: true
+
         ## Growl notifications
         notify:
             compass:
@@ -108,8 +113,8 @@ module.exports = (grunt) =>
                 tasks: ['bower']
 
             composer:
-                files: 'src/composer.json'
-                tasks: ['shell:composer']
+                files: 'composer.json'
+                tasks: ['shell:composer_update']
 
             bundle:
                 files: 'Gemfile'
