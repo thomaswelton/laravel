@@ -36,7 +36,7 @@ class AuthController extends BaseController
             );
 
             // Try to authenticate the user
-            $user = Sentry::authenticate($credentials, Input::get('remember'));
+            Sentry::authenticate($credentials, Input::get('remember'));
 
             return Redirect::to('/');
         } catch (LoginRequiredException $e) {

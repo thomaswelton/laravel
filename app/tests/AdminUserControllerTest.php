@@ -6,21 +6,21 @@ class AdminUserControllerTest extends TestCase
 {
     public function testUserIndexPage()
     {
-        $crawler = $this->client->request('GET', 'admin/users');
+        $this->client->request('GET', 'admin/users');
         $this->assertTrue($this->client->getResponse()->isOk());
     }
 
     public function testUserCsvDownload()
     {
-        $user = FactoryMuff::create('User');
+        FactoryMuff::create('User');
 
-        $crawler = $this->client->request('GET', 'admin/users?&format=csv');
+        $this->client->request('GET', 'admin/users?&format=csv');
         $this->assertTrue($this->client->getResponse()->isOk());
     }
 
     public function testUserCreatePage()
     {
-        $crawler = $this->client->request('GET', 'admin/users/create');
+        $this->client->request('GET', 'admin/users/create');
         $this->assertTrue($this->client->getResponse()->isOk());
     }
 
@@ -28,13 +28,13 @@ class AdminUserControllerTest extends TestCase
     {
         $user = FactoryMuff::create('User');
 
-        $crawler = $this->client->request('GET', "admin/users/{$user->id}/edit");
+        $this->client->request('GET', "admin/users/{$user->id}/edit");
         $this->assertTrue($this->client->getResponse()->isOk());
     }
 
     public function testEditNonExistantUserRedirectsToUserList()
     {
-        $crawler = $this->client->request('GET', "admin/users/1/edit");
+        $this->client->request('GET', "admin/users/1/edit");
         $this->assertRedirectedTo('admin/users');
     }
 
@@ -42,7 +42,7 @@ class AdminUserControllerTest extends TestCase
     {
         $user = FactoryMuff::create('User');
 
-        $crawler = $this->client->request('GET', "admin/users/{$user->id}/edit");
+        $this->client->request('GET', "admin/users/{$user->id}/edit");
         $this->assertTrue($this->client->getResponse()->isOk());
 
         $this->assertViewHas('user');
@@ -53,7 +53,7 @@ class AdminUserControllerTest extends TestCase
         $user = FactoryMuff::create('User');
 
         // Check redirect back to list view
-        $crawler = $this->client->request('DELETE', "admin/users/{$user->id}");
+        $this->client->request('DELETE', "admin/users/{$user->id}");
         $this->assertRedirectedTo('admin/users');
 
         $deletedUser = User::find($user->id);
@@ -67,7 +67,7 @@ class AdminUserControllerTest extends TestCase
         $user->delete();
 
         // Check redirect back to list view
-        $crawler = $this->client->request('POST', "admin/users/restore/{$user->id}");
+        $this->client->request('POST', "admin/users/restore/{$user->id}");
         $this->assertRedirectedTo('admin/users');
     }
 

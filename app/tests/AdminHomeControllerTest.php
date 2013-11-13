@@ -24,15 +24,15 @@ class AdminHomeControllerTest extends TestCase
 
     public function testAdminIndexPage()
     {
-        $crawler = $this->client->request('GET', '/admin');
-        $this->assertTrue($this->client->getResponse()->isOk());
+        $this->client->request('GET', '/admin');
+        $this->assertResponseOk();
     }
 
     public function testGuestRedirectedToLoginPage()
     {
         Route::enableFilters();
 
-        $crawler = $this->client->request('GET', '/admin');
+        $this->client->request('GET', '/admin');
         $this->assertRedirectedTo('admin/login');
     }
 
@@ -42,14 +42,14 @@ class AdminHomeControllerTest extends TestCase
         Sentry::login($user);
 
 
-        $crawler = $this->client->request('GET', '/admin/login');
+        $this->client->request('GET', '/admin/login');
         $this->assertRedirectedTo('admin');
     }
 
     public function testLoginRoute()
     {
-        $crawler = $this->client->request('GET', '/admin/login');
-        $this->assertTrue($this->client->getResponse()->isOk());
+        $this->client->request('GET', '/admin/login');
+        $this->assertResponseOk();
     }
 
     public function testLogoutDestroysSession()
@@ -60,7 +60,7 @@ class AdminHomeControllerTest extends TestCase
         // Assert the user was logged in
         $this->assertTrue(Auth::check());
 
-        $crawler = $this->client->request('GET', '/admin/logout');
+        $this->client->request('GET', '/admin/logout');
         $this->assertRedirectedTo('admin/login');
 
         // Assert use is now logged out
@@ -69,7 +69,7 @@ class AdminHomeControllerTest extends TestCase
 
     public function testIncorrectLoginFails()
     {
-        $crawler = $this->client->request('POST', '/admin/login');
+        $this->client->request('POST', '/admin/login');
         $this->assertRedirectedTo('admin/login');
 
         $this->assertSessionHas('error');
@@ -85,7 +85,7 @@ class AdminHomeControllerTest extends TestCase
         $this->assertFalse(Auth::check());
 
         // Post the login data and ensure we are redirected
-        $crawler = $this->client->request('POST', '/admin/login', $loginData);
+        $this->client->request('POST', '/admin/login', $loginData);
         $this->assertRedirectedTo('admin');
 
         // Check we are now logged in

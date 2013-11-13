@@ -109,25 +109,6 @@ class UserController extends BaseController
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int      $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        try {
-            $user = Sentry::getUserProvider()->findById($id);
-            print_r($user);
-            die;
-        } catch (UserNotFoundException $e) {
-            Session::flash('User not found', $e->getMessage());
-
-            return Redirect::to('admin/users');
-        }
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int      $id

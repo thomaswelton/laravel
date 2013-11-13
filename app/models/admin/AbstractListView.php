@@ -86,7 +86,6 @@ class AbstractListView
 			if(count($orderByParts) == 1){
 				$this->query->orderBy($orderByParts[0], $direction);
 			}else{
-				$model = $query->getModel();
 				$relationName = $orderByParts[0];
 
 				$relation = $this->query->getRelation($relationName);
@@ -165,10 +164,10 @@ class AbstractListView
 			$this->query->take($limit)->skip($i * $limit);
 			$data = $this->query->get();
 
-			foreach ($data as $index => $row){
+			foreach ($data as $row){
 				$csvRow = array();
 
-				foreach ($this->csv_columns as $field => $column){
+				foreach (array_keys($this->csv_columns) as $field){
 					$csvRow[] = $this->getColumnData($row, $field);
 				}
 

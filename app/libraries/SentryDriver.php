@@ -14,7 +14,7 @@ class SentryDriver extends EloquentUserProvider {
     public function attempt($arguments = array())
     {
     	try{
-    		$user = Sentry::authenticate($credentials, false);
+    		$result = Sentry::authenticate($arguments, false);
     		return $this->login($result->id, array_get($arguments, 'remember'));
     	}catch(Exception $e){
     		return false;

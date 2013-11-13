@@ -2,7 +2,10 @@ filter:
     excluded_paths: [vendor/*]
 
 tools:
-    php_mess_detector: true
+    php_mess_detector:
+        filter:
+            excluded_paths: ['public/apc.php']
+
     php_cpd: true
     php_pdepend:
         excluded_dirs: [vendor]
@@ -16,8 +19,7 @@ tools:
         command:              php-cs-fixer
         enabled:              true
         filter:
-            paths:                []
-            excluded_paths:       []
+            excluded_paths:       ['public/apc.php']
         config:
             level:                psr2
             fixers:               []

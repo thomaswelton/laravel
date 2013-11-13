@@ -70,7 +70,7 @@ class UsersTableSeeder extends Seeder
         // Create Users
         $userGroup = Sentry::getGroupProvider()->findByName('user');
 
-        $user = Sentry::register(array(
+        Sentry::register(array(
                 'first_name' => 'Example',
                 'last_name' => 'User',
                 'email' => 'user@example.com',
