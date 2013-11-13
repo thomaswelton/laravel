@@ -52,3 +52,8 @@ View::composer('admin.*', function($view) {
 
     $view->with('adminUser', $adminUser);
 });
+
+View::composer('admin.user.form', function($view)
+{
+    $view->with('groups', Sentry::findAllGroups());
+});

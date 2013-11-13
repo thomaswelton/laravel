@@ -37,8 +37,6 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase
     private function prepareForTests()
     {
         Mail::pretend(true);
-
         Artisan::call('migrate');
-        Artisan::call('db:seed');
     }
 }

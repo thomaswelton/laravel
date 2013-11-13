@@ -50,7 +50,7 @@
                 <div class="col-sm-9">
                     <label class="checkbox-inline">
                         <? $superuserChecked = (isset($user)) ? $user->isSuperUser() : null ?>
-                        <? $superuserAttributes = (Auth::user()->isSuperUser()) ? null : array('disabled' => true) ?>
+                        <? $superuserAttributes = (Auth::check() && Auth::user()->isSuperUser()) ? null : array('disabled' => true) ?>
                         <?= Form::checkbox('superuser', 1, $superuserChecked, $superuserAttributes) ?>
                         <span title="Super users have full access to the website, and can delete any other user" data-toggle="tooltip">Super User</span>
                     </label>
@@ -116,7 +116,7 @@
 
                                     <button type="submit" name="action" value="delete" class="btn btn-block btn-danger">Delete Link</button>
                                 <?= Form::close() ?>
-                            <? elseif($user->id == Auth::user()->id): ?>
+                            <? elseif(Auth::check() && $user->id == Auth::user()->id): ?>
                                 <a href="<?= OAuth::associate($provider)->redirect(Request::url()) ?>" class="btn btn-block btn-primary">Link to <?= Str::studly($provider) ?></a>
                             <? endif ?>
                         </td>

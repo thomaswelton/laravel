@@ -19,6 +19,14 @@ class User extends SentryUserModel implements UserInterface
         'password'  =>'required|between:4,16'
     );
 
+    public static $factory = array(
+        'first_name' => 'string',
+        'last_name' => 'string',
+        'email' => 'email',
+        'password' => 'string',
+        'activated' => 1,
+    );
+
     /**
      * The database table used by the model.
      *
@@ -95,7 +103,7 @@ class User extends SentryUserModel implements UserInterface
     {
         $currentUser = Sentry::getUser();
 
-        if ($id == $currentUser->id) {
+        if (Auth::check() && $id == $currentUser->id) {
             throw new Exception("You can not delete yourself");
         }
 

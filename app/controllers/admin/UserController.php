@@ -16,15 +16,6 @@ use Cartalyst\Sentry\Users\UserNotFoundException;
 
 use \User;
 
-/***************
- View Composers
-****************/
-
-View::composer('admin.user.form', function($view)
-{
-    $view->with('groups', Sentry::findAllGroups());
-});
-
 class UserController extends BaseController
 {
     /**
