@@ -1,5 +1,12 @@
-language: node_js
-node_js:
-  - "0.10"
+language: php
+
+php:
+  - 5.3
+  - 5.4
+  - 5.5
+
 before_script:
-  - npm install -g grunt-cli
+  - curl -s http://getcomposer.org/installer | php
+  - php composer.phar install --prefer-source --no-interaction --dev
+
+script: phpunit
