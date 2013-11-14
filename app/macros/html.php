@@ -63,9 +63,10 @@ HTML::macro('render_menu', function($menulinks){
     return $html;
 });
 
-HTML::macro('page_header', function($header){
+HTML::macro('page_header', function($header, $subtitle = false){
     return View::make('macros/html_page_header', array(
-        'header' => $header
+        'header' => $header,
+        'subtitle' => $subtitle
     ));
 });
 
