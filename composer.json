@@ -2,7 +2,7 @@
 	  "name": "thomaswelton/laravel"
 
 	, "require": {
-		  "laravel/framework": "4.0.*"
+		  "laravel/framework": "4.1.*@dev"
 		, "thomaswelton/laravel-facebook": "dev-master"
 		, "thomaswelton/laravel-google-analytics": "dev-master"
 		, "laravelbook/ardent": "dev-master"
@@ -14,7 +14,7 @@
 		, "kindari/laravel-markdown": "1.0.*"
 		, "jwage/purl": "*"
 		, "intervention/image": "dev-master"
-		, "thomaswelton/laravel-rackspace-opencloud": "0.0.2"
+		, "thomaswelton/laravel-rackspace-opencloud": "dev-master"
 		, "anahkiasen/flatten": "dev-master"
 		, "fitztrev/laravel-html-minify": "dev-master"
 		, "nesbot/Carbon": "1.4.*"
