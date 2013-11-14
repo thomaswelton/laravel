@@ -1,10 +1,14 @@
 requirejs.config
-    shim: {
-        bootstrap:{
-            deps: ["jquery"],
+    shim:
+        bootstrap:
+            deps: ["jquery"]
             exports: "$.fn.popover"
-        }
-    }
+
+        'laravel-validator':
+            deps: ["jquery"]
+            exports: "$.fn.popover"
+
+        enforceDefine: true
 
     paths:
         main: 'compiled/main'
