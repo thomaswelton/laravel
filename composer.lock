@@ -121,12 +121,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/cartalyst/sentry.git",
-                "reference": "2518d21a0b9f22b42fecd26cc95cfc8e4b097592"
+                "reference": "57e8bac9cf62089fa23bad3ec4d068f01fdf9b8f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cartalyst/sentry/zipball/2518d21a0b9f22b42fecd26cc95cfc8e4b097592",
-                "reference": "2518d21a0b9f22b42fecd26cc95cfc8e4b097592",
+                "url": "https://api.github.com/repos/cartalyst/sentry/zipball/57e8bac9cf62089fa23bad3ec4d068f01fdf9b8f",
+                "reference": "57e8bac9cf62089fa23bad3ec4d068f01fdf9b8f",
                 "shasum": ""
             },
             "require": {
@@ -212,7 +212,7 @@
                 "laravel",
                 "security"
             ],
-            "time": "2013-11-07 20:51:32"
+            "time": "2013-11-14 10:02:16"
         },
         {
             "name": "classpreloader/classpreloader",
@@ -360,7 +360,8 @@
                 {
                     "name": "Jonathan Wage",
                     "email": "jonwage@gmail.com",
-                    "homepage": "http://www.jwage.com/"
+                    "homepage": "http://www.jwage.com/",
+                    "role": "Creator"
                 },
                 {
                     "name": "Guilherme Blanco",
@@ -499,9 +500,10 @@
             ],
             "authors": [
                 {
-                    "name": "Jonathan Wage",
+                    "name": "Jonathan H. Wage",
                     "email": "jonwage@gmail.com",
-                    "homepage": "http://www.jwage.com/"
+                    "homepage": "http://www.jwage.com/",
+                    "role": "Creator"
                 },
                 {
                     "name": "Guilherme Blanco",
@@ -573,7 +575,8 @@
                 {
                     "name": "Jonathan Wage",
                     "email": "jonwage@gmail.com",
-                    "homepage": "http://www.jwage.com/"
+                    "homepage": "http://www.jwage.com/",
+                    "role": "Creator"
                 },
                 {
                     "name": "Guilherme Blanco",
@@ -706,9 +709,10 @@
             ],
             "authors": [
                 {
-                    "name": "Jonathan Wage",
+                    "name": "Jonathan H. Wage",
                     "email": "jonwage@gmail.com",
-                    "homepage": "http://www.jwage.com/"
+                    "homepage": "http://www.jwage.com/",
+                    "role": "Creator"
                 },
                 {
                     "name": "Guilherme Blanco",
@@ -726,7 +730,7 @@
                 {
                     "name": "Johannes Schmitt",
                     "email": "schmittjoh@gmail.com",
-                    "homepage": "https://github.com/schmittjoh",
+                    "homepage": "http://jmsyst.com",
                     "role": "Developer of wrapped JMSSerializerBundle"
                 }
             ],
@@ -904,16 +908,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fitztrev/laravel-html-minify.git",
-                "reference": "7800f7932b26df1a7b208a8746fb11e6eeece1a4"
+                "reference": "e8f41a054effd6fdd0fd3905f801cb1a4a892932"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fitztrev/laravel-html-minify/zipball/7800f7932b26df1a7b208a8746fb11e6eeece1a4",
-                "reference": "7800f7932b26df1a7b208a8746fb11e6eeece1a4",
+                "url": "https://api.github.com/repos/fitztrev/laravel-html-minify/zipball/e8f41a054effd6fdd0fd3905f801cb1a4a892932",
+                "reference": "e8f41a054effd6fdd0fd3905f801cb1a4a892932",
                 "shasum": ""
             },
             "require": {
-                "illuminate/view": "4.0.x"
+                "illuminate/view": "4.x"
             },
             "require-dev": {
                 "mockery/mockery": "dev-master",
@@ -948,7 +952,7 @@
                 "optimization",
                 "performance"
             ],
-            "time": "2013-10-03 13:42:27"
+            "time": "2013-11-14 12:36:27"
         },
         {
             "name": "guzzle/guzzle",
@@ -1261,7 +1265,8 @@
                 {
                     "name": "Jonathan H. Wage",
                     "email": "jonwage@gmail.com",
-                    "homepage": "http://www.jwage.com/"
+                    "homepage": "http://www.jwage.com/",
+                    "role": "Creator"
                 }
             ],
             "description": "URL Manipulation for PHP 5.3",
@@ -2209,12 +2214,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Console.git",
-                "reference": "38f924338419db1ce147ef39fff1265ee64faa81"
+                "reference": "00848d3e13cf512e77c7498c2b3b0192f61f4b18"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Console/zipball/38f924338419db1ce147ef39fff1265ee64faa81",
-                "reference": "38f924338419db1ce147ef39fff1265ee64faa81",
+                "url": "https://api.github.com/repos/symfony/Console/zipball/00848d3e13cf512e77c7498c2b3b0192f61f4b18",
+                "reference": "00848d3e13cf512e77c7498c2b3b0192f61f4b18",
                 "shasum": ""
             },
             "require": {
@@ -2253,7 +2258,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "http://symfony.com",
-            "time": "2013-11-05 15:14:13"
+            "time": "2013-11-13 21:27:40"
         },
         {
             "name": "symfony/css-selector",
@@ -2570,12 +2575,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/HttpFoundation.git",
-                "reference": "796619f49371629db8f5ef5ce82f2f52e4fdfd9d"
+                "reference": "1c4b897064f4f621031a0e3bc19fd7054d5e0315"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/HttpFoundation/zipball/796619f49371629db8f5ef5ce82f2f52e4fdfd9d",
-                "reference": "796619f49371629db8f5ef5ce82f2f52e4fdfd9d",
+                "url": "https://api.github.com/repos/symfony/HttpFoundation/zipball/1c4b897064f4f621031a0e3bc19fd7054d5e0315",
+                "reference": "1c4b897064f4f621031a0e3bc19fd7054d5e0315",
                 "shasum": ""
             },
             "require": {
@@ -2611,7 +2616,7 @@
             ],
             "description": "Symfony HttpFoundation Component",
             "homepage": "http://symfony.com",
-            "time": "2013-11-04 06:09:51"
+            "time": "2013-11-13 21:27:40"
         },
         {
             "name": "symfony/http-kernel",
@@ -2620,12 +2625,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/HttpKernel.git",
-                "reference": "9795c9f67c72a96be0535f6987a94a07e5ff2432"
+                "reference": "9d45e71824fae3d02d0725c7eaeaebe019c54827"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/HttpKernel/zipball/9795c9f67c72a96be0535f6987a94a07e5ff2432",
-                "reference": "9795c9f67c72a96be0535f6987a94a07e5ff2432",
+                "url": "https://api.github.com/repos/symfony/HttpKernel/zipball/9d45e71824fae3d02d0725c7eaeaebe019c54827",
+                "reference": "9d45e71824fae3d02d0725c7eaeaebe019c54827",
                 "shasum": ""
             },
             "require": {
@@ -2682,7 +2687,7 @@
             ],
             "description": "Symfony HttpKernel Component",
             "homepage": "http://symfony.com",
-            "time": "2013-10-30 08:30:20"
+            "time": "2013-11-14 09:43:43"
         },
         {
             "name": "symfony/process",
@@ -2796,12 +2801,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Translation.git",
-                "reference": "6aedcff5ea623316dbf2112b78f2f63a257aab01"
+                "reference": "e0012648d7fc96d8f03bb7ca4d5e44f471a15417"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Translation/zipball/6aedcff5ea623316dbf2112b78f2f63a257aab01",
-                "reference": "6aedcff5ea623316dbf2112b78f2f63a257aab01",
+                "url": "https://api.github.com/repos/symfony/Translation/zipball/e0012648d7fc96d8f03bb7ca4d5e44f471a15417",
+                "reference": "e0012648d7fc96d8f03bb7ca4d5e44f471a15417",
                 "shasum": ""
             },
             "require": {
@@ -2842,7 +2847,7 @@
             ],
             "description": "Symfony Translation Component",
             "homepage": "http://symfony.com",
-            "time": "2013-10-10 13:12:30"
+            "time": "2013-11-13 21:27:40"
         },
         {
             "name": "thomaswelton/facebook-php-sdk",
@@ -2893,16 +2898,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/thomaswelton/laravel-facebook.git",
-                "reference": "77b1de2d6a247c5f637a7451dcbaec106a0b2299"
+                "reference": "bc649b337e543e6c5859664622b5a94cc1eb8337"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thomaswelton/laravel-facebook/zipball/77b1de2d6a247c5f637a7451dcbaec106a0b2299",
-                "reference": "77b1de2d6a247c5f637a7451dcbaec106a0b2299",
+                "url": "https://api.github.com/repos/thomaswelton/laravel-facebook/zipball/bc649b337e543e6c5859664622b5a94cc1eb8337",
+                "reference": "bc649b337e543e6c5859664622b5a94cc1eb8337",
                 "shasum": ""
             },
             "require": {
-                "illuminate/support": "4.0.x",
+                "illuminate/support": "4.x",
                 "jwage/purl": "0.0.*",
                 "php": ">=5.3.0",
                 "thomaswelton/facebook-php-sdk": "3.2.*"
@@ -2926,7 +2931,7 @@
                     "role": "Developer"
                 }
             ],
-            "time": "2013-09-10 12:24:21"
+            "time": "2013-11-14 11:24:04"
         },
         {
             "name": "thomaswelton/laravel-google-analytics",
@@ -2934,16 +2939,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/thomaswelton/laravel-google-analytics.git",
-                "reference": "3ab3b269b3fb907d3691e58121ca8ad755686ed3"
+                "reference": "0a48f91430a61bcc3a581740fcf011772e2a57f5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thomaswelton/laravel-google-analytics/zipball/3ab3b269b3fb907d3691e58121ca8ad755686ed3",
-                "reference": "3ab3b269b3fb907d3691e58121ca8ad755686ed3",
+                "url": "https://api.github.com/repos/thomaswelton/laravel-google-analytics/zipball/0a48f91430a61bcc3a581740fcf011772e2a57f5",
+                "reference": "0a48f91430a61bcc3a581740fcf011772e2a57f5",
                 "shasum": ""
             },
             "require": {
-                "illuminate/support": "4.0.x",
+                "illuminate/support": "4.x",
                 "php": ">=5.3.0"
             },
             "type": "library",
@@ -2964,7 +2969,7 @@
                     "role": "Developer"
                 }
             ],
-            "time": "2013-08-27 00:52:30"
+            "time": "2013-11-14 11:25:07"
         },
         {
             "name": "thomaswelton/laravel-gravatar",
@@ -3015,16 +3020,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/thomaswelton/laravel-oauth.git",
-                "reference": "83b543a03c395e6b6a4c030c2514a3902c3c7817"
+                "reference": "b31b690b11a192e8311bb472c2d30c2537606795"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thomaswelton/laravel-oauth/zipball/83b543a03c395e6b6a4c030c2514a3902c3c7817",
-                "reference": "83b543a03c395e6b6a4c030c2514a3902c3c7817",
+                "url": "https://api.github.com/repos/thomaswelton/laravel-oauth/zipball/b31b690b11a192e8311bb472c2d30c2537606795",
+                "reference": "b31b690b11a192e8311bb472c2d30c2537606795",
                 "shasum": ""
             },
             "require": {
-                "illuminate/support": "4.0.x",
+                "illuminate/support": "4.x",
                 "jwage/purl": "0.0.2",
                 "lusitanian/oauth": "~0.2",
                 "nesbot/carbon": "*",
@@ -3072,7 +3077,7 @@
                 "twitter",
                 "windows live"
             ],
-            "time": "2013-10-27 18:13:23"
+            "time": "2013-11-14 11:16:27"
         },
         {
             "name": "thomaswelton/laravel-rackspace-opencloud",
