@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "24d825be603e0dab215610484774568e",
+    "hash": "3d2056f8a285cc8675c87d97d0f63a4c",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -522,6 +522,58 @@
                 "zf2"
             ],
             "time": "2013-10-28 22:06:33"
+        },
+        {
+            "name": "fitztrev/laravel-html-minify",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fitztrev/laravel-html-minify.git",
+                "reference": "e8f41a054effd6fdd0fd3905f801cb1a4a892932"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fitztrev/laravel-html-minify/zipball/e8f41a054effd6fdd0fd3905f801cb1a4a892932",
+                "reference": "e8f41a054effd6fdd0fd3905f801cb1a4a892932",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/view": "4.x"
+            },
+            "require-dev": {
+                "mockery/mockery": "dev-master",
+                "phpunit/phpunit": "3.7.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Fitztrev\\LaravelHtmlMinify": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Trevor Fitzgerald",
+                    "email": "fitztrev@gmail.com"
+                }
+            ],
+            "description": "Minifies the HTML output of Laravel 4 applications",
+            "homepage": "https://github.com/fitztrev/laravel-html-minify",
+            "keywords": [
+                "L4",
+                "blade",
+                "compress",
+                "html",
+                "laravel",
+                "minifier",
+                "minify",
+                "optimization",
+                "performance"
+            ],
+            "time": "2013-11-14 12:36:27"
         },
         {
             "name": "guzzle/guzzle",
@@ -3379,6 +3431,7 @@
         "intervention/image": 20,
         "thomaswelton/laravel-rackspace-opencloud": 20,
         "anahkiasen/flatten": 20,
+        "fitztrev/laravel-html-minify": 20,
         "way/generators": 20,
         "mockery/mockery": 20
     },
