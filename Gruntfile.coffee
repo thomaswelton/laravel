@@ -12,6 +12,7 @@ module.exports = (grunt) =>
                 bin: 'vendor/bin/phpunit'
                 configuration: 'phpunit.xml'
                 verbose: true
+                testdox: true
 
         shell:
             bundle:
