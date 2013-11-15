@@ -1,11 +1,6 @@
 <?php
 
 use Cartalyst\Sentry\Facades\Laravel\Sentry;
-use Cartalyst\Sentry\Users\LoginRequiredException;
-use Cartalyst\Sentry\Users\PasswordRequiredException;
-use Cartalyst\Sentry\Users\WrongPasswordException;
-use Cartalyst\Sentry\Users\UserNotFoundException;
-use Cartalyst\Sentry\Users\UserNotActivatedException;
 
 class AuthController extends BaseController
 {
@@ -39,16 +34,12 @@ class AuthController extends BaseController
             Sentry::authenticate($credentials, Input::get('remember'));
 
             return Redirect::to('/');
-        } catch (LoginRequiredException $e) {
-            Session::flash('error', 'Login field is required.');
-        } catch (PasswordRequiredException $e) {
-            Session::flash('error', 'Password field is required.');
-        } catch (WrongPasswordException $e) {
-            Session::flash('error', 'Wrong password, try again.');
-        } catch (UserNotFoundException $e) {
-            Session::flash('error', 'User was not found.');
-        } catch (UserNotActivatedException $e) {
-            Session::flash('error', 'User is not activated.');
+
+        } catch( Exception $e ){
+            $exception = get_class($e);
+            $msg = (Lang::has("sentry.{$exception}")) ? Lang::get("sentry.{$exception}") : $e->getMessage();
+
+            Session::flash('error', $msg);
         }
 
         return Redirect::to('/login');

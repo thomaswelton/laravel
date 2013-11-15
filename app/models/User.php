@@ -125,23 +125,17 @@ class User extends SentryUserModel implements UserInterface
         return $this->getGroups();
     }
 
-    public function setGroupsAttribute($groups)
+    public function setGroupsAttribute($groups = array())
     {
-        $existingGroups = $this->groups;
-
-        if(count($existingGroups) > 0){
-            foreach ($existingGroups as $group) {
-                if(!is_array($groups) || !in_array($group->id, $groups)){
-                    $this->removeGroup($group);
-                }
-            }
+        // Remove exisiting groups
+        foreach ($this->groups as $group) {
+            $this->removeGroup($group);
         }
 
-        if(is_array($groups)){
-            foreach ($groups as $id) {
-                $group = Sentry::findGroupById($id);
-                $this->addGroup($group);
-            }
+        // Add new groups
+        foreach ($groups as $id) {
+            $group = Sentry::findGroupById($id);
+            $this->addGroup($group);
         }
     }
 

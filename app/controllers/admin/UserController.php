@@ -14,10 +14,15 @@ use \Mail;
 use Cartalyst\Sentry\Facades\Laravel\Sentry;
 use Cartalyst\Sentry\Users\UserNotFoundException;
 
-use \User;
 
 class UserController extends BaseController
 {
+    protected $user = null;
+
+    public function __construct(\User $user){
+        $this->user = $user;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -25,7 +30,7 @@ class UserController extends BaseController
      */
     public function index()
     {
-        $query = User::with('facebook');
+        $query = $this->user->with('facebook');
 
         $users = new UserListView($query);
 
@@ -61,7 +66,7 @@ class UserController extends BaseController
     public function store()
     {
         // Get validation rules
-        $rules = User::$rules;
+        $rules = $this->user->$rules;
         // Set password confirmation rule
         $rules['password'] .= '|confirmed';
 
@@ -176,7 +181,7 @@ class UserController extends BaseController
                 throw new Exception('You are not authorized to delete this user.');
             }
 
-            User::destroy($id);
+            $this->user->destroy($id);
         } catch (Exception $e) {
             Session::flash('error', $e->getMessage());
 
@@ -202,7 +207,7 @@ class UserController extends BaseController
     public function deleteOauth($id)
     {
         $provider = Input::get('provider');
-        $user = User::find($id);
+        $user = $this->user->find($id);
 
         $user->$provider()->delete();
 
@@ -219,7 +224,7 @@ class UserController extends BaseController
      */
     public function postRestore($id)
     {
-        User::withTrashed()->where('id', $id)->restore();
+        $this->user->withTrashed()->where('id', $id)->restore();
 
         Session::flash('success', 'User restored');
 
