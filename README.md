@@ -1,4 +1,5 @@
 ## Laravel Bootstrap
+[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/thomaswelton/laravel/badges/quality-score.png?s=4ab178c12d02cfda0bbd34dd8decc1620b501056)](https://scrutinizer-ci.com/g/thomaswelton/laravel/)
 [![Build Status](https://travis-ci.org/thomaswelton/laravel.png)](https://travis-ci.org/thomaswelton/laravel)
 [![Dependency Status](https://david-dm.org/thomaswelton/laravel.png)](https://david-dm.org/thomaswelton/laravel)
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/thomaswelton/laravel/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
