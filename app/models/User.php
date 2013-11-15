@@ -19,6 +19,22 @@ class User extends SentryUserModel implements UserInterface
         'password'  =>'required|between:4,16'
     );
 
+    /**
+     * The message bag instance containing validation error messages
+     *
+     * @var \Illuminate\Support\MessageBag
+     */
+    public $validationErrors;
+
+    protected $fillable = array(
+        'first_name',
+        'last_name',
+        'email',
+        'password',
+        'superuser',
+        'groups'
+    );
+
     public static $factory = array(
         'first_name' => 'string',
         'last_name' => 'string',
@@ -43,22 +59,57 @@ class User extends SentryUserModel implements UserInterface
      */
     protected $hidden = array('password', 'permissions');
 
-    public function facebook(){
+    public function facebook()
+    {
         return $this->hasOne('Thomaswelton\LaravelOauth\Eloquent\Facebook');
     }
 
-    public function getSuperuserAttribute(){
+    public function errors()
+    {
+        return $this->validationErrors;
+    }
+
+    public function update(array $attributes = array())
+    {
+        $rules = User::$rules;
+
+        // If the password is not due to be updated it does not need to be validated
+        if(!array_key_exists('password', $attributes) || strlen($attributes['password']) == 0){
+            unset($rules['password']);
+            unset($attributes['password']);
+        }
+
+        $validator = Validator::make($attributes, $rules);
+
+        if ($validator->fails()){
+            $this->validationErrors = $validator;
+            return false;
+        }
+
+        foreach($this->fillable as $field){
+            if(array_key_exists($field, $attributes)){
+                $this->$field = $attributes[$field];
+            }
+        }
+
+        return $this->save();
+    }
+
+    public function getSuperuserAttribute()
+    {
         return $this->isSuperUser();
     }
 
-    public function setSuperuserAttribute($isSuperUser){
+    public function setSuperuserAttribute($isSuperUser)
+    {
         // Return if there is no change to be made
         if($isSuperUser == $this->superuser) return;
 
         // Only other super admins should be able to change a users
         // Super admin permission level
 
-        $user = Auth::user();
+        $user = Sentry::findUserByID(Auth::user()->id);
+
         if($user->isSuperUser()){
             $permissions = $this->getPermissions();
             $permissions['superuser'] = (bool) $isSuperUser;
@@ -69,11 +120,13 @@ class User extends SentryUserModel implements UserInterface
         }
     }
 
-    public function getGroupsAttribute(){
+    public function getGroupsAttribute()
+    {
         return $this->getGroups();
     }
 
-    public function setGroupsAttribute($groups){
+    public function setGroupsAttribute($groups)
+    {
         $existingGroups = $this->groups;
 
         if(count($existingGroups) > 0){
@@ -92,7 +145,8 @@ class User extends SentryUserModel implements UserInterface
         }
     }
 
-    public function getAvatar($width){
+    public function getAvatar($width)
+    {
         if($this->facebook){
             return "http://graph.facebook.com/{$this->facebook->oauth_uid}/picture?type=large&width={$width}&height={$width}";
         }

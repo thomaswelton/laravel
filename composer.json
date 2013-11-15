@@ -6,7 +6,7 @@
 		, "thomaswelton/laravel-facebook": "dev-master"
 		, "thomaswelton/laravel-google-analytics": "dev-master"
 		, "laravelbook/ardent": "dev-master"
-		, "cartalyst/sentry": "2.0.*"
+		, "cartalyst/sentry": "2.0.1"
 		, "keboola/csv": "dev-master"
 		, "thomaswelton/laravel-gravatar": "dev-master"
 		, "thomaswelton/laravel-oauth": "dev-master"

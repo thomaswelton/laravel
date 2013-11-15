@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "775707c136d475aaa76c00a0635827cb",
+    "hash": "e5d8a8b4f81f8e5cbd3e1142ae93453e",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -117,16 +117,16 @@
         },
         {
             "name": "cartalyst/sentry",
-            "version": "dev-master",
+            "version": "v2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cartalyst/sentry.git",
-                "reference": "57e8bac9cf62089fa23bad3ec4d068f01fdf9b8f"
+                "reference": "a06bc3202d8001636152c9fe006383f53a692a99"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cartalyst/sentry/zipball/57e8bac9cf62089fa23bad3ec4d068f01fdf9b8f",
-                "reference": "57e8bac9cf62089fa23bad3ec4d068f01fdf9b8f",
+                "url": "https://api.github.com/repos/cartalyst/sentry/zipball/a06bc3202d8001636152c9fe006383f53a692a99",
+                "reference": "a06bc3202d8001636152c9fe006383f53a692a99",
                 "shasum": ""
             },
             "require": {
@@ -212,7 +212,7 @@
                 "laravel",
                 "security"
             ],
-            "time": "2013-11-14 10:02:16"
+            "time": "2013-10-09 09:17:12"
         },
         {
             "name": "classpreloader/classpreloader",
@@ -960,12 +960,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "4363c95b584dcafc8ff386c27116283ad53d738d"
+                "reference": "d2e8ac50742672ca0947e3f5459a4163eb5f9cbc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/4363c95b584dcafc8ff386c27116283ad53d738d",
-                "reference": "4363c95b584dcafc8ff386c27116283ad53d738d",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/d2e8ac50742672ca0947e3f5459a4163eb5f9cbc",
+                "reference": "d2e8ac50742672ca0947e3f5459a4163eb5f9cbc",
                 "shasum": ""
             },
             "require": {
@@ -1044,7 +1044,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2013-11-08 21:36:09"
+            "time": "2013-11-14 20:23:30"
         },
         {
             "name": "intervention/image",
@@ -1357,12 +1357,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "ce13eaad2506bb913b7318b7d56477c04ac3b571"
+                "reference": "4fd85b295e3825a2fcdf4ab25a0d9a3b79a99870"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/ce13eaad2506bb913b7318b7d56477c04ac3b571",
-                "reference": "ce13eaad2506bb913b7318b7d56477c04ac3b571",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/4fd85b295e3825a2fcdf4ab25a0d9a3b79a99870",
+                "reference": "4fd85b295e3825a2fcdf4ab25a0d9a3b79a99870",
                 "shasum": ""
             },
             "require": {
@@ -1371,7 +1371,7 @@
                 "filp/whoops": "1.0.7",
                 "ircmaxell/password-compat": "1.0.*",
                 "jeremeamia/superclosure": "1.0.*",
-                "monolog/monolog": "1.6.*",
+                "monolog/monolog": "1.*",
                 "nesbot/carbon": "1.*",
                 "patchwork/utf8": "1.1.*",
                 "php": ">=5.3.0",
@@ -1462,7 +1462,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2013-11-13 04:50:56"
+            "time": "2013-11-15 04:57:21"
         },
         {
             "name": "laravelbook/ardent",
@@ -1629,16 +1629,16 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "1.6.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "f72392d0e6eb855118f5a84e89ac2d257c704abd"
+                "reference": "6225b22de9dcf36546be3a0b2fa8e3d986153f57"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/f72392d0e6eb855118f5a84e89ac2d257c704abd",
-                "reference": "f72392d0e6eb855118f5a84e89ac2d257c704abd",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/6225b22de9dcf36546be3a0b2fa8e3d986153f57",
+                "reference": "6225b22de9dcf36546be3a0b2fa8e3d986153f57",
                 "shasum": ""
             },
             "require": {
@@ -1646,21 +1646,26 @@
                 "psr/log": "~1.0"
             },
             "require-dev": {
+                "aws/aws-sdk-php": "~2.4.8",
                 "doctrine/couchdb": "dev-master",
                 "mlehner/gelf-php": "1.0.*",
-                "raven/raven": "0.5.*"
+                "phpunit/phpunit": "~3.7.0",
+                "raven/raven": "0.5.*",
+                "ruflin/elastica": "0.90.*"
             },
             "suggest": {
+                "aws/aws-sdk-php": "Allow sending log messages to AWS services like DynamoDB",
                 "doctrine/couchdb": "Allow sending log messages to a CouchDB server",
                 "ext-amqp": "Allow sending log messages to an AMQP server (1.0+ required)",
                 "ext-mongo": "Allow sending log messages to a MongoDB server",
                 "mlehner/gelf-php": "Allow sending log messages to a GrayLog2 server",
-                "raven/raven": "Allow sending log messages to a Sentry server"
+                "raven/raven": "Allow sending log messages to a Sentry server",
+                "ruflin/elastica": "Allow sending log messages to an Elastic Search server"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.6.x-dev"
+                    "dev-master": "1.7.x-dev"
                 }
             },
             "autoload": {
@@ -1687,7 +1692,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2013-07-28 22:38:30"
+            "time": "2013-11-14 19:48:31"
         },
         {
             "name": "mustache/mustache",

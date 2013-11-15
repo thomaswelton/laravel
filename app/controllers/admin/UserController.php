@@ -140,50 +140,23 @@ class UserController extends BaseController
      */
     public function update($id)
     {
-        $rules = User::$rules;
+        try {
+            $user = Sentry::getUserProvider()->findById($id);
 
-        // Password not required if not set
-        if(!Input::has('password')){
-            unset($rules['password']);
-        }
+            $data = Input::all();
 
-        $validator = Validator::make(Input::all(), $rules);
-
-        if (!$validator->fails()){
-            try {
-                // Find the user using the user id
-                $user = Sentry::getUserProvider()->findById($id);
-
-                // Update the user details
-                $user->first_name = Input::get('first_name');
-                $user->last_name = Input::get('last_name');
-                $user->email = Input::get('email');
-                $user->groups = Input::get('groups');
-
-                //If password is set update the password
-                if(Input::has('password')){
-                    $user->password = Input::get('password');
-                }
-
-                if(Input::has('superuser')){
-                    $user->superuser = Input::get('superuser');
-                }
-
-                // Update the user
-                if ($user->save()) {
-                    Session::flash('success', 'User updated');
-
-                    return Redirect::to('admin/users');
-                } else {
-                   Session::flash('error', 'User could not be saved.');
-                }
-            } catch (Exception $e) {
-                Session::flash('error', $e->getMessage());
+            // Update the user
+            if ($user->update($data)) {
+                Session::flash('success', 'User updated');
+            } else {
+                Session::flash('error', 'User could not be saved.');
+                return Redirect::action('Admin\\UserController@edit', $id)->withErrors($user->errors());
             }
+        } catch (UserNotFoundException $e) {
+            Session::flash('error', 'No user found');
         }
 
-        Input::flash();
-        return Redirect::to('admin/users/'.$id.'/edit')->withErrors($validator);
+        return Redirect::action('Admin\\UserController@index');
     }
 
     /**

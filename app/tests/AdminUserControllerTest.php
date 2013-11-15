@@ -71,4 +71,31 @@ class AdminUserControllerTest extends TestCase
         $this->assertRedirectedTo('admin/users');
     }
 
+    public function testValidUpdateSavesDataAndRedirectsToList()
+    {
+        $user = FactoryMuff::create('User');
+
+        $last_name = 'Otwell';
+
+        // Assert the exisiting values do not match
+        $this->assertFalse($user->last_name === $last_name);
+
+        // Update values to POST
+        $updateData = $user->toArray();
+        $updateData['last_name'] = $last_name;
+
+        // Check redirect back to list view
+        $this->client->request('PUT', "admin/users/{$user->id}", $updateData);
+        $this->assertRedirectedTo('admin/users');
+
+        // Find the user again
+        $user = User::find($user->id);
+
+        // Check the details have been updated
+        $this->assertTrue($user->last_name === $last_name);
+
+        //Check redirect
+        $this->assertRedirectedTo('admin/users');
+    }
+
 }
