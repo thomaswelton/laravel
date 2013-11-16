@@ -53,6 +53,12 @@ View::composer('admin.*', function($view) {
     $view->with('adminUser', $adminUser);
 });
 
+View::composer(array('admin.layouts.default', 'layouts.bootstrap'), function($view)
+{
+    $rjs_config = (File::exists(public_path().'/assets/scripts/config.js')) ? File::get(public_path().'/assets/scripts/config.js') : '';
+    $view->with('rjs_config', $rjs_config);
+});
+
 View::composer('admin.user.form', function($view)
 {
     $view->with('groups', Sentry::findAllGroups());

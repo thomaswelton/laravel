@@ -27,7 +27,7 @@
     @endif
 
     <script type="text/javascript">
-        {{ File::get(public_path().'/assets/scripts/config.js') }}
+        {{ $rjs_config }}
 
         requirejs.config({
             baseUrl: '/assets/scripts'

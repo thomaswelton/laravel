@@ -59,7 +59,7 @@
     @else
         <script src="/assets/bower_components/requirejs/require.js"></script>
         <script>
-            {{ File::get(public_path().'/assets/scripts/config.js') }}
+            {{ $rjs_config }}
 
             requirejs.config({
                 urlArgs: "bust=" + (new Date()).getTime(),
