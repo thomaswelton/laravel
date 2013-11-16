@@ -1,7 +1,17 @@
 <?php
 
+use Zizaco\FactoryMuff\Facade\FactoryMuff;
+
 class TestCase extends Illuminate\Foundation\Testing\TestCase
 {
+    public $factory = null;
+
+    public function __construct()
+    {
+        // Prepare FactoryMuff
+        $this->factory = new FactoryMuff();
+    }
+
     /**
     * Default preparation for each test
     */

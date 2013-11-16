@@ -1,7 +1,5 @@
 <?php
 
-use Zizaco\FactoryMuff\Facade\FactoryMuff;
-
 class AdminUserControllerTest extends TestCase
 {
     public function testUserIndexPageWithNoData()
@@ -13,7 +11,7 @@ class AdminUserControllerTest extends TestCase
     public function testUserIndexPageWithPaginatedData()
     {
         for ($i=0; $i < 20; $i++) {
-            FactoryMuff::create('User');
+            $this->factory->create('User');
         }
 
         $this->client->request('GET', 'admin/users');
@@ -22,7 +20,7 @@ class AdminUserControllerTest extends TestCase
 
     public function testUserCsvDownload()
     {
-        FactoryMuff::create('User');
+        $this->factory->create('User');
 
         $this->client->request('GET', 'admin/users?&format=csv');
         $this->assertTrue($this->client->getResponse()->isOk());
@@ -36,7 +34,7 @@ class AdminUserControllerTest extends TestCase
 
     public function testUserEditPage()
     {
-        $user = FactoryMuff::create('User');
+        $user = $this->factory->create('User');
 
         $this->client->request('GET', "admin/users/{$user->id}/edit");
         $this->assertTrue($this->client->getResponse()->isOk());
@@ -50,7 +48,7 @@ class AdminUserControllerTest extends TestCase
 
     public function testUserEditFillsFormWithData()
     {
-        $user = FactoryMuff::create('User');
+        $user = $this->factory->create('User');
 
         $this->client->request('GET', "admin/users/{$user->id}/edit");
         $this->assertTrue($this->client->getResponse()->isOk());
@@ -60,7 +58,7 @@ class AdminUserControllerTest extends TestCase
 
     public function testDeleteUser()
     {
-        $user = FactoryMuff::create('User');
+        $user = $this->factory->create('User');
 
         // Check redirect back to list view
         $this->client->request('DELETE', "admin/users/{$user->id}");
@@ -73,7 +71,7 @@ class AdminUserControllerTest extends TestCase
 
     public function testRestoreUser()
     {
-        $user = FactoryMuff::create('User');
+        $user = $this->factory->create('User');
         $user->delete();
 
         // Check redirect back to list view
@@ -83,7 +81,7 @@ class AdminUserControllerTest extends TestCase
 
     public function testValidUpdateSavesDataAndRedirectsToList()
     {
-        $user = FactoryMuff::create('User');
+        $user = $this->factory->create('User');
 
         $last_name = 'Otwell';
 

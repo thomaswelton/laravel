@@ -1,13 +1,11 @@
 <?php
 
-use Zizaco\FactoryMuff\Facade\FactoryMuff;
-
 class AdminHomeControllerTest extends TestCase
 {
     // Create a new use with optional defination fo attributes
     protected function getAdminUser($attr = array())
     {
-        $user = FactoryMuff::create('User', $attr);
+        $user = $this->factory->create('User', $attr);
 
         $adminGroup = Sentry::getGroupProvider()->create(array(
             'name'        => 'admin',

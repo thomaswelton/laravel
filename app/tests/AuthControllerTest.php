@@ -1,7 +1,5 @@
 <?php
 
-use Zizaco\FactoryMuff\Facade\FactoryMuff;
-
 class AuthControllerTest extends TestCase
 {
     public function testLoginRoute()
@@ -13,7 +11,7 @@ class AuthControllerTest extends TestCase
     public function testLoginRouteRedirectsWhenLoggedIn()
     {
         Route::enableFilters();
-        $user = FactoryMuff::create('user');
+        $user = $this->factory->create('user');
 
         Sentry::login($user);
 
@@ -22,7 +20,7 @@ class AuthControllerTest extends TestCase
     }
 
     public function testLogoutRouteLogsOutAndRedirects(){
-        $user = FactoryMuff::create('user');
+        $user = $this->factory->create('user');
         Sentry::login($user);
 
         // Check the user is logged in
