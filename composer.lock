@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "e5d8a8b4f81f8e5cbd3e1142ae93453e",
+    "hash": "190b19c2129c435f92615315a0ab0911",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1728,7 +1728,7 @@
                 {
                     "name": "Justin Hileman",
                     "email": "justin@justinhileman.info",
-                    "homepage": "http://justinhileman.com"
+                    "homepage": "http://justinhileman.com/"
                 }
             ],
             "description": "A Mustache implementation in PHP.",
@@ -1788,12 +1788,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "700847e2951942200b479c413aa2984b5364799b"
+                "reference": "7f4ab26732c6c0dcfeef98ee94452977ac26e82c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/700847e2951942200b479c413aa2984b5364799b",
-                "reference": "700847e2951942200b479c413aa2984b5364799b",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/7f4ab26732c6c0dcfeef98ee94452977ac26e82c",
+                "reference": "7f4ab26732c6c0dcfeef98ee94452977ac26e82c",
                 "shasum": ""
             },
             "require": {
@@ -1825,7 +1825,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2013-09-28 11:21:30"
+            "time": "2013-11-15 19:27:56"
         },
         {
             "name": "patchwork/utf8",
@@ -2055,33 +2055,27 @@
         },
         {
             "name": "rackspace/php-opencloud",
-            "version": "dev-master",
+            "version": "V1.5.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rackspace/php-opencloud.git",
-                "reference": "5c20f62bb43b08600ab3c272a657072e79a29415"
+                "reference": "f4c4bbbae8b108c572b346a7cd350c62122451d5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rackspace/php-opencloud/zipball/5c20f62bb43b08600ab3c272a657072e79a29415",
-                "reference": "5c20f62bb43b08600ab3c272a657072e79a29415",
+                "url": "https://api.github.com/repos/rackspace/php-opencloud/zipball/f4c4bbbae8b108c572b346a7cd350c62122451d5",
+                "reference": "f4c4bbbae8b108c572b346a7cd350c62122451d5",
                 "shasum": ""
             },
             "require": {
-                "guzzle/http": "3.7.*@dev",
-                "php": ">=5.3.3"
-            },
-            "require-dev": {
-                "apigen/apigen": "dev-master"
+                "ext-curl": "*",
+                "php": ">=5.3.0"
             },
             "type": "library",
             "autoload": {
-                "psr-0": {
-                    "OpenCloud": [
-                        "lib/",
-                        "tests/"
-                    ]
-                }
+                "classmap": [
+                    "lib/"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -2098,15 +2092,12 @@
                     "homepage": "https://github.com/jamiehannaford"
                 }
             ],
-            "description": "PHP SDK for Rackspace/OpenStack APIs",
+            "description": "Rackspace open cloud php library",
             "keywords": [
-                "Openstack",
-                "nova",
-                "opencloud",
-                "rackspace",
-                "swift"
+                "cloudfiles",
+                "opencloud"
             ],
-            "time": "2013-11-08 16:22:02"
+            "time": "2013-08-01 16:12:19"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -3086,23 +3077,23 @@
         },
         {
             "name": "thomaswelton/laravel-rackspace-opencloud",
-            "version": "0.0.2",
+            "version": "0.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thomaswelton/laravel-rackspace-opencloud.git",
-                "reference": "a543e848d9e4575715d455afc83f51d641b4f6b0"
+                "reference": "a4b85341bf041275e7132d2ac3c9117d00de8039"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thomaswelton/laravel-rackspace-opencloud/zipball/a543e848d9e4575715d455afc83f51d641b4f6b0",
-                "reference": "a543e848d9e4575715d455afc83f51d641b4f6b0",
+                "url": "https://api.github.com/repos/thomaswelton/laravel-rackspace-opencloud/zipball/a4b85341bf041275e7132d2ac3c9117d00de8039",
+                "reference": "a4b85341bf041275e7132d2ac3c9117d00de8039",
                 "shasum": ""
             },
             "require": {
                 "alchemy/zippy": "0.1.0",
                 "illuminate/support": "4.0.x",
                 "php": ">=5.3.0",
-                "rackspace/php-opencloud": "dev-master"
+                "rackspace/php-opencloud": "1.5.*"
             },
             "type": "library",
             "autoload": {
@@ -3122,7 +3113,7 @@
                     "role": "Developer"
                 }
             ],
-            "time": "2013-10-01 09:36:37"
+            "time": "2013-11-03 17:27:01"
         },
         {
             "name": "way/generators",

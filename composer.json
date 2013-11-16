@@ -14,7 +14,7 @@
 		, "kindari/laravel-markdown": "1.0.*"
 		, "jwage/purl": "*"
 		, "intervention/image": "dev-master"
-		, "thomaswelton/laravel-rackspace-opencloud": "0.0.2"
+		, "thomaswelton/laravel-rackspace-opencloud": "0.2.*"
 		, "anahkiasen/flatten": "dev-master"
 		, "fitztrev/laravel-html-minify": "dev-master"
 		, "nesbot/Carbon": "1.4.*"
