@@ -4,8 +4,18 @@ use Zizaco\FactoryMuff\Facade\FactoryMuff;
 
 class AdminUserControllerTest extends TestCase
 {
-    public function testUserIndexPage()
+    public function testUserIndexPageWithNoData()
     {
+        $this->client->request('GET', 'admin/users');
+        $this->assertTrue($this->client->getResponse()->isOk());
+    }
+
+    public function testUserIndexPageWithPaginatedData()
+    {
+        for ($i=0; $i < 20; $i++) {
+            FactoryMuff::create('User');
+        }
+
         $this->client->request('GET', 'admin/users');
         $this->assertTrue($this->client->getResponse()->isOk());
     }

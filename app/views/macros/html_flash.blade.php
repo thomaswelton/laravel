@@ -1,4 +1,4 @@
-<div class="alert <?= $class ?>">
+<div class="alert {{ $class }}">
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-    <?= $text ?>
+    {{ $text }}
 </div>

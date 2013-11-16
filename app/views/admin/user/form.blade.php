@@ -49,8 +49,8 @@
 
                 <div class="col-sm-9">
                     <label class="checkbox-inline">
-                        <? $superuserChecked = (isset($user)) ? $user->isSuperUser() : null ?>
-                        <? $superuserAttributes = (Auth::check() && Auth::user()->isSuperUser()) ? null : array('disabled' => true) ?>
+                        <?php $superuserChecked = (isset($user)) ? $user->isSuperUser() : null ?>
+                        <?php $superuserAttributes = (Auth::check() && Auth::user()->isSuperUser()) ? null : array('disabled' => true) ?>
                         {{ Form::checkbox('superuser', 1, $superuserChecked, $superuserAttributes) }}
                         <span title="Super users have full access to the website, and can delete any other user" data-toggle="tooltip">Super User</span>
                     </label>
