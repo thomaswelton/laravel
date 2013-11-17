@@ -86,27 +86,22 @@
 		        	@endforeach
 
 		        	@if(isset($actions))
-						<?php
-							// Or a predfined string of common actions
-							foreach ($actions as $action){
-								echo '<td class="row-action">';
-
-								if(is_callable($action)){
-									// Actions can be a closure which get passed the row
-									echo $action($row);
-								}else{
-									// Or a string that represents a common action
+						@foreach ($actions as $action)
+							<td class="row-action">
+								@if(is_callable($action))
+									{{ $action($row) }}
+								@else
+									<?php
 									$view = 'admin.partials.table.actions.' . $action;
 									if(View::exists($view)){
 										echo View::make($view, array('row' => $row));
 									}else{
 										throw new Exception('Admin action "' . $action . '" not defined. Create a view here app/views/admin/partials/table/actions/' . $action . '.php');
 									}
-								}
-
-								echo '</td>';
-							}
-						?>
+									?>
+								@endif
+							</td>
+						@endforeach
 		        	@endif
 
 		        </tr>
