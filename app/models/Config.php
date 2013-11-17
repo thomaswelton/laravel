@@ -9,6 +9,11 @@ class Config extends Ardent
         'name'     => 'required'
     );
 
+    public static $factory = array(
+        'name' => 'string',
+        'config' => '{"key":"value"}',
+    );
+
     /**
      * The database table used by the model.
      *
@@ -16,15 +21,35 @@ class Config extends Ardent
      */
     protected $table = 'config';
 
-    public function afterSave()
+    public static function afterSave()
     {
-    	Cache::forget('config:all');
+        Cache::forget('config:all');
     }
 
     public static function all($columns = array())
     {
-    	return Cache::rememberForever('config:all', function(){
-    		return parent::all();
-    	});
+        if(Cache::has('config:all')){
+            return Cache::get('config:all');
+        }else{
+            $all = parent::all();
+            return Cache::rememberForever('config:all', function() use ($all)
+            {
+                return $all;
+            });
+        }
+    }
+
+    public function updateValues()
+    {
+        $items = $this->all();
+
+        foreach ($items as $item) {
+            $name = $item->name;
+            $values = json_decode($item->config);
+
+            foreach ($values as $key => $value) {
+                \Config::set($name . '::' . $key, $value);
+            }
+        }
     }
 }
