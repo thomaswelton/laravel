@@ -44,3 +44,5 @@ public/assets/images/generated/
 /app/config/**/**/**/local
 
 /.php-version
+
+/app/tests/_log/
