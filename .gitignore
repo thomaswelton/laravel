@@ -45,4 +45,5 @@ public/assets/images/generated/
 
 /.php-version
 
-/app/tests/_log/
+/app/tests/_log/*
+!/app/tests/_log/.gitkeep
